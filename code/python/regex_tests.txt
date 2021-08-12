@@ -1,0 +1,22 @@
+Test regex escaping lines:
+(.+,\d,,\d)|([^r])(\n)
+
+Replacing in Sublime:
+Find:([^r])(\n)
+replace:$1$2 
+
+
+REPLACING 'TOP #' FROM THE QUERY STATEMENTS When statement is between quotes ("").
+Regex:
+(\"SELECT|\"select)\s+(TOP|top)\s+(\d+)(.+)\"(\,0\,\,1)
+
+Replacing in Sublime:
+$1$4 limit $3\"$5
+
+
+REPLACING 'TOP #' FROM THE QUERY STATEMENTS When statement is not between quotes (""), THE ABOVE SHOULD BE EXECUTED FIRST.
+Regex:
+(SELECT|select)\s+(TOP|top)\s+(\d+)(.+)(\,0\,\,1)
+
+Replacing in Sublime:
+$1$4 limit $3$5

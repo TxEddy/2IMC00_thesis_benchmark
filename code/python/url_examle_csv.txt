@@ -1,0 +1,8 @@
+Official Link:
+http://skyserver.sdss.org/dr16/en/tools/search/x_results.aspx?searchtool=SQL&TaskName=Skyserver.Search.SQL&syntax=NoSyntax&ReturnHtml=true&cmd=--+This+query+does+a+table+JOIN+between+the+imaging+%28PhotoObj%29+and+spectra%0D%0A--+%28SpecObj%29+tables+and+includes+the+necessary+columns+in+the+SELECT+to+upload%0D%0A--+the+results+to+the+SAS+%28Science+Archive+Server%29+for+FITS+file+retrieval.%0D%0ASELECT+DISTINCT+p.ra%2C+p.dec%2C+p.modelMag_r%0D%0AFROM+PhotoObjAll+AS+p%0D%0A%0D%0A&format=csv&TableName=
+
+CSV Table Data Link:
+http://skyserver.sdss.org/dr16/en/tools/search/x_results.aspx?searchtool=SQL&TaskName=Skyserver.Search.SQL&syntax=NoSyntax&ReturnHtml=true&cmd=SELECT+COUNT(*)+FROM+PhotoObjAll+AS+p&format=csv&TableName=
+
+CSV Log Link:
+http://skyserver.sdss.org/log/en/traffic/x_sql.asp?cmd=SELECT+top+1000+*+FROM+SqlLog+WHERE+yy+=+2020&format=csv
