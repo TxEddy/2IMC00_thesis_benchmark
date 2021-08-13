@@ -222,7 +222,7 @@ def qcs_spark(table_dir, log):
 
 def correlation_matrix(qcs_tables_dir):
     # Directory containing data output with all attributes stated in the QCS.
-    dir_qcs_attributes = qcs_tables_dir / "qcs_attributes_output"
+    dir_qcs_attributes = qcs_tables_dir / "qcsAttributesOutput"
 
     # Get all csv files in the given directory, this is the same directory as the output directory in Spark to export the df containing data of all attributes states in the QCS. Since Spark exports the df with a random name, globally get the csv files in the given directory.
     # files_csv = qcs_tables_dir.glob('**/*.csv') # Also get csv files in underlying folders.
@@ -288,8 +288,8 @@ def main(config):
     # qcs_spark(tables_qcs, log_oct.as_posix())
 
     # correlation_matrix(qcs_frequency_dir)
-    # correlation_matrix(correlation_dir)
-    print(config.path.root)
+    correlation_matrix(correlation_dir)
+    # print("Output:", config.path.root)
 
 
 

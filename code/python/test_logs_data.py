@@ -134,10 +134,7 @@ def main(config):
     # skyserver_csv_download("SELECT top 1100 p.* FROM photoobjall p JOIN specobjall s on s.bestobjid = p.objid", "qcs_photo_obj_all", dir_tables, qry_log=False)
     # skyserver_csv_download("SELECT top 1100 s.* FROM specobjall s JOIN photoobjall p on p.objid = s.bestobjid", "qcs_spec_obj_all", dir_tables, qry_log=False)
     # skyserver_csv_download("SELECT top 5 * FROM SqlLog WHERE yy = 2020 and mm = 10 and dbname = 'BestDR16' and (access like 'Skyserver.Search%') and (rows > 0 and error != 1) and (lower(statement) like '%count(%' or lower(statement) like '%avg(%' or lower(statement) like '%sum(%') and lower(statement) like '%join%' and (lower(statement) like '%photoobjall%' or lower(statement) like '%specobjall%') and (lower(statement) not like '%fget%')", "qcs_test", dir_logs)
-
-    # skyserver_specific_log(10, dir_logs)
-
-
+    
 
     # Downloading the query log of the year 2020.
     # skyserver_csv_download("SELECT * FROM SqlLog WHERE yy = 2020 and access like 'Skyserver.Search%' and (rows > 0 and error != 1) and (lower(statement) like '%count(%' or lower(statement) like '%avg(%' or lower(statement) like '%sum(%' or lower(statement) like '%group by%') and lower(statement) like '%join%'", "log_2020", dir_logs)
@@ -166,10 +163,6 @@ def main(config):
     # skyserver_csv_download("SELECT distinct top 15000 gse.* FROM galspecextra gse JOIN photoobjall poa on poa.specobjid = gse.specobjid JOIN photoobj po on po.specobjid = gse.specobjid JOIN galaxy g on g.specobjid = gse.specobjid JOIN specphoto sp on sp.specobjid = gse.specobjid JOIN stellarmassfspsgranearlydust smfged on smfged.specobjid = gse.specobjid JOIN specphotoall spa on spa.specobjid = gse.specobjid JOIN spplines sl on sl.specobjid = gse.specobjid JOIN galaxytag gt on gt.specobjid = gse.specobjid JOIN photoz pz on pz.objid = poa.objid JOIN sppparams sps on sps.specobjid = gse.specobjid JOIN galspecline gs on gs.specobjid = gse.specobjid JOIN galspecindx gsi on gsi.specobjid = gse.specobjid JOIN zoospec zs on zs.specobjid = gse.specobjid JOIN phototag pt on pt.specobjid = gse.specobjid JOIN wise_xmatch w on w.sdss_objid = poa.objid WHERE poa.objid between 1237645941824356443 and 1237649921110442096", "galspecextra", dir_tables, qry_log=False)
     # skyserver_csv_download("SELECT distinct top 15000 w.* FROM wise_xmatch w JOIN photoobjall poa on poa.objid = w.sdss_objid JOIN photoobj po on po.objid = w.sdss_objid JOIN galaxy g on g.objid = w.sdss_objid JOIN specphoto sp on sp.objid = w.sdss_objid JOIN stellarmassfspsgranearlydust smfged on smfged.specobjid = poa.specobjid JOIN specphotoall spa on spa.objid = w.sdss_objid JOIN spplines sl on sl.bestobjid = w.sdss_objid JOIN galaxytag gt on gt.objid = w.sdss_objid JOIN photoz pz on pz.objid = w.sdss_objid JOIN sppparams sps on sps.bestobjid = w.sdss_objid JOIN galspecline gs on gs.specobjid = poa.specobjid JOIN galspecindx gsi on gsi.specobjid = poa.specobjid JOIN zoospec zs on zs.objid = w.sdss_objid JOIN phototag pt on pt.objid = w.sdss_objid JOIN galspecextra gse on gse.specobjid = poa.specobjid WHERE poa.objid between 1237645941824356443 and 1237649921110442096", "wise_xmatch", dir_tables, qry_log=False)
     # skyserver_csv_download("SELECT distinct top 15000 mgz.* FROM mangagalaxyzoo mgz JOIN mangadrpall mda on mda.nsa_nsaid = mgz.nsa_id", "mangagalaxyzoo", dir_tables, qry_log=False)
-
-    # skyserver_csv_download("SELECT top 100000 smfged.* FROM stellarmassfspsgranearlydust smfged JOIN specphotoall spa on spa.specobjid = smfged.specobjid", "stellarmassfspsgranearlydust", dir_tables, qry_log=False)
-    # skyserver_csv_download("SELECT top 100000 mda.* FROM mangadrpall mda", "mangadrpall", dir_tables, qry_log=False)
-    # skyserver_csv_download("SELECT top 100000 g.* FROM galspecindx g JOIN specphotoall spa on spa.specobjid = g.specobjid", "galspecindx", dir_tables, qry_log=False)
     
 
 if __name__=='__main__':

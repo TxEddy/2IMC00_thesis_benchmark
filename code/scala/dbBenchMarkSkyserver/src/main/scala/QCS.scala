@@ -29,9 +29,9 @@ object QCS {
     .getOrCreate()
 
   // Values containing directory paths for the logs and tables folder.
-  val DirLog: String = "/Users/eddy/Documents/study_github/2IMD00_seminar_datamanagement/output_logs/qcs_test/"
-  val DirTable: String = "/Users/eddy/Documents/study_github/2IMD00_seminar_datamanagement/output_tables/qcs_test/"
-//  val DirTable: String = "/Users/eddy/Documents/study_github/2IMD00_seminar_datamanagement/output_tables/"
+  val DirLog: String = "/Users/eddy/Documents/study_github/2IMC00_thesis_benchmark/output_logs/qcs_test/"
+  val DirTable: String = "/Users/eddy/Documents/study_github/2IMC00_thesis_benchmark/output_tables/qcs_test/"
+//  val DirTable: String = "/Users/eddy/Documents/study_github/2IMC00_thesis_benchmark/output_tables/"
 
   var attributeSet: Set[String] = Set()
   var attributeExtendedSet: Set[String] = Set()
@@ -56,8 +56,8 @@ object QCS {
 //    println(tablesList(1).getClass())
 
     // Extract the queries from the query log as a List of Strings.
-    val queries: List[String] = getQueryLog(queryList(0))
-//    val queries: List[String] = getQueryLog(queryList(4)) // New log 2020
+//    val queries: List[String] = getQueryLog(queryList(0))
+    val queries: List[String] = getQueryLog(queryList(4)) // New log 2020
 //    val queries: List[String] = getQueryLog(queryList(5)) // Generated Queries 3(z_log_generated), 5(a_generated_qry_test)
 
     // Import the tables and create or replace the views.
@@ -69,7 +69,7 @@ object QCS {
 
 
     // Execute query which retrieves data based QCS to calculate correlations.
-//    getQueriesCsv("qcsAttributesCorrelation")
+//    getQueriesCsv("qcsAttributesOutput")
   }
 
   /**
@@ -93,6 +93,9 @@ object QCS {
    */
   def createTempTableView(tables: List[String]) {
     for (i <- tables) {
+      // Path is fixed, therefore you know place ... is the filename for the folder output_tables.
+//      val fileName = i.split("/")(7)
+
       // Path is fixed, therefore you know place 8 is the filename for folder qcs_test.
       val fileName = i.split("/")(8)
 
@@ -544,7 +547,7 @@ object QCS {
    * @param totalQCSMap
    */
   def qcsToCsv(totalQCSMap: Map[List[String], Int]): Unit = {
-    val outputCsv = new File("/Users/eddy/Documents/study_github/2IMD00_seminar_datamanagement/output_qcs_test.csv")
+    val outputCsv = new File("/Users/eddy/Documents/study_github/2IMC00_thesis_benchmark/output_qcs.csv")
 
     val writer = CSVWriter.open(outputCsv)
 
@@ -563,7 +566,7 @@ object QCS {
    */
   def generateQueries(QCSExtendedMap: ListBuffer[List[String]]): Unit = {
     val generatedQueriesList: ListBuffer[List[String]] = ListBuffer()
-    val queriesCsv = new File("/Users/eddy/Documents/study_github/2IMD00_seminar_datamanagement/output_qcs_queries_test.csv")
+    val queriesCsv = new File("/Users/eddy/Documents/study_github/2IMC00_thesis_benchmark/output_qcs_queries.csv")
     val writer = CSVWriter.open(queriesCsv)
 
     // Different Regular Expressions, to specifically create a part of a query.
@@ -758,8 +761,8 @@ object QCS {
   }
 
   def getQueriesCsv(outputName: String): Unit = {
-//    val outputDir: String = "/Users/eddy/Documents/study_github/2IMD00_seminar_datamanagement/correlation_tables/qcs_attributes_output/"
-    val outputDir: String = "/Users/eddy/Documents/study_github/2IMD00_seminar_datamanagement/correlation/qcs_attributes_output/"
+//    val outputDir: String = "/Users/eddy/Documents/study_github/2IMC00_thesis_benchmark/correlation_tables/qcs_attributes_output/"
+    val outputDir: String = "/Users/eddy/Documents/study_github/2IMC00_thesis_benchmark/correlation/"
 
     val qcsTableColumn: String = "SELECT distinct g.clean as galaxy_clean, g.dec as galaxy_dec, g.g as galaxy_g, g.petromag_r as galaxy_petromag_r, g.petromag_u as galaxy_petromag_u, g.petror90_g as galaxy_petror90_g, g.petror90_r as galaxy_petror90_r, g.petrorad_u as galaxy_petrorad_u, g.r as galaxy_r, g.ra as galaxy_ra, gt.dec as galaxytag_dec, gt.ra as galaxytag_ra, gt.type as galaxytag_type, gse.bptclass as galspecextra_bptclass, gse.sfr_fib_p50 as galspecextra_sfr_fib_p50, gse.sfr_tot_p50 as galspecextra_sfr_tot_p50, gse.sfr_tot_p84 as galspecextra_sfr_tot_p84, gse.specsfr_tot_p50 as galspecextra_specsfr_tot_p50, gsi.d4000_n as galspecindx_d4000_n, gs.h_alpha_eqw as galspecline_h_alpha_eqw, gs.h_alpha_flux as galspecline_h_alpha_flux, gs.h_alpha_flux_err as galspecline_h_alpha_flux_err, gs.h_beta_eqw as galspecline_h_beta_eqw, gs.h_beta_flux as galspecline_h_beta_flux, gs.h_beta_flux_err as galspecline_h_beta_flux_err, gs.nii_6584_flux as galspecline_nii_6584_flux, gs.oi_6300_flux_err as galspecline_oi_6300_flux_err, gs.oiii_5007_eqw as galspecline_oiii_5007_eqw, gs.oiii_5007_flux as galspecline_oiii_5007_flux, gs.sii_6717_flux as galspecline_sii_6717_flux, gs.sii_6731_flux_err as galspecline_sii_6731_flux_err, po.b as photoobj_b, po.camcol as photoobj_camcol, po.clean as photoobj_clean, po.cmodelmag_g as photoobj_cmodelmag_g, po.dec as photoobj_dec, po.devrad_g as photoobj_devrad_g, po.devrad_r as photoobj_devrad_r, po.fibermag_r as photoobj_fibermag_r, po.field as photoobj_field, po.flags as photoobj_flags, po.fracdev_r as photoobj_fracdev_r, po.g as photoobj_g, po.l as photoobj_l, po.mode as photoobj_mode, po.petromag_r as photoobj_petromag_r, po.petromag_z as photoobj_petromag_z, po.petror50_g as photoobj_petror50_g, po.petror50_r as photoobj_petror50_r, po.petrorad_g as photoobj_petrorad_g, po.petrorad_r as photoobj_petrorad_r, po.r as photoobj_r, po.ra as photoobj_ra, po.run as photoobj_run, po.type as photoobj_type, po.u as photoobj_u, poa.camcol as photoobjall_camcol, poa.clean as photoobjall_clean, poa.dec as photoobjall_dec, poa.dered_r as photoobjall_dered_r, poa.devrad_r as photoobjall_devrad_r, poa.devraderr_r as photoobjall_devraderr_r, poa.exprad_r as photoobjall_exprad_r, poa.field as photoobjall_field, poa.fracdev_r as photoobjall_fracdev_r, poa.mode as photoobjall_mode, poa.petromag_r as photoobjall_petromag_r, poa.ra as photoobjall_ra, poa.run as photoobjall_run, poa.type as photoobjall_type, poa.u as photoobjall_u, pt.clean as phototag_clean, pt.dec as phototag_dec, pt.mode as phototag_mode, pt.nchild as phototag_nchild, pt.psfmag_r as phototag_psfmag_r, pt.ra as phototag_ra, pt.type as phototag_type, pz.absmagr as photoz_absmagr, pz.photoerrorclass as photoz_photoerrorclass, pz.nncount as photoz_nncount, pz.nnvol as photoz_nnvol, pz.z as photoz_z, pz.zerr as photoz_zerr, sp.dec as specphoto_dec, sp.mode as specphoto_mode, sp.modelmag_r as specphoto_modelmag_r, sp.petromag_r as specphoto_petromag_r, sp.petromag_z as specphoto_petromag_z, sp.ra as specphoto_ra, sp.type as specphoto_type, sp.z as specphoto_z, sp.zwarning as specphoto_zwarning, sps.fehadop as sppparams_fehadop, smfged.logmass as stellarmassfspsgranearlydust_logmass, smfged.z as stellarmassfspsgranearlydust_z, zs.elliptical as zoospec_elliptical, zs.p_cs as zoospec_p_cs, zs.p_cs_debiased as zoospec_p_cs_debiased, zs.p_el as zoospec_p_el, zs.p_el_debiased as zoospec_p_el_debiased, zs.spiral as zoospec_spiral, zs.uncertain as zoospec_uncertai FROM photoobjall poa JOIN photoobj po on po.objid = poa.objid JOIN galaxy g on g.objid = poa.objid JOIN galaxytag gt on gt.objid = poa.objid JOIN galspecextra gse on gse.specobjid = poa.specobjid JOIN galspecindx gsi on gsi.specobjid = poa.specobjid JOIN galspecline gs on gs.specobjid = poa.specobjid JOIN phototag pt on pt.objid = poa.objid JOIN photoz pz on pz.objid = poa.objid JOIN specphoto sp on sp.objid = poa.objid JOIN sppparams sps on sps.bestobjid = poa.objid JOIN stellarmassfspsgranearlydust smfged on smfged.specobjid = poa.specobjid JOIN zoospec zs on zs.objid = poa.objid"
 
