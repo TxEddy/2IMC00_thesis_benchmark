@@ -3,6 +3,9 @@
 ###########
 .DS_Store
 code/python/hamid_code/skyServerData/*.csv
+output_tables/*.csv
+*.xlsx
+*.docx
 
 
 
