@@ -56,8 +56,8 @@ object QCS {
 //    println(tablesList(1).getClass())
 
     // Extract the queries from the query log as a List of Strings.
-//    val queries: List[String] = getQueryLog(queryList(0))
-    val queries: List[String] = getQueryLog(queryList(4)) // New log 2020
+    val queries: List[String] = getQueryLog(queryList(0))
+//    val queries: List[String] = getQueryLog(queryList(4)) // New log 2020
 //    val queries: List[String] = getQueryLog(queryList(5)) // Generated Queries 3(z_log_generated), 5(a_generated_qry_test)
 
     // Import the tables and create or replace the views.
@@ -186,8 +186,6 @@ object QCS {
    */
   def extractQueryAlias(plan: LogicalPlan): Seq[Object] = plan match {
     case s@SubqueryAlias(identifier: AliasIdentifier, child: LogicalPlan) =>
-      println("Identifier Name: " + identifier.name)
-      println("Child: " + child)
       Seq(identifier.name) ++ extractQueryAlias(child)
 //      Seq(identifier.name, extractQueryAlias(child))
 //      Seq(extractQueryAlias(child)) ++ extractQueryAlias(child)
@@ -325,11 +323,11 @@ object QCS {
    * @param joinList List with attributes which were stated in the JOIN statement.
    */
   def getJoiningClause(joinList: Seq[Expression]) {
-    val joiningAttrib: Regex = "(\\w+#\\d+)".r
+    val joiningAttrib: Regex = "(\\w+#\\d+\\w?)".r
 //    println("Joining List:")
 //    joinList.foreach {
 //      joinStatement =>
-//        println(joinStatement + ", Class is: " + joinStatement.)
+//        println(joinStatement)
 //    }
 
     joinList.foreach{
@@ -347,6 +345,97 @@ object QCS {
     }
   }
 
+  def testQueryAlias(unresolvedColumnList: Seq[Object]) {
+    var tableName: String = ""
+    var tableColumnMap = Map[String, Object]()
+    val attribList: ListBuffer[String] = ListBuffer()
+    val attribExtendedList: ListBuffer[String] = ListBuffer()
+    var isFromTable: Boolean = true
+
+    println("Query Aliases:")
+    for (i <- unresolvedColumnList.indices) {
+      if (unresolvedColumnList(i).toString.contains("List")) {
+        tableName = unresolvedColumnList(i - 1).toString.toLowerCase()
+
+        if (isFromTable) {
+          attribList += tableName + ";from"
+          attribExtendedList += tableName + ";from"
+//          println("From: " + tableName)
+          isFromTable = false
+        }
+
+        // IF-statement when self-joining.
+        if (!tableColumnMap.contains(tableName)) {
+          tableColumnMap += (tableName -> unresolvedColumnList(i).toString.toLowerCase())
+        }
+//        println("The unresolved column list:")
+//        println(unresolvedColumnList(i))
+//        println("The previous value is: " + unresolvedColumnList(i - 1))
+//        println(unresolvedColumnList(i - 1) + ": " + unresolvedColumnList(i))
+      }
+    }
+
+    // Testing, see(print) the content of the map.
+//    println("Map content:")
+//    tableColumnMap foreach {
+//      case (key, value) => println (key + " --> " + value)
+//    }
+
+//    unresolvedColumnList.foreach {
+//      i =>
+////        println(i)
+////        println("Is type of: " + i.getClass)
+//        if (i.toString.contains("List")) {
+//          println("The unresolved column list:")
+//          println(i)
+//        }
+//
+//    }
+
+    // Extract the Table name and the unresolved column list and add these to a Map, Key: Table name and Value: Unresolved column list
+//    if (unresolvedColumnList.length < 3) { // When the query only retrieves data from one table.
+//      // Extract the table name
+//      tableName = unresolvedColumnList(0).toString
+//      attribList += tableName.toLowerCase() + ";from"
+//      attribExtendedList += tableName.toLowerCase() + ";from"
+//
+//      // Add the table name as key and the unresolved column list as value to the Map tableColumnMap.
+//      tableColumnMap += (tableName -> unresolvedColumnList(1))
+//
+////      println("Table Name: " + qryAliases(0).toString)
+////      println("Column Names: " + qryAliases(1))
+//    } else { // When the query contains join statements.
+//      unresolvedColumnList.foreach {
+//        i =>
+//          /* Starting from position 1 every third position is the table name and every third position from starting
+//             position 2 is the unresolved column list which should be added as value to the Map tableColumnMap. */
+//          if (unresolvedColumnList.indexOf(i) < 3 && (unresolvedColumnList.indexOf(i) % 3) == 1) {
+//            tableName = i.toString
+//            attribList += tableName.toLowerCase() + ";from"
+//            attribExtendedList += tableName.toLowerCase() + ";from"
+//          } else if (unresolvedColumnList.indexOf(i) > 3 && (unresolvedColumnList.indexOf(i) % 3) == 1) {
+////            println("Table Name: " + i)
+//            tableName = i.toString
+//          } else if ((unresolvedColumnList.indexOf(i) > 0 && unresolvedColumnList.indexOf(i) < 3) && ((unresolvedColumnList.indexOf(i) % 3) % 2) == 0) {
+////            println("Column Names: " + i.getClass)
+//
+//            // IF-statement when self-joining.
+//            if (!tableColumnMap.contains(tableName)) {
+//              tableColumnMap += (tableName -> i)
+//            }
+////            tableColumnMap += (tableName -> i)
+//          } else if (unresolvedColumnList.indexOf(i) > 3 && (unresolvedColumnList.indexOf(i) % 3) == 2) {
+////            println("Column Names: " + i.getClass)
+//
+//            // IF-statement when self-joining.
+//            if (!tableColumnMap.contains(tableName)) {
+//              tableColumnMap += (tableName -> i)
+//            }
+////            tableColumnMap += (tableName -> i)
+//          }
+//      }
+  }
+
 
   /**
    * Get the complete table complementary to the attribute name using the unresolved table name.
@@ -358,52 +447,75 @@ object QCS {
     var tableColumnMap = Map[String, Object]()
     val attribList: ListBuffer[String] = ListBuffer()
     val attribExtendedList: ListBuffer[String] = ListBuffer()
+    var isFromTable: Boolean = true
 
     // Extract the Table name and the unresolved column list and add these to a Map, Key: Table name and Value: Unresolved column list
-    if (unresolvedColumnList.length < 3) { // When the query only retrieves data from one table.
-      // Extract the table name
-      tableName = unresolvedColumnList(0).toString
-      attribList += tableName.toLowerCase() + ";from"
-      attribExtendedList += tableName.toLowerCase() + ";from"
+//    if (unresolvedColumnList.length < 3) { // When the query only retrieves data from one table.
+//      // Extract the table name
+//      tableName = unresolvedColumnList(0).toString
+//      attribList += tableName.toLowerCase() + ";from"
+//      attribExtendedList += tableName.toLowerCase() + ";from"
+//
+//      // Add the table name as key and the unresolved column list as value to the Map tableColumnMap.
+//      tableColumnMap += (tableName -> unresolvedColumnList(1))
+//
+//      //      println("Table Name: " + qryAliases(0).toString)
+//      //      println("Column Names: " + qryAliases(1))
+//    } else { // When the query contains join statements.
+//      unresolvedColumnList.foreach {
+//        i =>
+//          /* Starting from position 1 every third position is the table name and every third position from starting
+//             position 2 is the unresolved column list which should be added as value to the Map tableColumnMap. */
+//          if (unresolvedColumnList.indexOf(i) < 3 && (unresolvedColumnList.indexOf(i) % 3) == 1) {
+//            tableName = i.toString
+//            attribList += tableName.toLowerCase() + ";from"
+//            attribExtendedList += tableName.toLowerCase() + ";from"
+//          } else if (unresolvedColumnList.indexOf(i) > 3 && (unresolvedColumnList.indexOf(i) % 3) == 1) {
+////            println("Table Name: " + i)
+//            tableName = i.toString
+//          } else if ((unresolvedColumnList.indexOf(i) > 0 && unresolvedColumnList.indexOf(i) < 3) && ((unresolvedColumnList.indexOf(i) % 3) % 2) == 0) {
+////            println("Column Names: " + i.getClass)
+//
+//            // IF-statement when self-joining.
+//            if (!tableColumnMap.contains(tableName)) {
+//              tableColumnMap += (tableName -> i)
+//            }
+////            tableColumnMap += (tableName -> i)
+//          } else if (unresolvedColumnList.indexOf(i) > 3 && (unresolvedColumnList.indexOf(i) % 3) == 2) {
+////            println("Column Names: " + i.getClass)
+//
+//            // IF-statement when self-joining.
+//            if (!tableColumnMap.contains(tableName)) {
+//              tableColumnMap += (tableName -> i)
+//            }
+////            tableColumnMap += (tableName -> i)
+//          }
+//      }
+//    }
 
-      // Add the table name as key and the unresolved column list as value to the Map tableColumnMap.
-      tableColumnMap += (tableName -> unresolvedColumnList(1))
+    for (i <- 0 until unresolvedColumnList.length) {
+      if (unresolvedColumnList(i).toString.contains("List")) {
+        tableName = unresolvedColumnList(i - 1).toString.toLowerCase()
 
-      //      println("Table Name: " + qryAliases(0).toString)
-      //      println("Column Names: " + qryAliases(1))
-    } else { // When the query contains join statements.
-      unresolvedColumnList.foreach {
-        i =>
-          /* Starting from position 1 every third position is the table name and every third position from starting
-             position 2 is the unresolved column list which should be added as value to the Map tableColumnMap. */
-          if (unresolvedColumnList.indexOf(i) < 3 && (unresolvedColumnList.indexOf(i) % 3) == 1) {
-            tableName = i.toString
-            attribList += tableName.toLowerCase() + ";from"
-            attribExtendedList += tableName.toLowerCase() + ";from"
-          } else if (unresolvedColumnList.indexOf(i) > 3 && (unresolvedColumnList.indexOf(i) % 3) == 1) {
-//            println("Table Name: " + i)
-            tableName = i.toString
-          } else if ((unresolvedColumnList.indexOf(i) > 0 && unresolvedColumnList.indexOf(i) < 3) && ((unresolvedColumnList.indexOf(i) % 3) % 2) == 0) {
-//            println("Column Names: " + i.getClass)
+        if (isFromTable) {
+          attribList += tableName + ";from"
+          attribExtendedList += tableName + ";from"
+//          println("From: " + tableName)
+          isFromTable = false
+        }
 
-            // IF-statement when self-joining.
-            if (!tableColumnMap.contains(tableName)) {
-              tableColumnMap += (tableName -> i)
-            }
-//            tableColumnMap += (tableName -> i)
-          } else if (unresolvedColumnList.indexOf(i) > 3 && (unresolvedColumnList.indexOf(i) % 3) == 2) {
-//            println("Column Names: " + i.getClass)
-
-            // IF-statement when self-joining.
-            if (!tableColumnMap.contains(tableName)) {
-              tableColumnMap += (tableName -> i)
-            }
-//            tableColumnMap += (tableName -> i)
-          }
+        // IF-statement when self-joining.
+        if (!tableColumnMap.contains(tableName)) {
+          tableColumnMap += (tableName -> unresolvedColumnList(i).toString.toLowerCase())
+        }
+        //        println("The unresolved column list:")
+        //        println(unresolvedColumnList(i))
+        //        println("The previous value is: " + unresolvedColumnList(i - 1))
       }
     }
 
     // Testing, see(print) the content of the map.
+//    println("Map content:")
 //    tableColumnMap foreach {
 //      case (key, value) => println (key + " --> " + value)
 //    }
@@ -485,12 +597,23 @@ object QCS {
           }
         }
 
-        val joinClause: String = joinColumnName1 + " = " + joinColumnName2
+        if ((!joinColumnName2.isEmpty && !joinColumnName1.isEmpty)) {
+          val joinClause: String = joinColumnName1 + " = " + joinColumnName2
+//          println(joinClause + ";join")
+          attribList += joinClause + ";join"
+          attribExtendedList += joinClause + ";join"
+//          println("String1 or String2 is empty")
+        }
+
+//        println("joinColumnName1 is: " + joinColumnName1 + ", Boolean: " + !joinColumnName1.isEmpty)
+//        println("joinColumnName2 is: " + joinColumnName2 + ", Boolean: " + !joinColumnName2.isEmpty)
+
+//        val joinClause: String = joinColumnName1 + " = " + joinColumnName2
 
 //        println(joinClause + ";join")
 //        println(List(joinColumnName1 + " = " + joinColumnName2))
-        attribList += joinClause + ";join"
-        attribExtendedList += joinClause + ";join"
+//        attribList += joinClause + ";join"
+//        attribExtendedList += joinClause + ";join"
     }
 
 //    println(attribList.toList)
@@ -572,7 +695,6 @@ object QCS {
     // Different Regular Expressions, to specifically create a part of a query.
     val selectRegxr: Regex = "(\\w+.?\\w+)\\;(select|avg|sum|count\\(\\*\\)|count)".r
     val fromRegxr: Regex = "(\\w+)\\;(from)".r
-//    val joiningRegxr: Regex = "(\\w+\\.\\w+.\\s\\=\\s\\w+\\.\\w+)\\;(join)".r
     val joiningRegxr: Regex = "(\\w+\\.\\w+\\s\\=\\s\\w+\\.\\w+)\\;(join)".r
     val whereRegxr: Regex = "(\\w+\\.\\w+)\\;where\\_(\\=|\\<\\>|\\>\\=|\\<\\=|\\<|\\>|\\w+)\\_(\\-?\\d\\.?\\d+|\\'?\\w+\\'?)".r
     val groupByRegxr: Regex = "(\\w+\\.\\w+)\\;groupBy".r
@@ -610,29 +732,28 @@ object QCS {
         // Loop through every QCS List.
         for (i <- 0 until qryBase.length) {
 
-//            println(key(i))
+//            println(qryBase(i))
 
           // Create the 'SELECT' statement based on the Regex selectRegxr.
-          selectRegxr.findAllIn(qryBase(i)).matchData foreach {
-            m =>
-              if (m.group(2) == "avg" | m.group(2) == "sum" | m.group(2) == "count") {
-//                println("Pickle Rick: " + m.group(2) + "(" + m.group(1) + ")")
-                selectPart += m.group(2) + "(" + m.group(1) + "), "
-              }
-
-              if (m.group(2) == "count(*)" && m.group(1) == "ALL") {
-//                  println("Pickle Rick: " + m.group(2))
-                selectPart += m.group(2) + ", "
-              }
-
-              if (m.group(2) == "select") {
-//                println("Pickle Rick: " + " * ")
-                selectPart += "*   "
-                groupByPart = ""
-              }
-
-          }
-
+//          selectRegxr.findAllIn(qryBase(i)).matchData foreach {
+//            m =>
+//              if (m.group(2) == "avg" | m.group(2) == "sum" | m.group(2) == "count") {
+////                println("Pickle Rick: " + m.group(2) + "(" + m.group(1) + ")")
+//                selectPart += m.group(2) + "(" + m.group(1) + "), "
+//              }
+//
+//              if (m.group(2) == "count(*)" && m.group(1) == "ALL") {
+////                  println("Pickle Rick: " + m.group(2))
+//                selectPart += m.group(2) + ", "
+//              }
+//
+//              if (m.group(2) == "select") {
+////                println("Pickle Rick: " + " * ")
+//                selectPart += "*   "
+//                groupByPart = ""
+//              }
+//
+//          }
 
           // Create the 'JOIN' statements based on the Regex joiningRegxr.
           joiningRegxr.findAllIn(qryBase(i)).matchData foreach {
@@ -643,15 +764,13 @@ object QCS {
 
 //              println("FROM: " + fromPart.split("\\s")(1).toLowerCase())
 //              println("Regex: " + m)
-
-//              if (fromPart.split("\\s")(1).toLowerCase() == tmpTable1.toLowerCase()) {
-//                joiningTable = tmpTable2
-//              } else {
-//                joiningTable = tmpTable1
-//              }
+//              println("First Table: " + tmpTable1)
+//              println("Second Table: " + tmpTable2)
+//              println("Same as FROM: " + fromPart.split("\\s")(1).equalsIgnoreCase(tmpTable1))
+//              println("Already in join: " + joiningPart.contains(tmpTable1 + "."))
 
               // TESTING INSTEAD OF COMPARING USE CONTAINS().
-              if (fromPart.split("\\s")(1).toLowerCase() == tmpTable1.toLowerCase() || joiningPart.contains(tmpTable1)) {
+              if (fromPart.split("\\s")(1).toLowerCase() == tmpTable1.toLowerCase() || joiningPart.contains(tmpTable1 + ".")) {
 //                println("JOININGPART CONTAINS: " + tmpTable1)
 //                println("WITHOUT FIX: " + m.group(2) + " " + tmpTable1 + " on " + m.group(1))
 //                println("SHOULD BE: " + m.group(2) + " " + tmpTable2 + " on " + m.group(1))
@@ -669,18 +788,81 @@ object QCS {
           }
 
           // Create the 'WHERE' statement based on the Regex whereRegxr.
-          whereRegxr.findAllIn(qryBase(i)).matchData foreach {
-            m =>
-//                wherePart += m.group(1) + " " + m.group(2) + " and "
-              wherePart += m.group(1) + " " + m.group(2) + " " + m.group(3) + " and "
+//          whereRegxr.findAllIn(qryBase(i)).matchData foreach {
+//            m =>
+////                wherePart += m.group(1) + " " + m.group(2) + " and "
+////              println("Join: " + joiningPart)
+////              println(m.group(1).split("\\.")(0))
+//              if (joiningPart.contains(m.group(1).split("\\.")(0)) || fromPart.contains(m.group(1).split("\\.")(0))) {
+//                wherePart += m.group(1) + " " + m.group(2) + " " + m.group(3) + " and "
+//              }
+//
+////              wherePart += m.group(1) + " " + m.group(2) + " " + m.group(3) + " and "
+//
+//          }
 
-          }
+          // Create the 'GROUP BY' statements based on the Regex groupByRegxr.
+//          groupByRegxr.findAllIn(qryBase(i)).matchData foreach {
+//            m =>
+//              println("join: " + joiningPart)
+//              println("table name: " + m.group(1).split("\\.")(0))
+//              groupByPart += m.group(1)  + ", "
+//          }
+        }
 
+        // Loop through every QCS List.
+        for (i <- 0 until qryBase.length) {
           // Create the 'GROUP BY' statements based on the Regex groupByRegxr.
           groupByRegxr.findAllIn(qryBase(i)).matchData foreach {
             m =>
-              groupByPart += m.group(1)  + ", "
+              if (fromPart.contains(m.group(1).split("\\.")(0)) || joiningPart.contains(m.group(1).split("\\.")(0) + ".")) {
+                groupByPart += m.group(1)  + ", "
+              }
+
+//              groupByPart += m.group(1)  + ", "
           }
+        }
+
+        // Loop through every QCS List a second time such that certain query parts (From, Join, Group By) have already been defined.
+        for (i <- 0 until qryBase.length) {
+          // Create the 'SELECT' statement based on the Regex selectRegxr.
+          selectRegxr.findAllIn(qryBase(i)).matchData foreach {
+            m =>
+              if (m.group(2) == "avg" | m.group(2) == "sum" | m.group(2) == "count") {
+//                println("Pickle Rick: " + m.group(2) + "(" + m.group(1) + ")")
+                selectPart += m.group(2) + "(" + m.group(1) + "), "
+              }
+
+              if (m.group(2) == "count(*)" && m.group(1) == "ALL") {
+                //                  println("Pickle Rick: " + m.group(2))
+                selectPart += m.group(2) + ", "
+              }
+
+              if (m.group(2) == "select") {
+//                println("Pickle Rick: " + " * ")
+                selectPart += "*   "
+                groupByPart = ""
+              }
+
+          }
+
+          // Create the 'WHERE' statement based on the Regex whereRegxr.
+          whereRegxr.findAllIn(qryBase(i)).matchData foreach {
+            m =>
+//                wherePart += m.group(1) + " " + m.group(2) + " and "
+
+              // Only add the where table if the tables is mentioned in the From or Join statement.
+              if (fromPart.contains(m.group(1).split("\\.")(0)) || joiningPart.contains(m.group(1).split("\\.")(0))) {
+                wherePart += m.group(1) + " " + m.group(2) + " " + m.group(3) + " and "
+              }
+
+//              wherePart += m.group(1) + " " + m.group(2) + " " + m.group(3) + " and "
+          }
+        }
+
+        // Removing the complete where statement, when the 'table.attributeName' is not stated in the from or join statement.
+        if (wherePart.equalsIgnoreCase("where ")) {
+          wherePart = ""
         }
 
         // Add the whole query to the List generatedQueriesList.
@@ -713,7 +895,7 @@ object QCS {
       println(i)
 
       val result: QueryExecution = spark.sql(i).queryExecution
-      println(result.analyzed)
+//      println(result.analyzed)
 
       val aggregateClause = extractAggregate(result.analyzed)
       val whereClause = extractFilterCon(result.analyzed)
@@ -726,15 +908,16 @@ object QCS {
 //      println("\nWhere Predicate:\n" + whereClause)
 //      println("\nGroup By Predicate:\n" + groupByClause)
 //      println("\nJoin Predicate:\n" + joinClause)
-      println("\nTable names:\n" + qryAliases.foreach(entry => println(entry)))
+//      println(qryAliases.foreach(entry => println(entry)))
 //
-      println("###################################################################################################################")
+//      println("###################################################################################################################")
 
       getAggregateAttrib(aggregateClause)
       getWhereAttrib(whereClause)
       getGroupbyAttrib(groupByClause)
       getJoiningClause(joinClause)
 
+//      testQueryAlias(qryAliases)
       qcsResults  += getTableAttribName(qryAliases)
 
 //      println(attributeSet)
