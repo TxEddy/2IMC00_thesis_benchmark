@@ -235,7 +235,8 @@ SELECT * FROM SqlLog WHERE yy = 2020 and (access like 'Skyserver.Search%') and (
 -- Queries for the different tables. --
 ---------------------------------------
 -- PhotoObjAll, count(distinct poa.objid) => 647562
-SELECT distinct top 15000 poa.*
+-- SELECT distinct top 50000 poa.objid
+SELECT distinct top 50000 poa.*
 FROM photoobjall poa
 JOIN photoobj po on po.objid = poa.objid
 JOIN galaxy g on g.objid = poa.objid
@@ -252,7 +253,8 @@ JOIN zoospec zs on zs.objid = poa.objid
 JOIN phototag pt on pt.objid = poa.objid
 JOIN galspecextra gse on gse.specobjid = poa.specobjid
 JOIN wise_xmatch w on w.sdss_objid = poa.objid
-ORDER BY poa.objid asc
+ORDER BY poa.objid desc
+-- range: WHERE poa.objid between 1237668333104136344 and 1237680262909460580
 
 -- PhotoObj, count(po.objid) => 890553
 SELECT distinct top 15000 po.*
