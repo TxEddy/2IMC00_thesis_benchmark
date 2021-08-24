@@ -103,79 +103,6 @@ def open_table(file_, dir):
     # df.printSchema()
 
 
-def table_correlation(csv_table):
-    # Configure Spark with maxToStringFields, spark.driver.memory to prevent java.lang.OutOfMemoryError.
-    spark = SparkSession\
-        .builder\
-        .config("spark.sql.debug.maxToStringFields", "1000")\
-        .config("spark.driver.memory", "2g")\
-        .getOrCreate()
-
-    # Loading schema from predefined json file.
-    table_name = csv_table.name.split(".")[0] + ".json"
-    schema_name = csv_table.parents[1] / "table_schemas" / table_name
-    with open(schema_name.as_posix()) as json_file:
-        schema_json = StructType.fromJson(json.load(json_file))
-    
-    # Loading csv using custom schema.
-    df = spark.read.options(header=True, delimiter=",").schema(schema_json).csv(csv_table.as_posix())
-
-    # df = spark.read.options(header=True, delimiter=",").csv(csv_table.as_posix())
-
-    df.createTempView("sdssebossfirefly")
-    
-    spark.sql("select * from sdssebossfirefly where specobjid like '1%'").explain(mode='extended')
-
-    # qry_results.explain()
-
-
-def qcs_regex(log_file):
-    spark = SparkSession.builder.getOrCreate()    
-
-    pattern_column = r".+(FROM|from)\ +(.+)(WHERE|where)\ +(\w+\.?\w*)"
-    # pattern_test = r".+(FROM|from).+(JOIN|join)?.+?(ON|on)?\ ?(.+)?(WHERE|where)\ +(\w+\.?\w*)"
-
-    qcs_dict = {}
-
-    df = spark.read.options(header=True, delimiter=",").csv(log_file.as_posix())
-    list_queries = df.select("statement").collect()
-
-    number_rows = df.count()
-
-    for qry in list_queries:
-        if qry.statement is not None and re.search(pattern_column, qry.statement):
-            match = re.match(pattern_column, qry.statement)
-            # print("Full match:", match)
-            # print("Regex match is:", match.group(2))            
-
-            # Check if the table name, in lowercase, is already in the dictionary, otherwise create new key. Is made lowercase, since queries sometimes have the tablenames as CamelCase.
-            if match.group(4).lower() in qcs_dict and match.group(2).lower() in qcs_dict[match.group(4).lower()][1]:
-                qcs_dict[match.group(4).lower()][0] += 1
-            elif match.group(4).lower() in qcs_dict and match.group(2).lower() not in qcs_dict[match.group(4).lower()][1]:
-                qcs_dict[match.group(4).lower()][0] += 1
-                qcs_dict[match.group(4).lower()][1].append(match.group(2).lower())
-            else:
-                qcs_dict[match.group(4).lower()] = [1, [match.group(2).lower()]]
-
-
-    for key, value in qcs_dict.items():
-        # print(qcs_dict[key])
-        percent = (qcs_dict[key][0] / number_rows) * 100
-        qcs_dict[key][0] = f"{percent:.2f}%"
-    
-
-        
-    # Output name of top 20 of freq_dict and selecting top 20 of the Dictionary freq_dict.
-    out_simple_qcs = "qcs_test.csv"
-    
-    # Write global Dictionary freq_table to a csv file.
-    with open(out_simple_qcs, 'w') as csv_qcs:
-        writer_complete = csv.writer(csv_qcs)
-
-        for key, value in qcs_dict.items():
-            writer_complete.writerow([key, value])
-
-
 def qcs_spark(table_dir, log):
     # Configure Spark with maxToStringFields, spark.driver.memory to prevent java.lang.OutOfMemoryError.
     spark = SparkSession\
@@ -220,6 +147,67 @@ def qcs_spark(table_dir, log):
     print(type(test))
 
 
+def add_data_to_table(table, column_names, dir_tables):
+    # print("Directory:", dir_tables)
+    # print("Table name:", table)
+    # print("Column name:", table + "_" + column_name)
+
+    table_csv = (dir_tables / table).as_posix() + ".csv"
+    corr_qcs_table = (dir_tables / "correlatedAttributesQcs.csv").as_posix()
+    # column = table + "_" + column_name
+    # print(corr_qcs_table, type(corr_qcs_table))
+    # print(table_csv, type(table_csv))
+
+    # Create empty List and Dictionary which will be filled to rename the column names of df_corr_columns such that the columns
+    # of both df's have the same name and the values of df_corr_columns can be added to df_table.
+    columns = []
+    rename_dict = {}
+    for i in column_names:
+        name = table + "_" + i.lower()
+        columns.append(name)
+        rename_dict[name] = i
+    
+    # print(columns)
+    # print(rename_dict)
+
+    # Importing complete table and afterwards select the specific columns.
+    df_table = pd.read_csv(table_csv)
+    df_original_columns = df_table.filter(column_names, axis=1)
+    # print(df_table)
+    # print(df_original_columns)
+    
+
+    # Only when importing the specific columns.
+    # df_original_columns = pd.read_csv(table_csv, usecols=column_names)
+    # print(df_original_columns)
+    
+    # Import the specific columns from the table containing the correlated attributes and renaming the column names.
+    df_corr_columns = pd.read_csv(corr_qcs_table, usecols=columns).rename(columns=rename_dict)
+    # print(df_corr_columns)
+
+    # Concatenate or Append the two dataframes.
+    # Dropping duplicate row, however make sure only to keep the last observation since that will be the correlated data row
+    # and resetting the index.
+    # While resetting the index, use the drop parameter such that the old index will not be added as a column.
+    df_new = pd.concat([df_original_columns, df_corr_columns], axis=0).drop_duplicates(keep='last').reset_index(drop=True)
+    # df_new = df_corr_columns.append(df_original_columns).drop_duplicates(keep='last').reset_index(drop=True)
+    df_new = df_new[:len(df_table.index)]
+    # print(df_new)
+    
+    # df_original_columns.update(df_new, overwrite=True)
+    df_table.update(df_new, overwrite=True)
+
+    # Check wether the columns are replaced.
+    df_original_columns = df_table.filter(column_names, axis=1)
+    print("Are the df's the same:", df_original_columns.equals(df_new))
+
+    # Save the df containing correlated data.
+    # df_table.save((dir_tables / table).as_posix() + "_new.csv", header=True, index=False)
+    df_table.to_csv((dir_tables / table).as_posix() + "_new.csv", float_format="%g", header=True, index=False)
+
+
+
+
 def correlation_matrix(qcs_tables_dir):
     # Directory containing data output with all attributes stated in the QCS.
     dir_qcs_attributes = qcs_tables_dir / "qcsAttributesOutput"
@@ -256,10 +244,11 @@ def correlation_matrix(qcs_tables_dir):
     generated_df.to_csv(qcs_tables_dir.as_posix() + "/qcs_attributes_generated.csv", index=False)
 
 
+
+
 def main(config):
     output_logs = config.path.root / config.path.logs
     output_tables = config.path.root / config.path.tables
-    qcs_frequency_dir = config.path.root / "correlation_tables" / "qcs_qry_output"
     correlation_dir = config.path.root / config.path.correlations
 
     # csv_log_oct = output_logs / "log_oct.csv"
@@ -277,19 +266,188 @@ def main(config):
     # csv_table_photo_obj_all = output_tables / "photo_obj_all.csv"
     # open_table(csv_table_photo_obj_all, output_tables)
 
-    # table2 = output_tables / "sdss_eboss_firefly.csv"
-    # table_correlation(table2)
-
-    # log_oct = output_logs / "log_oct.csv"
-    # qcs_regex(log_oct)
-
     # tables_qcs = output_tables / "qcs_test"
     # log_oct = output_logs / "log_oct.csv"
     # qcs_spark(tables_qcs, log_oct.as_posix())
 
-    # correlation_matrix(qcs_frequency_dir)
-    correlation_matrix(correlation_dir)
+    ####################################################
+    # Creating and calculating the correlation matrix. #
+    ####################################################
+
     # print("Output:", config.path.root)
+    correlation_matrix(correlation_dir)
+
+    #############################################################################
+    # Slicing the correlation table and adding these rows to the single tables  #
+    # and removing duplicates rows of the table.                                #
+    #############################################################################
+
+    # add_data_to_table("galaxy",
+    #     ["clean",
+    #     "dec",
+    #     "g",
+    #     "petroMag_r",
+    #     "petroMag_u",
+    #     "petroR90_g",
+    #     "petroR90_r",
+    #     "petroRad_u",
+    #     "r",
+    #     "ra"],
+    #     output_tables)
+
+    # add_data_to_table("galaxytag",
+    #     ["dec",
+    #     "ra",
+    #     "type"],
+    #     output_tables)
+
+    # add_data_to_table("galspecextra",
+    #     ["bptclass",
+    #     "sfr_fib_p50",
+    #     "sfr_tot_p50",
+    #     "sfr_tot_p84",
+    #     "specsfr_tot_p50"],
+    #     output_tables)
+
+    # add_data_to_table("galspecindx",
+    #     ["d4000_n"],
+    #     output_tables)
+
+    # add_data_to_table("galspecline",
+    #     ["h_alpha_eqw", "h_alpha_flux",
+    #     "h_alpha_flux_err",
+    #     "h_beta_eqw",
+    #     "h_beta_flux",
+    #     "h_beta_flux_err",
+    #     "nii_6584_flux",
+    #     "oi_6300_flux_err",
+    #     "oiii_5007_eqw",
+    #     "oiii_5007_flux",
+    #     "sii_6717_flux",
+    #     "sii_6731_flux_err"],
+    #     output_tables)
+
+    # add_data_to_table("photoobj",
+    #     ["b",
+    #     "camcol",
+    #     "clean",
+    #     "cModelMag_g",
+    #     "dec",
+    #     "deVRad_g",
+    #     "deVRad_r",
+    #     "fiberMag_r",
+    #     "field",
+    #     "flags",
+    #     "fracDeV_r",
+    #     "g",
+    #     "l",
+    #     "mode",
+    #     "petroMag_r",
+    #     "petroMag_z",
+    #     "petroR50_g",
+    #     "petroR50_r",
+    #     "petroRad_g",
+    #     "petroRad_r",
+    #     "r",
+    #     "ra",
+    #     "run",
+    #     "type",
+    #     "u"],
+    #     output_tables)
+
+    # add_data_to_table("photoobjall",
+    #     ["camcol",
+    #     "clean",
+    #     "dec",
+    #     "dered_r",
+    #     "deVRad_r",
+    #     "deVRadErr_r",
+    #     "expRad_r",
+    #     "field",
+    #     "fracDeV_r",
+    #     "mode",
+    #     "petroMag_r",
+    #     "ra",
+    #     "run",
+    #     "type",
+    #     "u"],
+    #     output_tables)
+    
+    # add_data_to_table("phototag",
+    #     ["clean",
+    #     "dec",
+    #     "mode",
+    #     "nChild",
+    #     "psfMag_r",
+    #     "ra",
+    #     "type"],
+    #     output_tables)
+
+    # add_data_to_table("photoz",
+    #     ["absMagR",
+    #     "photoErrorClass",
+    #     "nnCount",
+    #     "nnVol",
+    #     "z",
+    #     "zErr"],
+    #     output_tables)
+
+    # add_data_to_table("specphoto",
+    #     ["class",
+    #     "dec",
+    #     "mode",
+    #     "modelMag_r",
+    #     "petroMag_r",
+    #     "petroMag_z",
+    #     "ra",
+    #     "type",
+    #     "z",
+    #     "zWarning"],
+    #     output_tables)
+    
+    # add_data_to_table("specphotoall",
+    #     ["class",
+    #     "dec",
+    #     "mode",
+    #     "modelMag_g",
+    #     "modelMag_i",
+    #     "modelMag_r",
+    #     "modelMag_u",
+    #     "modelMag_z",
+    #     "petroMag_u",
+    #     "petroMag_r",
+    #     "ra",
+    #     "sourceType",
+    #     "type",
+    #     "z",
+    #     "zWarning"],
+    #     output_tables)
+
+    # add_data_to_table("sppparams",
+    #     ["FEHADOP",
+    #     "SPECTYPESUBCLASS"],
+    #     output_tables)
+
+    # add_data_to_table("stellarmassfspsgranearlydust",
+    #     ["logMass",
+    #     "z"],
+    #     output_tables)
+    
+    # add_data_to_table("zoospec",
+    #     ["elliptical",
+    #     "p_cs",
+    #     "p_cs_debiased",
+    #     "p_el",
+    #     "p_el_debiased",
+    #     "spiral",
+    #     "uncertain"],
+    #     output_tables)
+
+
+
+    
+
+    
 
 
 
