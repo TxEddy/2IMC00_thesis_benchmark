@@ -1,0 +1,804 @@
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "plate",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "ifudsgn",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "plateifu",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "mangaid",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "versdrp2",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "versdrp3",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "verscore",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "versutil",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "versprim",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "platetyp",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "srvymode",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "objra",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "objdec",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "ifuglon",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "ifuglat",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "ifura",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "ifudec",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "ebvgal",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nexp",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "exptime",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "drp3qual",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "bluesn2",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "redsn2",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "harname",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "frlplug",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "cartid",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "designid",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "cenra",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "cendec",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "airmsmin",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "airmsmed",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "airmsmax",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "seemin",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "seemed",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "seemax",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "transmin",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "transmed",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "transmax",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "mjdmin",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "mjdmed",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "mjdmax",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "gfwhm",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "rfwhm",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "ifwhm",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "zfwhm",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "mngtarg1",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "mngtarg2",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "mngtarg3",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "catidnum",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "plttarg",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "manga_tileid",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_iauname",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "ifutargetsize",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "ifudesignsize",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "ifudesignwrongsize",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "z",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "zmin",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "zmax",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "szmin",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "szmax",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "ezmin",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "ezmax",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "probs",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "pweight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "psweight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "psrweight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "sweight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "srweight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "eweight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "esweight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "esrweight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_field",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_run",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_camcol",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_version",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_nsaid",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_nsaid_v1b",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_z",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_zdist",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_elpetro_mass",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_elpetro_absmag_f",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_elpetro_absmag_n",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_elpetro_absmag_u",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_elpetro_absmag_g",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_elpetro_absmag_r",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_elpetro_absmag_i",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_elpetro_absmag_z",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_elpetro_amivar_f",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_elpetro_amivar_n",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_elpetro_amivar_u",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_elpetro_amivar_g",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_elpetro_amivar_r",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_elpetro_amivar_i",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_elpetro_amivar_z",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_elpetro_flux_f",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_elpetro_flux_n",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_elpetro_flux_u",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_elpetro_flux_g",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_elpetro_flux_r",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_elpetro_flux_i",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_elpetro_flux_z",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_elpetro_flux_ivar_f",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_elpetro_flux_ivar_n",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_elpetro_flux_ivar_u",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_elpetro_flux_ivar_g",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_elpetro_flux_ivar_r",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_elpetro_flux_ivar_i",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_elpetro_flux_ivar_z",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_elpetro_th50_r",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_elpetro_phi",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_elpetro_ba",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_sersic_mass",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_sersic_absmag_f",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_sersic_absmag_n",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_sersic_absmag_u",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_sersic_absmag_g",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_sersic_absmag_r",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_sersic_absmag_i",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_sersic_absmag_z",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_sersic_flux_f",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_sersic_flux_n",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_sersic_flux_u",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_sersic_flux_g",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_sersic_flux_r",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_sersic_flux_i",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_sersic_flux_z",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_sersic_flux_ivar_f",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_sersic_flux_ivar_n",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_sersic_flux_ivar_u",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_sersic_flux_ivar_g",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_sersic_flux_ivar_r",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_sersic_flux_ivar_i",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_sersic_flux_ivar_z",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_sersic_th50",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_sersic_phi",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_sersic_ba",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_sersic_n",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_petro_flux_f",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_petro_flux_n",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_petro_flux_u",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_petro_flux_g",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_petro_flux_r",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_petro_flux_i",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_petro_flux_z",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_petro_flux_ivar_f",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_petro_flux_ivar_n",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_petro_flux_ivar_u",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_petro_flux_ivar_g",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_petro_flux_ivar_r",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_petro_flux_ivar_i",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_petro_flux_ivar_z",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_petro_th50",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_extinction_f",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_extinction_n",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_extinction_u",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_extinction_g",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_extinction_r",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_extinction_i",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nsa_extinction_z",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "htmID",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  } ]
+}

@@ -1,0 +1,1164 @@
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "specobjid",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "dr8objid",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "dr7objid",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "ra",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "dec",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "rastring",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "decstring",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "sample",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "total_classifications",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "total_votes",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t01_smooth_or_features_a01_smooth_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t01_smooth_or_features_a01_smooth_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t01_smooth_or_features_a01_smooth_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t01_smooth_or_features_a01_smooth_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t01_smooth_or_features_a01_smooth_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t01_smooth_or_features_a01_smooth_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t01_smooth_or_features_a02_features_or_disk_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t01_smooth_or_features_a02_features_or_disk_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t01_smooth_or_features_a02_features_or_disk_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t01_smooth_or_features_a02_features_or_disk_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t01_smooth_or_features_a02_features_or_disk_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t01_smooth_or_features_a02_features_or_disk_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t01_smooth_or_features_a03_star_or_artifact_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t01_smooth_or_features_a03_star_or_artifact_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t01_smooth_or_features_a03_star_or_artifact_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t01_smooth_or_features_a03_star_or_artifact_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t01_smooth_or_features_a03_star_or_artifact_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t01_smooth_or_features_a03_star_or_artifact_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t02_edgeon_a04_yes_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t02_edgeon_a04_yes_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t02_edgeon_a04_yes_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t02_edgeon_a04_yes_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t02_edgeon_a04_yes_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t02_edgeon_a04_yes_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t02_edgeon_a05_no_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t02_edgeon_a05_no_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t02_edgeon_a05_no_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t02_edgeon_a05_no_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t02_edgeon_a05_no_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t02_edgeon_a05_no_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t03_bar_a06_bar_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t03_bar_a06_bar_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t03_bar_a06_bar_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t03_bar_a06_bar_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t03_bar_a06_bar_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t03_bar_a06_bar_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t03_bar_a07_no_bar_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t03_bar_a07_no_bar_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t03_bar_a07_no_bar_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t03_bar_a07_no_bar_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t03_bar_a07_no_bar_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t03_bar_a07_no_bar_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t04_spiral_a08_spiral_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t04_spiral_a08_spiral_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t04_spiral_a08_spiral_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t04_spiral_a08_spiral_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t04_spiral_a08_spiral_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t04_spiral_a08_spiral_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t04_spiral_a09_no_spiral_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t04_spiral_a09_no_spiral_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t04_spiral_a09_no_spiral_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t04_spiral_a09_no_spiral_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t04_spiral_a09_no_spiral_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t04_spiral_a09_no_spiral_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t05_bulge_prominence_a10_no_bulge_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t05_bulge_prominence_a10_no_bulge_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t05_bulge_prominence_a10_no_bulge_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t05_bulge_prominence_a10_no_bulge_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t05_bulge_prominence_a10_no_bulge_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t05_bulge_prominence_a10_no_bulge_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t05_bulge_prominence_a11_just_noticeable_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t05_bulge_prominence_a11_just_noticeable_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t05_bulge_prominence_a11_just_noticeable_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t05_bulge_prominence_a11_just_noticeable_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t05_bulge_prominence_a11_just_noticeable_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t05_bulge_prominence_a11_just_noticeable_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t05_bulge_prominence_a12_obvious_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t05_bulge_prominence_a12_obvious_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t05_bulge_prominence_a12_obvious_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t05_bulge_prominence_a12_obvious_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t05_bulge_prominence_a12_obvious_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t05_bulge_prominence_a12_obvious_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t05_bulge_prominence_a13_dominant_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t05_bulge_prominence_a13_dominant_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t05_bulge_prominence_a13_dominant_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t05_bulge_prominence_a13_dominant_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t05_bulge_prominence_a13_dominant_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t05_bulge_prominence_a13_dominant_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t06_odd_a14_yes_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t06_odd_a14_yes_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t06_odd_a14_yes_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t06_odd_a14_yes_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t06_odd_a14_yes_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t06_odd_a14_yes_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t06_odd_a15_no_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t06_odd_a15_no_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t06_odd_a15_no_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t06_odd_a15_no_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t06_odd_a15_no_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t06_odd_a15_no_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t07_rounded_a16_completely_round_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t07_rounded_a16_completely_round_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t07_rounded_a16_completely_round_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t07_rounded_a16_completely_round_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t07_rounded_a16_completely_round_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t07_rounded_a16_completely_round_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t07_rounded_a17_in_between_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t07_rounded_a17_in_between_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t07_rounded_a17_in_between_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t07_rounded_a17_in_between_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t07_rounded_a17_in_between_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t07_rounded_a17_in_between_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t07_rounded_a18_cigar_shaped_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t07_rounded_a18_cigar_shaped_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t07_rounded_a18_cigar_shaped_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t07_rounded_a18_cigar_shaped_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t07_rounded_a18_cigar_shaped_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t07_rounded_a18_cigar_shaped_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a19_ring_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a19_ring_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a19_ring_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a19_ring_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a19_ring_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a19_ring_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a20_lens_or_arc_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a20_lens_or_arc_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a20_lens_or_arc_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a20_lens_or_arc_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a20_lens_or_arc_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a20_lens_or_arc_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a21_disturbed_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a21_disturbed_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a21_disturbed_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a21_disturbed_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a21_disturbed_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a21_disturbed_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a22_irregular_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a22_irregular_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a22_irregular_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a22_irregular_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a22_irregular_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a22_irregular_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a23_other_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a23_other_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a23_other_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a23_other_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a23_other_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a23_other_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a24_merger_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a24_merger_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a24_merger_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a24_merger_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a24_merger_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a24_merger_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a38_dust_lane_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a38_dust_lane_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a38_dust_lane_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a38_dust_lane_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a38_dust_lane_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t08_odd_feature_a38_dust_lane_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t09_bulge_shape_a25_rounded_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t09_bulge_shape_a25_rounded_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t09_bulge_shape_a25_rounded_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t09_bulge_shape_a25_rounded_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t09_bulge_shape_a25_rounded_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t09_bulge_shape_a25_rounded_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t09_bulge_shape_a26_boxy_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t09_bulge_shape_a26_boxy_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t09_bulge_shape_a26_boxy_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t09_bulge_shape_a26_boxy_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t09_bulge_shape_a26_boxy_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t09_bulge_shape_a26_boxy_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t09_bulge_shape_a27_no_bulge_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t09_bulge_shape_a27_no_bulge_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t09_bulge_shape_a27_no_bulge_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t09_bulge_shape_a27_no_bulge_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t09_bulge_shape_a27_no_bulge_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t09_bulge_shape_a27_no_bulge_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t10_arms_winding_a28_tight_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t10_arms_winding_a28_tight_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t10_arms_winding_a28_tight_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t10_arms_winding_a28_tight_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t10_arms_winding_a28_tight_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t10_arms_winding_a28_tight_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t10_arms_winding_a29_medium_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t10_arms_winding_a29_medium_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t10_arms_winding_a29_medium_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t10_arms_winding_a29_medium_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t10_arms_winding_a29_medium_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t10_arms_winding_a29_medium_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t10_arms_winding_a30_loose_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t10_arms_winding_a30_loose_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t10_arms_winding_a30_loose_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t10_arms_winding_a30_loose_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t10_arms_winding_a30_loose_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t10_arms_winding_a30_loose_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a31_1_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a31_1_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a31_1_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a31_1_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a31_1_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a31_1_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a32_2_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a32_2_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a32_2_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a32_2_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a32_2_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a32_2_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a33_3_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a33_3_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a33_3_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a33_3_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a33_3_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a33_3_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a34_4_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a34_4_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a34_4_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a34_4_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a34_4_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a34_4_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a36_more_than_4_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a36_more_than_4_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a36_more_than_4_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a36_more_than_4_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a36_more_than_4_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a36_more_than_4_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a37_cant_tell_count",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a37_cant_tell_weight",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a37_cant_tell_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a37_cant_tell_weighted_fraction",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a37_cant_tell_debiased",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t11_arms_number_a37_cant_tell_flag",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  } ]
+}

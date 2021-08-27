@@ -1,7 +1,6 @@
 import com.github.tototoshi.csv.CSVWriter
-import org.apache.ivy.util.Configurator.Attribute
 
-import java.io.File
+import java.io.{BufferedWriter, File, FileWriter}
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.sql.catalyst.AliasIdentifier
 import org.apache.spark.sql.{DataFrame, SaveMode, SparkSession}
@@ -63,9 +62,11 @@ object QCS {
     // Import the tables and create or replace the views.
     createTempTableView(tablesList)
 //    spark.sql("SHOW TABLES").show(45)
+    getTableSchema(tablesList)
+
 
     // Executing the QCS ... .
-    qcs(queries)
+//    qcs(queries)
 
 
     // Execute query which retrieves data based QCS to calculate correlations.
@@ -118,6 +119,37 @@ object QCS {
     val queryLog: DataFrame = spark.read.options(Map("header"->"true", "delimiter"->",")).csv(csvLog)
 
     queryLog.select("statement").rdd.map(r => r(0).asInstanceOf[String]).collect().toList
+  }
+
+  def getTableSchema(tables: List[String]): Unit = {
+    //    val testQry: String = "select * from "
+    //    spark.sql("select * from " + "zoospec").printSchema()
+//    val tableName = "zoospec"
+//    val jsonFile = new File(s"/Users/eddy/Documents/study_github/2IMC00_thesis_benchmark/output_schema/$tableName.json")
+//    val bw = new BufferedWriter(new FileWriter(jsonFile))
+
+//    println(spark.sql(s"select * from $tableName").schema.prettyjson)
+//    bw.write(spark.sql(s"select * from $tableName").schema.prettyJson)
+//    bw.close()
+//    println(spark.sql(s"select * from $tableName").schema.fields.foreach(println))
+//    println(spark.sql(s"select * from $tableName").schema.fields)
+
+//    for (i <- 0 until spark.sql(s"select * from $tableName").schema.length) {
+//      println(spark.sql(s"select * from $tableName").schema.fields(i).name + ", " + spark.sql(s"select * from $tableName").schema.fields(i).dataType)
+//    }
+
+    for (i <- tables) {
+      val tableName = i.split("/")(8).substring(0, i.split("/")(8).length - 4)
+      val txtFile = new File(s"/Users/eddy/Documents/study_github/2IMC00_thesis_benchmark/output_schema/$tableName.txt")
+      val txtBufferedWriter = new BufferedWriter(new FileWriter(txtFile))
+      txtBufferedWriter.write(s"Create TABLE $tableName (\n")
+
+      for (j <- 0 until spark.sql(s"select * from $tableName").schema.length) {
+        txtBufferedWriter.write(spark.sql(s"select * from $tableName").schema.fields(j).name.toLowerCase() + " " + spark.sql(s"select * from $tableName").schema.fields(j).dataType + ",\n")
+      }
+      txtBufferedWriter.write(");")
+      txtBufferedWriter.close()
+    }
   }
 
 

@@ -1,0 +1,9 @@
+Create TABLE neighbors (
+objid StringType,
+neighborobjid StringType,
+distance StringType,
+type StringType,
+neighbortype StringType,
+mode StringType,
+neighbormode StringType,
+);

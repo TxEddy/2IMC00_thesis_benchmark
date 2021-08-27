@@ -1,0 +1,5 @@
+Create TABLE wise_xmatch (
+sdss_objid LongType,
+wise_cntr LongType,
+match_dist DoubleType,
+);

@@ -1,0 +1,13 @@
+Create TABLE first (
+objid LongType,
+ra DoubleType,
+dec DoubleType,
+warning DoubleType,
+peak DoubleType,
+integr DoubleType,
+rms DoubleType,
+major DoubleType,
+minor DoubleType,
+pa DoubleType,
+skyrms DoubleType,
+);

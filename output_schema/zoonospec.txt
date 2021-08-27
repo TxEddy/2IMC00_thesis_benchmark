@@ -1,0 +1,16 @@
+Create TABLE zoonospec (
+specobjid LongType,
+objid LongType,
+dr7objid LongType,
+ra DoubleType,
+dec DoubleType,
+rastring StringType,
+nvote IntegerType,
+p_el DoubleType,
+p_cw DoubleType,
+p_acw DoubleType,
+p_edge DoubleType,
+p_dk DoubleType,
+p_mg DoubleType,
+p_cs DoubleType,
+);

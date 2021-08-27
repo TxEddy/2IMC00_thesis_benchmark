@@ -1,0 +1,1764 @@
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "SPECOBJID",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "bestObjID",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "TARGETOBJID",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "sciencePrimary",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "legacyPrimary",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "seguePrimary",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "PLATE",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MJD",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "FIBER",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "RUN2D",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "RUN1D",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "RUNSSPP",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "H83side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "H83cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "H83err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "H83mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "H812side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "H812cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "H812err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "H812mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "H824side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "H824cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "H824err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "H824mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "H848side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "H848cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "H848err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "H848mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "KP12side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "KP12cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "KP12err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "KP12mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "KP18side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "KP18cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "KP18err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "KP18mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "KP6side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "KP6cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "KP6err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "KP6mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaIIKside",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaIIKcont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaIIKerr",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaIIKmask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaIIHKside",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaIIHKcont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaIIHKerr",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaIIHKmask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hepsside",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hepscont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hepserr",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hepsmask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "KP16side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "KP16cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "KP16err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "KP16mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "SrII1side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "SrII1cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "SrII1err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "SrII1mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "HeI121side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "HeI121cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "HeI121err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "HeI121mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hdelta12side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hdelta12cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hdelta12err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hdelta12mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hdelta24side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hdelta24cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hdelta24err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hdelta24mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hdelta48side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hdelta48cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hdelta48err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hdelta48mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hdeltaside",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hdeltacont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hdeltaerr",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hdeltamask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaI4side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaI4cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaI4err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaI4mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaI12side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaI12cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaI12err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaI12mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaI24side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaI24cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaI24err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaI24mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaI6side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaI6cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaI6err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaI6mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Gside",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Gcont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Gerr",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Gmask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hgamma12side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hgamma12cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hgamma12err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hgamma12mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hgamma24side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hgamma24cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hgamma24err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hgamma24mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hgamma48side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hgamma48cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hgamma48err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hgamma48mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hgammaside",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hgammacont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hgammaerr",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hgammamask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "HeI122side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "HeI122cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "HeI122err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "HeI122mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Gblueside",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Gbluecont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Gblueerr",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Gbluemask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Gwholeside",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Gwholecont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Gwholeerr",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Gwholemask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Baside",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Bacont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Baerr",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Bamask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "C12C13side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "C12C13cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "C12C13err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "C12C13mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CC12side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CC12cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CC12err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CC12mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "metal1side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "metal1cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "metal1err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "metal1mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hbeta12side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hbeta12cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hbeta12err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hbeta12mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hbeta24side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hbeta24cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hbeta24err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hbeta24mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hbeta48side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hbeta48cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hbeta48err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hbeta48mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hbetaside",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hbetacont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hbetaerr",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Hbetamask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "C2side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "C2cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "C2err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "C2mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "C2MgIside",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "C2MgIcont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "C2MgIerr",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "C2MgImask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MgHMgIC2side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MgHMgIC2cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MgHMgIC2err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MgHMgIC2mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MgHMgIside",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MgHMgIcont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MgHMgIerr",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MgHMgImask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MgHside",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MgHcont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MgHerr",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MgHmask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CrIside",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CrIcont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CrIerr",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CrImask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MgIFeIIside",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MgIFeIIcont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MgIFeIIerr",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MgIFeIImask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MgI2side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MgI2cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MgI2err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MgI2mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MgI121side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MgI121cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MgI121err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MgI121mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MgI24side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MgI24cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MgI24err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MgI24mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MgI122side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MgI122cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MgI122err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MgI122mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "NaI20side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "NaI20cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "NaI20err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "NaI20mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Na12side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Na12cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Na12err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Na12mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Na24side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Na24cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Na24err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Na24mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Halpha12side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Halpha12cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Halpha12err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Halpha12mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Halpha24side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Halpha24cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Halpha24err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Halpha24mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Halpha48side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Halpha48cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Halpha48err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Halpha48mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Halpha70side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Halpha70cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Halpha70err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Halpha70mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaHside",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaHcont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaHerr",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaHmask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "TiOside",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "TiOcont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "TiOerr",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "TiOmask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CNside",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CNcont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CNerr",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CNmask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "OItripside",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "OItripcont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "OItriperr",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "OItripmask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "KI34side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "KI34cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "KI34err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "KI34mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "KI95side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "KI95cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "KI95err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "KI95mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "NaI15side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "NaI15cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "NaI15err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "NaI15mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "NaIredside",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "NaIredcont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "NaIrederr",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "NaIredmask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaII26side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaII26cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaII26err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaII26mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Paschen13side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Paschen13cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Paschen13err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Paschen13mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaII29side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaII29cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaII29err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaII29mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaII401side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaII401cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaII401err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaII401mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaII161side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaII161cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaII161err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaII161mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Paschen421side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Paschen421cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Paschen421err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Paschen421mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaII162side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaII162cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaII162err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaII162mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaII402side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaII402cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaII402err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaII402mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Paschen422side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Paschen422cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Paschen422err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "Paschen422mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "TiO5side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "TiO5cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "TiO5err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "TiO5mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "TiO8side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "TiO8cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "TiO8err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "TiO8mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaH1side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaH1cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaH1err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaH1mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaH2side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaH2cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaH2err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaH2mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaH3side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaH3cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaH3err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "CaH3mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "UVCNside",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "UVCNcont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "UVCNerr",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "UVCNmask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "BLCNside",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "BLCNcont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "BLCNerr",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "BLCNmask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "FEI1side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "FEI1cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "FEI1err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "FEI1mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "FEI2side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "FEI2cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "FEI2err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "FEI2mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "FEI3side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "FEI3cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "FEI3err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "FEI3mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "SRII2side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "SRII2cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "SRII2err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "SRII2mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "FEI4side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "FEI4cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "FEI4err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "FEI4mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "FEI5side",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "FEI5cont",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "FEI5err",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "FEI5mask",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  } ]
+}

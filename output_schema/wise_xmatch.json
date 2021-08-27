@@ -1,0 +1,19 @@
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "sdss_objid",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "wise_cntr",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "match_dist",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  } ]
+}
