@@ -56,58 +56,9 @@ def skyserver_csv_download(qry, name, output, qry_log=True):
             else:
                 # Write row of table data to new CSV file.
                 file_.write(line.decode('utf-8'))
-    
-    # TEST CODE FOR REMOVING CRLF (TRAILING STATEMENTS) FROM THE FILE.
-    # with open(csv_download, "rb") as inf:
-    #     with open(csv_file, "w") as fixed:
-    #         for line in inf:
-    #             line = line.replace(b"\r\n", b" ")
-
-    #             # match = re.match(test1, line.decode('utf-8'))
-    #             match = re.match(test1, line.decode('utf-8'))
-
-    #             if bool(match) == False:
-    #                 line = line.replace(b"\n", b" ")
-    #                 line = line.replace(b",0,,1 ", b",0,,1\n")
-                
-    #             # second_match = re.match(test2, line.decode('utf-8'))
-
-    #             # if bool(second_match):
-    #             #     line = line.replace(b",0,,1 ", b",0,,1\n")
-
-
-    #             # print(line)
-                
-    #             fixed.write(line.decode('utf-8'))
-
 
     # Delete downloaded csv.
     Path(csv_download).unlink()
-
-
-def skyserver_specific_log(month_number, log_dir):
-    cal = calendar.Calendar()
-
-    # Specifying output directory for the query logs.
-    month_abbr = calendar.month_abbr[month_number].lower()
-    output_dir = log_dir / f"logs_{month_abbr}"
-    # print(month_abbr)
-    # print(output_dir)
-
-    # f"http://skyserver.sdss.org/log/en/traffic/x_sql.asp?cmd=SELECT+top+100000+*+FROM+SqlLog+WHERE+yy+=+2020+and+mm+=+10+and+dd+=+{month_number}+and+dbname+=+'BestDR16'+and+(access+like+'Skyserver.Search%25')+and+(rows+>+0+and+error+!=+1)+and+(lower(statement)+like+'select%25'+or+lower(statement)+like+'%25count(%25'or+lower(statement)++like+'%25avg(%25'+or+lower(statement)++like+'%25sum(%25'+or+lower(statement)+like+'%25join%25')+and+(lower(statement)+like+'%25phototag%25'+or+lower(statement)+like+'%25sdssebossfirefly%25'+or+lower(statement)+like+'%25photoobj%25'+or+lower(statement)+like+'%25galaxy%25'+or+lower(statement)+like+'%25photoprimary%25'+or+lower(statement)+like+'%25specphoto%25'+or+lower(statement)+like+'%25star%25'+or+lower(statement)+like+'%25galaxytag%25'+or+lower(statement)+like+'%25photoobjall%25'+or+lower(statement)+like+'%25specphotoall%25'+or+lower(statement)+like+'%25galspecline%25'+or+lower(statement)+like+'%25first%25'+or+lower(statement)+like+'%25emissionlinesport%25'+or+lower(statement)+like+'%25photoz%25'+or+lower(statement)+like+'%25spplines%25'+or+lower(statement)+like+'%25field%25'+or+lower(statement)+like+'%25apogeestar%25'+or+lower(statement)+like+'%25wise_xmatch%25'+or+lower(statement)+like+'%25sppparams%25'+or+lower(statement)+like+'%25stellarmassstarformingport%25')+and+(lower+(statement)+not+like+'%25fget%25')&format=csv"
-
-    # for date in cal.itermonthdates(2020, month_number):
-    #     if month_number != date.month:
-    #         continue
-
-    #     skyserver_csv_download(f"SELECT top 100000 * FROM SqlLog WHERE yy = 2020 and mm = 10 and dd = {date.day} and dbname = 'BestDR16' and (access like 'Skyserver.Search%') and (rows > 0 and error != 1) and (lower(statement) like '%count(%' or lower(statement) like '%avg(%' or lower(statement) like '%sum(%') and lower(statement) like '%join%' and (lower(statement) like '%phototag%' or lower(statement) like '%sdssebossfirefly%' or lower(statement) like '%photoobj%' or lower(statement) like '%galaxy%' or lower(statement) like '%photoprimary%' or lower(statement) like '%specphoto%' or lower(statement) like '%star%' or lower(statement) like '%galaxytag%' or lower(statement) like '%photoobjall%' or lower(statement) like '%specphotoall%' or lower(statement) like '%galspecline%' or lower(statement) like '%first%' or lower(statement) like '%emissionlinesport%' or lower(statement) like '%photoz%' or lower(statement) like '%spplines%' or lower(statement) like '%field%' or lower(statement) like '%apogeestar%' or lower(statement) like '%wise_xmatch%' or lower(statement) like '%sppparams%' or lower(statement) like '%stellarmassstarformingport%') and (lower(statement) not like '%fget%')", f"log_{date.day}_{month_number}_21", output_dir)
-
-    #     print(f"Day is: {date.day}")
-    
-    # Get all csv files in the given directory.
-    # files_csv = dir.glob('**/*.csv') # Also get csv files in underlying folders.
-    files_csv = output_dir.glob('*.csv')
-    paths_csv = [path.as_posix() for path in files_csv]
 
 
 
@@ -118,23 +69,6 @@ def main(config):
     dir_tables = config.path.root / config.path.tables
     # print("Directory Logs:", dir_logs)
     # print("Directory Tables:", dir_tables)
-
-    # Test Queries for downloading.
-    # skyserver_csv_download("select top 100000 * from SqlLog where yy = 2020 and mm = 12", "log_dec", dir_logs)
-    # skyserver_csv_download("select top 100000 * from SqlLog where yy = 2020 and mm = 12 and lower(statement) like 'select%' and lower(statement) like '%from%'", "log_dec", dir_logs)
-    # skyserver_csv_download("select top 100000 * from SqlLog where yy = 2020 and mm = 11 and lower(statement) like 'select%' and lower(statement) like '%from%'", "log_nov", dir_logs)
-    # skyserver_csv_download("select top 100000 * from SqlLog where yy = 2020 and mm = 11 and dbname = 'BestDR16' and (access like 'Skyserver.Search%') and (rows > 0 and error != 1)", "log_nov", dir_logs)
-    # skyserver_csv_download("select top 100000 * from SqlLog where yy = 2020 and mm = 10 and dbname = 'BestDR16' and (access like 'Skyserver.Search%') and (rows > 0 and error != 1)", "log_oct", dir_logs)
-    # skyserver_csv_download("SELECT top 100000 * FROM SqlLog WHERE yy = 2020 and mm = 10 and dbname = 'BestDR16' and (access like 'Skyserver.Search%') and (rows > 0 and error != 1) and (lower(statement) like 'select%' or lower(statement) like '%count(%'or lower(statement)  like '%avg(%' or lower(statement)  like '%sum(%' or lower(statement) like '%join%') and (lower(statement) like '%phototag%' or lower(statement) like '%sdssebossfirefly%' or lower(statement) like '%photoobj%' or lower(statement) like '%galaxy%' or lower(statement) like '%photoprimary%' or lower(statement) like '%specphoto%' or lower(statement) like '%star%' or lower(statement) like '%galaxytag%' or lower(statement) like '%photoobjall%' or lower(statement) like '%specphotoall%' or lower(statement) like '%galspecline%' or lower(statement) like '%first%' or lower(statement) like '%emissionlinesport%' or lower(statement) like '%photoz%' or lower(statement) like '%spplines%' or lower(statement) like '%field%' or lower(statement) like '%apogeestar%' or lower(statement) like '%wise_xmatch%' or lower(statement) like '%sppparams%' or lower(statement) like '%stellarmassstarformingport%') and (lower (statement) not like '%fget%')", "log_oct", dir_logs)
-    # skyserver_csv_download("SELECT top 100000 * FROM SqlLog WHERE yy = 2020 and mm = 10 and dd = 1 and dbname = 'BestDR16' and (access like 'Skyserver.Search%') and (rows > 0 and error != 1) and (lower(statement) like '%count(%' or lower(statement) like '%avg(%' or lower(statement) like '%sum(%') and lower(statement) like '%join%' and (lower(statement) like '%phototag%' or lower(statement) like '%sdssebossfirefly%' or lower(statement) like '%photoobj%' or lower(statement) like '%galaxy%' or lower(statement) like '%photoprimary%' or lower(statement) like '%specphoto%' or lower(statement) like '%star%' or lower(statement) like '%galaxytag%' or lower(statement) like '%photoobjall%' or lower(statement) like '%specphotoall%' or lower(statement) like '%galspecline%' or lower(statement) like '%first%' or lower(statement) like '%emissionlinesport%' or lower(statement) like '%photoz%' or lower(statement) like '%spplines%' or lower(statement) like '%field%' or lower(statement) like '%apogeestar%' or lower(statement) like '%wise_xmatch%' or lower(statement) like '%sppparams%' or lower(statement) like '%stellarmassstarformingport%') and (lower(statement) not like '%fget%')", "log_oct_01", dir_logs)
-    # skyserver_csv_download("SELECT top 100000 * FROM SqlLog WHERE yy = 2020 and mm = 10 and dd = 15 and dbname = 'BestDR16' and (access like 'Skyserver.Search%') and (rows > 0 and error != 1) and (lower(statement) like '%count(%' or lower(statement) like '%avg(%' or lower(statement) like '%sum(%') and lower(statement) like '%join%' and (lower(statement) like '%phototag%' or lower(statement) like '%sdssebossfirefly%' or lower(statement) like '%photoobj%' or lower(statement) like '%galaxy%' or lower(statement) like '%photoprimary%' or lower(statement) like '%specphoto%' or lower(statement) like '%star%' or lower(statement) like '%galaxytag%' or lower(statement) like '%photoobjall%' or lower(statement) like '%specphotoall%' or lower(statement) like '%galspecline%' or lower(statement) like '%first%' or lower(statement) like '%emissionlinesport%' or lower(statement) like '%photoz%' or lower(statement) like '%spplines%' or lower(statement) like '%field%' or lower(statement) like '%apogeestar%' or lower(statement) like '%wise_xmatch%' or lower(statement) like '%sppparams%' or lower(statement) like '%stellarmassstarformingport%') and (lower(statement) not like '%fget%')", "log_oct_15", dir_logs)
-    # skyserver_csv_download("SELECT top 100000 * FROM SqlLog WHERE yy = 2020 and mm = 10 and dd = 30 and dbname = 'BestDR16' and (access like 'Skyserver.Search%') and (rows > 0 and error != 1) and (lower(statement) like '%count(%' or lower(statement) like '%avg(%' or lower(statement) like '%sum(%') and lower(statement) like '%join%' and (lower(statement) like '%phototag%' or lower(statement) like '%sdssebossfirefly%' or lower(statement) like '%photoobj%' or lower(statement) like '%galaxy%' or lower(statement) like '%photoprimary%' or lower(statement) like '%specphoto%' or lower(statement) like '%star%' or lower(statement) like '%galaxytag%' or lower(statement) like '%photoobjall%' or lower(statement) like '%specphotoall%' or lower(statement) like '%galspecline%' or lower(statement) like '%first%' or lower(statement) like '%emissionlinesport%' or lower(statement) like '%photoz%' or lower(statement) like '%spplines%' or lower(statement) like '%field%' or lower(statement) like '%apogeestar%' or lower(statement) like '%wise_xmatch%' or lower(statement) like '%sppparams%' or lower(statement) like '%stellarmassstarformingport%') and (lower(statement) not like '%fget%')", "log_oct_30", dir_logs)
-
-    # TESTING FOR QCS WITH DATA AND LOGS FOR SPECIFIC TABLES.
-    # skyserver_csv_download("SELECT top 1100 p.* FROM photoobjall p JOIN specobjall s on s.bestobjid = p.objid", "qcs_photo_obj_all", dir_tables, qry_log=False)
-    # skyserver_csv_download("SELECT top 1100 s.* FROM specobjall s JOIN photoobjall p on p.objid = s.bestobjid", "qcs_spec_obj_all", dir_tables, qry_log=False)
-    # skyserver_csv_download("SELECT top 5 * FROM SqlLog WHERE yy = 2020 and mm = 10 and dbname = 'BestDR16' and (access like 'Skyserver.Search%') and (rows > 0 and error != 1) and (lower(statement) like '%count(%' or lower(statement) like '%avg(%' or lower(statement) like '%sum(%') and lower(statement) like '%join%' and (lower(statement) like '%photoobjall%' or lower(statement) like '%specobjall%') and (lower(statement) not like '%fget%')", "qcs_test", dir_logs)
-
 
     # Downloading the query log of the year 2020.
     # skyserver_csv_download("SELECT * FROM SqlLog WHERE yy = 2020 and access like 'Skyserver.Search%' and (rows > 0 and error != 1) and (lower(statement) like '%count(%' or lower(statement) like '%avg(%' or lower(statement) like '%sum(%' or lower(statement) like '%group by%') and lower(statement) like '%join%'", "log_2020", dir_logs)
