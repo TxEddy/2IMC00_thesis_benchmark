@@ -1,0 +1,104 @@
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "specobjid",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "objid",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "dr7objid",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "ra",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "dec",
+    "type" : "double",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "rastring",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "decstring",
+    "type" : "string",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nvote",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "p_el",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "p_cw",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "p_acw",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "p_edge",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "p_dk",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "p_mg",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "p_cs",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "p_el_debiased",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "p_cs_debiased",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "spiral",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "elliptical",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "uncertain",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  } ]
+}

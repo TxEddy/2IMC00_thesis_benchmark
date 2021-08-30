@@ -1,0 +1,419 @@
+{
+  "type" : "struct",
+  "fields" : [ {
+    "name" : "specObjID",
+    "type" : "long",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "plate",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "fiberID",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "MJD",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "ra",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "dec",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "z",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "z_err",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "ke_u",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "ke_g",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "ke_r",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "ke_i",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "ke_z",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "cModelAbsMag_u",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "cModelAbsMag_g",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "cModelAbsMag_r",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "cModelAbsMag_i",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "cModelAbsMag_z",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "m2l_u",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "m2l_g",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "m2l_r",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "m2l_i",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "m2l_z",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "m2l_median_u",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "m2l_median_g",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "m2l_median_r",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "m2l_median_i",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "m2l_median_z",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "m2l_err_u",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "m2l_err_g",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "m2l_err_r",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "m2l_err_i",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "m2l_err_z",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "m2l_min_u",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "m2l_min_g",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "m2l_min_r",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "m2l_min_i",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "m2l_min_z",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "m2l_max_u",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "m2l_max_g",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "m2l_max_r",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "m2l_max_i",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "m2l_max_z",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "logMass",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "logMass_median",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "logMass_err",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "logMass_min",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "logMass_max",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "chi2",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "nFilter",
+    "type" : "integer",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t_age",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t_age_mean",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t_age_err",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t_age_min",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "t_age_max",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "metallicity",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "metallicity_mean",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "metallicity_err",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "metallicity_min",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "metallicity_max",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "dust1",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "dust1_mean",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "dust1_err",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "dust1_min",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "dust1_max",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "dust2",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "dust2_mean",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "dust2_err",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "dust2_min",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "dust2_max",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "tau",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "tau_mean",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "tau_err",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "tau_min",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "tau_max",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "age",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "age_mean",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "age_min",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "age_max",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "ssfr",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "ssfr_mean",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "ssfr_min",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  }, {
+    "name" : "ssfr_max",
+    "type" : "float",
+    "nullable" : true,
+    "metadata" : { }
+  } ]
+}
