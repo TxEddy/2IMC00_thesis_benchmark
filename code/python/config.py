@@ -9,6 +9,7 @@ class Paths:
     root: Path = None
     logs: Path = None
     tables: Path = None
+    schema: Path = None
     correlations: Path = None
 
 
@@ -28,6 +29,7 @@ def get_config(config):
                 root=Path.cwd(),
                 logs=Path("output_logs"),
                 tables=Path("output_tables"),
+                schema=Path("table_schemas"),
                 correlations=Path("correlation")
             ),
         ),

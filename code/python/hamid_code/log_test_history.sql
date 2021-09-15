@@ -333,13 +333,18 @@ WHERE poa.objid between 1237645941824356443 and 1237649921110442096
 
 -- mangaPipe3D
 SELECT top 15000 *
-FROM mangapipe3d
+FROM mangapipe3d mp3d
+JOIN mangadrpall mda on mda.plate = mp3d.plate
+JOIN mangagalaxyzoo mgz on mgz.nsa_id = mda.nsa_nsaid
+WHERE mgz.nsa_id between ... and ...
 
 
 -- mangaDRPall
 SELECT top 15000 *
-FROM mangadrpall
-ORDER BY mangaid
+FROM mangadrpall mda
+JOIN mangagalaxyzoo mgz on mgz.nsa_id = mda.nsa_nsaid
+JOIN mangapipe3d mp3d on mp3d.plate = mda.plate
+WHERE mgz.nsa_id between ... and ...
 
 -- SpecPhotoAll, count(spa.objid) => 1282729
 SELECT distinct top 15000 spa.*
@@ -574,7 +579,8 @@ WHERE poa.objid between 1237645941824356443 and 1237649921110442096
 SELECT distinct top 15000 mgz.*
 FROM mangagalaxyzoo mgz
 JOIN mangadrpall mda on mda.nsa_nsaid = mgz.nsa_id
-WHERE mda.mangaid between ... and ...
+JOIN mangapipe3d mp3d on mp3d.plate = mda.plate
+WHERE mgz.nsa_id between ... and ...
 
 
 ----------------------
@@ -612,10 +618,10 @@ SELECT distinct top 15000 sp.* FROM specphoto sp JOIN photoobjall poa on poa.obj
 SELECT distinct top 15000 smfged.* FROM stellarmassfspsgranearlydust smfged JOIN photoobjall poa on poa.specobjid = smfged.specobjid JOIN galaxy g on g.specobjid = smfged.specobjid JOIN specphoto sp on sp.specobjid = smfged.specobjid JOIN specphotoall spa on spa.specobjid = smfged.specobjid JOIN spplines sl on sl.specobjid = smfged.specobjid JOIN galaxytag gt on gt.specobjid = smfged.specobjid JOIN sppparams sps on sps.specobjid = smfged.specobjid JOIN galspecline gs on gs.specobjid = smfged.specobjid JOIN galspecindx gsi on gsi.specobjid = smfged.specobjid JOIN zoospec zs on zs.specobjid = smfged.specobjid JOIN phototag pt on pt.specobjid = smfged.specobjid JOIN galspecextra gse on gse.specobjid = smfged.specobjid WHERE poa.objid between 1237645941824356443 and 1237649921110442096
 
 -- mangaPipe3D
-SELECT distinct top 15000 * FROM mangapipe3d
+SELECT distinct top 15000 * FROM mangapipe3d mp3d JOIN mangadrpall mda on mda.plate = mp3d.plate JOIN mangagalaxyzoo mgz on mgz.nsa_id = mda.nsa_nsaid WHERE mgz.nsa_id between ... and ...
 
 -- mangaDRPall
-SELECT distinct top 15000 * FROM mangadrpall ORDER BY mangaid
+SELECT distinct top 15000 * FROM mangadrpall mda JOIN mangagalaxyzoo mgz on mgz.nsa_id = mda.nsa_nsaid JOIN mangapipe3d mp3d on mp3d.plate = mda.plate WHERE mgz.nsa_id between ... and ...
 
 -- SpecPhotoAll, count(spa.objid) => 1282729
 SELECT distinct top 15000 spa.* FROM specphotoall spa JOIN photoobjall poa on poa.objid = spa.objid JOIN photoobj po on po.objid = spa.objid JOIN galaxy g on g.objid = spa.objid JOIN specphoto sp on sp.objid = spa.objid JOIN stellarmassfspsgranearlydust smfged on smfged.specobjid = spa.specobjid JOIN spplines sl on sl.bestobjid = spa.objid JOIN galaxytag gt on gt.objid = spa.objid JOIN photoz pz on pz.objid = spa.objid JOIN sppparams sps on sps.bestobjid = spa.objid JOIN galspecline gs on gs.specobjid = spa.specobjid JOIN galspecindx gsi on gsi.specobjid = spa.specobjid JOIN zoospec zs on zs.objid = spa.objid JOIN phototag pt on pt.objid = spa.objid JOIN galspecextra gse on gse.specobjid = spa.specobjid JOIN wise_xmatch w on w.sdss_objid = spa.objid WHERE poa.objid between 1237645941824356443 and 1237649921110442096
@@ -654,7 +660,7 @@ SELECT distinct top 15000 gse.* FROM galspecextra gse JOIN photoobjall poa on po
 SELECT distinct top 15000 w.* FROM wise_xmatch w JOIN photoobjall poa on poa.objid = w.sdss_objid JOIN photoobj po on po.objid = w.sdss_objid JOIN galaxy g on g.objid = w.sdss_objid JOIN specphoto sp on sp.objid = w.sdss_objid JOIN stellarmassfspsgranearlydust smfged on smfged.specobjid = poa.specobjid JOIN specphotoall spa on spa.objid = w.sdss_objid JOIN spplines sl on sl.bestobjid = w.sdss_objid JOIN galaxytag gt on gt.objid = w.sdss_objid JOIN photoz pz on pz.objid = w.sdss_objid JOIN sppparams sps on sps.bestobjid = w.sdss_objid JOIN galspecline gs on gs.specobjid = poa.specobjid JOIN galspecindx gsi on gsi.specobjid = poa.specobjid JOIN zoospec zs on zs.objid = w.sdss_objid JOIN phototag pt on pt.objid = w.sdss_objid JOIN galspecextra gse on gse.specobjid = poa.specobjid WHERE poa.objid between 1237645941824356443 and 1237649921110442096
 
 -- mangaGalaxyZoo, count(mgz.nsa_id) => 4286
-SELECT distinct top 15000 mgz.* FROM mangagalaxyzoo mgz JOIN mangadrpall mda on mda.nsa_nsaid = mgz.nsa_id WHERE mda.mangaid between ... and ...
+SELECT distinct top 15000 mgz.* FROM mangagalaxyzoo mgz JOIN mangadrpall mda on mda.nsa_nsaid = mgz.nsa_id JOIN mangapipe3d mp3d on mp3d.plate = mda.plate WHERE mgz.nsa_id between ... and ...
 
 
 

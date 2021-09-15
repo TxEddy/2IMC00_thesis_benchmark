@@ -3,10 +3,11 @@ from pyspark.sql import SparkSession, SQLContext
 from pyspark.sql.types import StructType
 from pathlib import Path
 from itertools import islice
-from py4j.java_gateway import get_field
-import re, csv, json
+import re, csv, json, math
 import pandas as pd
 from scipy.stats import multivariate_normal as mvn
+from faker import Faker
+from pydbgen import pydbgen
 
 # Global dictionary variable for counting tables.
 freq_table = {}
@@ -189,7 +190,8 @@ def add_data_to_table(table, column_names, dir_tables):
     # Dropping duplicate row, however make sure only to keep the last observation since that will be the correlated data row
     # and resetting the index.
     # While resetting the index, use the drop parameter such that the old index will not be added as a column.
-    df_new = pd.concat([df_original_columns, df_corr_columns], axis=0).drop_duplicates(keep='last').reset_index(drop=True)
+    # df_new = pd.concat([df_original_columns, df_corr_columns], axis=0).drop_duplicates(keep='last').reset_index(drop=True)
+    df_new = pd.concat([df_original_columns, df_corr_columns], axis=0).drop_duplicates(keep='first').reset_index(drop=True)
     # df_new = df_corr_columns.append(df_original_columns).drop_duplicates(keep='last').reset_index(drop=True)
     df_new = df_new[:len(df_table.index)]
     # print(df_new)
@@ -204,8 +206,6 @@ def add_data_to_table(table, column_names, dir_tables):
     # Save the df containing correlated data.
     # df_table.save((dir_tables / table).as_posix() + "_new.csv", header=True, index=False)
     df_table.to_csv((dir_tables / table).as_posix() + "_new.csv", float_format="%g", header=True, index=False)
-
-
 
 
 def correlation_matrix(qcs_tables_dir):
@@ -244,11 +244,122 @@ def correlation_matrix(qcs_tables_dir):
     generated_df.to_csv(qcs_tables_dir.as_posix() + "/qcs_attributes_generated.csv", index=False)
 
 
+def test_generate(dir_tables, dir_output):
+    fake = Faker()
+
+    dec = list()
+    ra = list()
+    type = list()
+
+    for i in range(25000):
+        dec.append(fake.pyint())
+        ra.append(fake.pyfloat())
+        type.append(fake.pystr())
+    
+    # print(dec)
+    # print(ra)
+    # print(type)
+    
+    # gen_data = {"dec": dec, "ra": ra, "type": type}
+    
+    # df_test = pd.DataFrame(gen_data)
+    # print(df_test)
+
+    # df_test.to_csv("~/test.csv", index=False)
+
+    # Use csv module to load in table and only select the column names.
+    # Use these column names to generate data and create dataframe.
+
+
+def generate_data(attribute_name, df_table, table_schema, amount_generate):
+    fake = Faker()
+    # print(attribute_name)
+
+    # pd.set_option("max_columns", None)
+    # table_df = pd.read_csv(table_file)
+    # print(table_df)
+    # print(table_df["class"].apply(len).mean().round(0))
+
+    data_list = list()
+
+    for i in table_schema:
+        if (attribute_name in i.values()):
+            print("Name:", i["name"])
+            # print("Datatype:", i["type"])
+            # if ("primary key" in i["metadata"]):
+            #     print("pk or fk:", i["metadata"])
+            
+            for j in range(1, amount_generate + 1):
+                if ("primary key" in i["metadata"]):
+                    data_list.append(j)
+                
+                elif ("foreign key" in i["metadata"]):
+                    data_list.append(fake.pyint(1, amount_generate + 1))
+                
+                elif (i["type"].lower() == "integer" or i["type"].lower() == "long"):
+                    data_list.append(fake.pyint())
+                
+                elif (i["type"].lower() == "double" or i["type"].lower() == "float"):
+                    data_list.append(fake.pyfloat())
+                
+                elif (i["type"].lower() == "string"):
+                    # data_list.append(fake.name())
+                    data_list.append(fake.pystr(max_chars=math.ceil(df_table[i["name"]].fillna(method='ffill').astype(str).apply(len).mean())))
+                    # print(f"length of {i['name']}:", table_df[i["name"]].apply(len).mean().round(0))
+                    # print(i["name"], table_df[i["name"]].fillna(method='ffill').astype(str).apply(len).mean().round(0))
+    
+    return data_list
+
+
+
+def generate_table_data(table_name, generate_number, dir_tables, dir_schema, dir_output):
+    # print(dir_schema)
+
+    file_table = (dir_tables / table_name).as_posix() + ".csv"
+    file_schema = (dir_schema / table_name).as_posix() + ".json"
+    # print(file_table)
+    table_df = pd.read_csv(file_table)
+    attribute_list = list()
+    schema_list = list()
+    table_dict = dict()
+
+
+    with open(file_table) as csv_file, open(file_schema) as json_file:
+        csv_dict = csv.DictReader(csv_file)
+        json_dict = json.load(json_file)
+
+        attribute_list = csv_dict.fieldnames
+        schema_list = json_dict["fields"]
+    
+    # Changing the keys to lowercase in the dictionary metadata.
+    for i in range(len(schema_list)):
+        schema_list[i]["metadata"] = dict((key.lower(), value) for key, value in schema_list[i]["metadata"].items())
+    
+    # table_dict[attribute_list[0]] = generate_data(attribute_list[0], file_table, schema_list, generate_number)
+
+    # print(table_dict)
+
+    # Adding table name as key and generated data in a list as value to the dictionary table_dict.
+    for i in attribute_list:
+        # table_dict[i] = [10, 20, 30]
+        table_dict[i] = generate_data(i, table_df, schema_list, generate_number)
+    
+    # print(table_dict)
+
+    # pd.set_option("max_columns", None)
+    # Create a df based on the dictionary table_dict and save this df as a csv file.
+    df_test = pd.DataFrame(table_dict)
+    # print(df_test)
+    df_test.to_csv(dir_output.as_posix() + f"/{table_name}_generated.csv", index=False)
+    
+    
+
 
 
 def main(config):
     output_logs = config.path.root / config.path.logs
     output_tables = config.path.root / config.path.tables
+    schemas = config.path.root / config.path.schema
     correlation_dir = config.path.root / config.path.correlations
 
     # csv_log_oct = output_logs / "log_oct.csv"
@@ -275,7 +386,16 @@ def main(config):
     ####################################################
 
     # print("Output:", config.path.root)
-    correlation_matrix(correlation_dir)
+    # correlation_matrix(correlation_dir)
+
+    ####################################
+    # Generating Synthetic table data. #
+    ####################################
+    # Or write new method to loop through all csv files or write the loop just here.
+
+    # generate_table_data("galaxy", 100, output_tables, schemas, config.path.root)
+    generate_table_data("photoobjall", 25000, output_tables, schemas, config.path.root)
+    generate_table_data("photoobj", 25000, output_tables, schemas, config.path.root)
 
     #############################################################################
     # Slicing the correlation table and adding these rows to the single tables  #

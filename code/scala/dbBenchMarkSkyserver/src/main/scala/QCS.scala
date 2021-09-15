@@ -8,6 +8,7 @@ import org.apache.spark.sql.catalyst.expressions.{Attribute, Expression, NamedEx
 import org.apache.spark.sql.catalyst.plans.JoinType
 import org.apache.spark.sql.catalyst.plans.logical.{Aggregate, Filter, Join, JoinHint, LeafNode, LogicalPlan, SubqueryAlias}
 import org.apache.spark.sql.execution.QueryExecution
+import org.apache.spark.sql.types.{StringType, StructField, MetadataBuilder}
 
 import scala.collection.immutable.ListSet
 import scala.collection.mutable.ListBuffer
@@ -128,24 +129,27 @@ object QCS {
 //    val jsonFile = new File(s"/Users/eddy/Documents/study_github/2IMC00_thesis_benchmark/output_schema/$tableName.json")
 //    val bw = new BufferedWriter(new FileWriter(jsonFile))
 
-//    println(spark.sql(s"select * from $tableName").schema.prettyjson)
+//    println(spark.sql(s"select * from $tableName").schema.prettyJson)
 //    bw.write(spark.sql(s"select * from $tableName").schema.prettyJson)
 //    bw.close()
 //    println(spark.sql(s"select * from $tableName").schema.fields.foreach(println))
 //    println(spark.sql(s"select * from $tableName").schema.fields)
 
+//    println(spark.sql(s"select * from $tableName").schema.add(StructField("Test", StringType, true, new MetadataBuilder().putString("description", "primary key").build())).prettyJson)
+
 //    for (i <- 0 until spark.sql(s"select * from $tableName").schema.length) {
-//      println(spark.sql(s"select * from $tableName").schema.fields(i).name + ", " + spark.sql(s"select * from $tableName").schema.fields(i).dataType)
+//      println(spark.sql(s"select * from $tableName").schema.fields(i).name + ", " + spark.sql(s"select * from $tableName").schema.fields(i).dataType.typeName)
 //    }
 
     for (i <- tables) {
       val tableName = i.split("/")(8).substring(0, i.split("/")(8).length - 4)
       val txtFile = new File(s"/Users/eddy/Documents/study_github/2IMC00_thesis_benchmark/output_schema/$tableName.txt")
       val txtBufferedWriter = new BufferedWriter(new FileWriter(txtFile))
-      txtBufferedWriter.write(s"Create TABLE $tableName (\n")
+//      txtBufferedWriter.write(spark.sql(s"select * from $tableName").schema.prettyJson.toLowerCase())
+      txtBufferedWriter.write(s"CREATE TABLE $tableName (\n")
 
       for (j <- 0 until spark.sql(s"select * from $tableName").schema.length) {
-        txtBufferedWriter.write(spark.sql(s"select * from $tableName").schema.fields(j).name.toLowerCase() + " " + spark.sql(s"select * from $tableName").schema.fields(j).dataType + ",\n")
+        txtBufferedWriter.write(spark.sql(s"select * from $tableName").schema.fields(j).name.toLowerCase() + " " + spark.sql(s"select * from $tableName").schema.fields(j).dataType.typeName + ",\n")
       }
       txtBufferedWriter.write(");")
       txtBufferedWriter.close()
