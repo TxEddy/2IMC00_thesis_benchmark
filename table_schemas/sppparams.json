@@ -94,7 +94,7 @@
     "metadata" : { }
   }, {
     "name" : "runsspp",
-    "type" : "varchar",
+    "type" : "string",
     "nullable" : true,
     "metadata" : { }
   }, {

@@ -1,4 +1,4 @@
-CREATE TABLE phototag (
+CREATE TABLE galaxytag (
 objid bigint,
 skyversion tinyint,
 run smallint,
@@ -84,7 +84,7 @@ calibstatus_r integer,
 calibstatus_i integer,
 calibstatus_z integer,
 ra float,
-`dec` float,
+dec float,
 cx float,
 cy float,
 cz float,
@@ -97,6 +97,5 @@ htmid bigint,
 fieldid bigint,
 specobjid bigint,
 size float,
-Foreign Key (objid) references photoobjall (objid),
-unique(objid)
+Foreign Key (objid) references phototag (objid)
 );

@@ -5,7 +5,7 @@
     "type" : "long",
     "nullable" : true,
     "metadata" : {
-      "foreign key": "objid" }
+      "foreign key": "photoobjall" }
   }, {
     "name" : "skyVersion",
     "type" : "integer",

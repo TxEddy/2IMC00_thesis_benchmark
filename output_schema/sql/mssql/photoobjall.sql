@@ -1,4 +1,4 @@
-CREATE TABLE photoobj (
+CREATE TABLE photoobjall (
 objid bigint,
 skyversion tinyint,
 run smallint,
@@ -417,7 +417,7 @@ probpsf_r real,
 probpsf_i real,
 probpsf_z real,
 ra float,
-`dec` float,
+dec float,
 cx float,
 cy float,
 cz float,
@@ -508,6 +508,5 @@ tai_g float,
 tai_r float,
 tai_i float,
 tai_z float,
-Foreign Key (objid) references photoobjall (objid),
-unique(objid)
+Primary Key (objid)
 );
