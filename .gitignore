@@ -3,9 +3,9 @@
 ###########
 .DS_Store
 code/python/hamid_code/skyServerData/*.csv
+correlation/qcs_attributes_generated.csv
 # output_tables/*.csv
 output_tables/**
-correlation/qcs_attributes_generated.csv
 *.xlsx
 *.docx
 *.csv
@@ -553,4 +553,3 @@ FodyWeavers.xsd
 # JetBrains Rider
 .idea/
 *.sln.iml
-correlation/qcs_attributes_generated.csv
