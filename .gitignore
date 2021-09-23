@@ -5,7 +5,7 @@
 code/python/hamid_code/skyServerData/*.csv
 # output_tables/*.csv
 output_tables/**
-correlations/qcs_attributes_generated.csv
+correlation/qcs_attributes_generated.csv
 *.xlsx
 *.docx
 *.csv
