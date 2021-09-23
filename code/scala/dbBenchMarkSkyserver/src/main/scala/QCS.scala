@@ -63,7 +63,7 @@ object QCS {
     // Import the tables and create or replace the views.
     createTempTableView(tablesList)
 //    spark.sql("SHOW TABLES").show(45)
-    getTableSchema(tablesList)
+//    getTableSchema(tablesList)
 
 
     // Executing the QCS ... .
@@ -71,7 +71,7 @@ object QCS {
 
 
     // Execute query which retrieves data based QCS to calculate correlations.
-//    getQueriesCsv("qcsAttributesOutput")
+    getQueriesCsv("qcsAttributesOutput")
   }
 
   /**

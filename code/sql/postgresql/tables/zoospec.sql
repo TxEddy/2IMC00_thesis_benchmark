@@ -1,0 +1,22 @@
+CREATE TABLE zoospec (
+specobjid numeric,
+objid bigint references photoobjall (objid),
+dr7objid bigint,
+ra real,
+dec real,
+rastring varchar(11),
+decstring varchar(11),
+nvote integer,
+p_el numeric,
+p_cw numeric,
+p_acw numeric,
+p_edge numeric,
+p_dk numeric,
+p_mg numeric,
+p_cs numeric,
+p_el_debiased numeric,
+p_cs_debiased numeric,
+spiral integer,
+elliptical integer,
+uncertain integer
+);

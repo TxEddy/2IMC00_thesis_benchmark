@@ -1,0 +1,22 @@
+CREATE TABLE galspecinfo (
+specobjid numeric,
+plateid smallint,
+mjd integer,
+fiberid smallint,
+ra real,
+dec real,
+primtarget smallint,
+sectarget smallint,
+targettype varchar(32),
+spectrotype varchar(32),
+subclass varchar(32),
+z real,
+z_err real,
+z_warning smallint,
+v_disp real,
+v_disp_err real,
+sn_median real,
+e_bv_sfd real,
+release varchar(32),
+reliable smallint
+);
