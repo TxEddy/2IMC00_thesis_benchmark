@@ -56,9 +56,9 @@ object QCS {
 //    println(tablesList(1).getClass())
 
     // Extract the queries from the query log as a List of Strings.
-    val queries: List[String] = getQueryLog(queryList(0))
+//    val queries: List[String] = getQueryLog(queryList(0))
 //    val queries: List[String] = getQueryLog(queryList(4)) // New log 2020
-//    val queries: List[String] = getQueryLog(queryList(5)) // Generated Queries 3(z_log_generated), 5(a_generated_qry_test)
+    val queries: List[String] = getQueryLog(queryList(3)) // Generated Queries 3(z_log_generated), 5(a_generated_qry_test)
 
     // Import the tables and create or replace the views.
     createTempTableView(tablesList)
@@ -67,11 +67,11 @@ object QCS {
 
 
     // Executing the QCS ... .
-//    qcs(queries)
+    qcs(queries)
 
 
     // Execute query which retrieves data based QCS to calculate correlations.
-    getQueriesCsv("qcsAttributesOutput")
+//    getQueriesCsv("qcsAttributesOutput")
   }
 
   /**

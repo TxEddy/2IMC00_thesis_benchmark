@@ -19,10 +19,10 @@ class Database:
     """Credentials for different databases
     """
 
+    name: str = None
     user: str = None
     password: str = None
     host: str = None
-    dbname: str = None
 
 
 
@@ -54,22 +54,22 @@ def get_config(config):
                 correlations=Path("correlation")
             ),
             mssql=Database(
+                name="Microsoft SQL Server",
                 user="sa",
                 password="wrangle_cranium_marplot",
-                host="localhost",
-                dbname="db_benchmark"
+                host="localhost"
             ),
             mysql=Database(
+                name="MySQL",
                 user="root",
                 password="Y_mUiqUjT8",
-                host="localhost",
-                dbname="db_benchmark"
+                host="localhost"
             ),
             postgres=Database(
+                name="PostgreSQL",
                 user="eddy",
                 password="",
-                host="localhost",
-                dbname="db_benchmark"
+                host="localhost"
             ),
         ),
     }

@@ -72,6 +72,24 @@ def frequency_table(file_, dir):
             writer_selection.writerow([key, value])
 
 
+def export_only_queries(qry_log, dir):
+    original_log = (dir / qry_log).as_posix() + ".csv"
+    output_file = (dir / "only_queries.csv").as_posix()
+
+    print(original_log)
+    print(output_file)
+
+    with open(original_log) as log, open(output_file, 'w') as new_csv:
+        csv_reader = csv.DictReader(log)
+        csv_writer = csv.writer(new_csv)
+
+        for row in csv_reader:
+            # print(row["statement"])
+            csv_writer.writerow([row["statement"]])
+
+
+
+
 def add_data_to_table(table, column_names, dir_tables):
     # print("Directory:", dir_tables)
     # print("Table name:", table)
@@ -132,50 +150,6 @@ def add_data_to_table(table, column_names, dir_tables):
     df_table.to_csv((dir_tables / table).as_posix() + "_new.csv", float_format="%g", header=True, index=False)
 
 
-def add_data_to_synthetic_table(table, correlation_table_name, column_names, dir_config):
-
-    table_csv = (dir_config.root / dir_config.tables_generated / table).as_posix() + ".csv"
-    corr_table = (dir_config.root / dir_config.correlations  / f"{correlation_table_name}.csv").as_posix()
-
-    # Create empty List and Dictionary which will be filled to rename the column names of df_corr_columns such that the columns
-    # of both df's have the same name and the values of df_corr_columns can be added to df_table.
-    columns = []
-    rename_dict = {}
-    for i in column_names:
-        name = table + "_" + i.lower()
-        columns.append(name)
-        rename_dict[name] = i.lower()
-    
-    # print(columns)
-    # print(rename_dict)
-
-    # Importing complete table.
-    df_table = pd.read_csv(table_csv)
-    # print(df_table)
-    # print(df_table[list(rename_dict.values())])
-    # print(df_table.dtypes[list(rename_dict.values())])
-    
-    # Import the specific columns from the table containing the correlated attributes and renaming the column names.
-    df_corr_columns = pd.read_csv(corr_table, usecols=columns).rename(columns=rename_dict)
-    # print(df_corr_columns)
-    print("\nMatrix:")
-    print(df_corr_columns.dtypes)
-
-    for i in rename_dict.values():
-        df_corr_columns[i] = df_corr_columns[i].astype(df_table.dtypes[i])
-
-    print("\nMatrix Changed:")
-    print(df_corr_columns.dtypes)
-
-    df_table.update(df_corr_columns, overwrite=True)
-
-    # Check wether the columns are replaced.
-    print("Are the df's the same:", df_table[list(rename_dict.values())].equals(df_corr_columns[:len(df_table.index)]))
-
-    # Save the df containing correlated data.
-    df_table.to_csv(table_csv, float_format="%g", header=True, index=False)
-
-
 def correlation_matrix(qcs_tables_dir, generate_number):
     # Directory containing data output with all attributes stated in the QCS.
     dir_qcs_attributes = qcs_tables_dir / "qcsAttributesOutput"
@@ -223,13 +197,15 @@ def generate_data(attribute_name, df_table, table_schema, amount_generate):
 
     data_list = list()
     str_length = 0
+    specific_int = ""
 
     for i in table_schema:
         if (attribute_name in i.values()):
-            # print("Name:", i["name"])
+            print("Name:", i["name"])
             # print("Datatype:", i["type"])
             # if ("primary key" in i["metadata"]):
             #     print("pk or fk:", i["metadata"])
+
 
             # Check if i["metadata"] has foreign key, then use sample method here add to data_list()
             # if ("foreign key" in i["metadata"]):
@@ -239,6 +215,9 @@ def generate_data(attribute_name, df_table, table_schema, amount_generate):
 
             if ("string" in i["type"].lower()):
                 str_length = math.ceil(df_table[i["name"]].fillna(method='ffill').astype(str).apply(len).mean())
+            
+            if ("specific type" in i["metadata"]):
+                specific_int = i["metadata"]["specific type"]
             
             for j in range(1, amount_generate + 1):
                 if ("primary key" in i["metadata"]):
@@ -252,7 +231,11 @@ def generate_data(attribute_name, df_table, table_schema, amount_generate):
                     break
                     
                 elif (i["type"].lower() == "integer" or i["type"].lower() == "long"):
-                    data_list.append(fake.pyint())
+                    if (specific_int == "tinyint"):
+                        data_list.append(fake.pyint(max_value=127))
+                    
+                    else:
+                        data_list.append(fake.pyint())
                 
                 elif (i["type"].lower() == "double" or i["type"].lower() == "float"):
                     data_list.append(fake.pyfloat())
@@ -311,6 +294,50 @@ def generate_table_data(table_name, generate_number, dir_tables, dir_schema, dir
     df_test = pd.DataFrame(table_dict)
     # print(df_test)
     df_test.to_csv(dir_output.as_posix() + f"/{table_name}.csv", index=False)
+
+
+def update_synthetic_table(table, correlation_table_name, column_names, dir_config):
+
+    table_csv = (dir_config.root / dir_config.tables_generated / table).as_posix() + ".csv"
+    corr_table = (dir_config.root / dir_config.correlations  / f"{correlation_table_name}.csv").as_posix()
+
+    # Create empty List and Dictionary which will be filled to rename the column names of df_corr_columns such that the columns
+    # of both df's have the same name and the values of df_corr_columns can be added to df_table.
+    columns = []
+    rename_dict = {}
+    for i in column_names:
+        name = table + "_" + i.lower()
+        columns.append(name)
+        rename_dict[name] = i.lower()
+    
+    # print(columns)
+    # print(rename_dict)
+
+    # Importing complete table.
+    df_table = pd.read_csv(table_csv)
+    # print(df_table)
+    # print(df_table[list(rename_dict.values())])
+    # print(df_table.dtypes[list(rename_dict.values())])
+    
+    # Import the specific columns from the table containing the correlated attributes and renaming the column names.
+    df_corr_columns = pd.read_csv(corr_table, usecols=columns).rename(columns=rename_dict)
+    # print(df_corr_columns)
+    print("\nMatrix:")
+    print(df_corr_columns.dtypes)
+
+    for i in rename_dict.values():
+        df_corr_columns[i] = df_corr_columns[i].astype(df_table.dtypes[i])
+
+    print("\nMatrix Changed:")
+    print(df_corr_columns.dtypes)
+
+    df_table.update(df_corr_columns, overwrite=True)
+
+    # Check wether the columns are replaced.
+    print("Are the df's the same:", df_table[list(rename_dict.values())].equals(df_corr_columns[:len(df_table.index)]))
+
+    # Save the df containing correlated data.
+    df_table.to_csv(table_csv, float_format="%g", header=True, index=False)
     
     
 
@@ -335,8 +362,7 @@ def main(config):
     # csv_log_202 = output_logs / "log_2020.csv"
     # frequency_table(csv_log_202.as_posix(), output_logs)
 
-    # csv_table_photo_obj_all = output_tables / "photo_obj_all.csv"
-    # open_table(csv_table_photo_obj_all, output_tables)
+    # export_only_queries("log_2020_filterCleaned", output_logs)
 
     # tables_qcs = output_tables / "qcs_test"
     # log_oct = output_logs / "log_oct.csv"
@@ -359,7 +385,7 @@ def main(config):
     # generate_table_data("specphotoall", 87600, output_tables, schemas, generated_dir)
     # generate_table_data("specphoto", 43600, output_tables, schemas, generated_dir)
     # generate_table_data("spplines", 83600, output_tables, schemas, generated_dir)
-    # generate_table_data("sppparams", 50000, output_tables, schemas, generated_dir)
+    generate_table_data("sppparams", 50000, output_tables, schemas, generated_dir)
     # generate_table_data("wise_xmatch", 100000, output_tables, schemas, generated_dir)
     # generate_table_data("phototag", 100000, output_tables, schemas, generated_dir)
     # generate_table_data("galaxytag", 87499, output_tables, schemas, generated_dir)
@@ -372,7 +398,7 @@ def main(config):
     # generate_table_data("galspecline", 96101, output_tables, schemas, generated_dir)
     # generate_table_data("stellarmassfspsgranearlydust", 96842, output_tables, schemas, generated_dir)
     # generate_table_data("mangagalaxyzoo", 4220, output_tables, schemas, generated_dir)
-    # generate_table_data("mangadrpall", 4286, output_tables, schemas, generated_dir)
+    # generate_table_data("mangadrpall", 4220, output_tables, schemas, generated_dir)
     # generate_table_data("mangapipe3d", 4534, output_tables, schemas, generated_dir)
     
 
@@ -543,92 +569,92 @@ def main(config):
     #     output_tables)
 
 
-    ########################################################################
-    # Slicing the correlation table and adding these rows to the synthetic #
-    # single tables and removing duplicates rows of the table.             #
-    ########################################################################
+    ####################################################################
+    # Replacing columns of the generated tables with columns generated #
+    # using the correlation matrix                                     #
+    ####################################################################
 
-    add_data_to_synthetic_table("galaxy",
-        "qcs_attributes_generated",
-        ["clean",
-        "dec",
-        "g",
-        "petroMag_r",
-        "petroMag_u",
-        "petroR90_g",
-        "petroR90_r",
-        "petroRad_u",
-        "r",
-        "ra"],
-        config.path)
+    # update_synthetic_table("galaxy",
+    #     "qcs_attributes_generated",
+    #     ["clean",
+    #     "dec",
+    #     "g",
+    #     "petroMag_r",
+    #     "petroMag_u",
+    #     "petroR90_g",
+    #     "petroR90_r",
+    #     "petroRad_u",
+    #     "r",
+    #     "ra"],
+    #     config.path)
 
-    add_data_to_synthetic_table("galaxytag",
-        "qcs_attributes_generated",
-        ["dec",
-        "ra",
-        "type"],
-        config.path)
+    # update_synthetic_table("galaxytag",
+    #     "qcs_attributes_generated",
+    #     ["dec",
+    #     "ra",
+    #     "type"],
+    #     config.path)
 
-    add_data_to_synthetic_table("galspecextra",
-        "qcs_attributes_generated",
-        ["bptclass",
-        "sfr_fib_p50",
-        "sfr_tot_p50",
-        "sfr_tot_p84",
-        "specsfr_tot_p50"],
-        config.path)
+    # update_synthetic_table("galspecextra",
+    #     "qcs_attributes_generated",
+    #     ["bptclass",
+    #     "sfr_fib_p50",
+    #     "sfr_tot_p50",
+    #     "sfr_tot_p84",
+    #     "specsfr_tot_p50"],
+    #     config.path)
 
-    add_data_to_synthetic_table("galspecindx",
-        "qcs_attributes_generated",
-        ["d4000_n"],
-        config.path)
+    # update_synthetic_table("galspecindx",
+    #     "qcs_attributes_generated",
+    #     ["d4000_n"],
+    #     config.path)
 
-    add_data_to_synthetic_table("galspecline",
-        "qcs_attributes_generated",
-        ["h_alpha_eqw",
-        "h_alpha_flux",
-        "h_alpha_flux_err",
-        "h_beta_eqw",
-        "h_beta_flux",
-        "h_beta_flux_err",
-        "nii_6584_flux",
-        "oi_6300_flux_err",
-        "oiii_5007_eqw",
-        "oiii_5007_flux",
-        "sii_6717_flux",
-        "sii_6731_flux_err"],
-        config.path)
+    # update_synthetic_table("galspecline",
+    #     "qcs_attributes_generated",
+    #     ["h_alpha_eqw",
+    #     "h_alpha_flux",
+    #     "h_alpha_flux_err",
+    #     "h_beta_eqw",
+    #     "h_beta_flux",
+    #     "h_beta_flux_err",
+    #     "nii_6584_flux",
+    #     "oi_6300_flux_err",
+    #     "oiii_5007_eqw",
+    #     "oiii_5007_flux",
+    #     "sii_6717_flux",
+    #     "sii_6731_flux_err"],
+    #     config.path)
 
-    add_data_to_synthetic_table("photoobj",
-        "qcs_attributes_generated",
-        ["b",
-        "camcol",
-        "clean",
-        "cModelMag_g",
-        "dec",
-        "deVRad_g",
-        "deVRad_r",
-        "fiberMag_r",
-        "field",
-        "flags",
-        "fracDeV_r",
-        "g",
-        "l",
-        "mode",
-        "petroMag_r",
-        "petroMag_z",
-        "petroR50_g",
-        "petroR50_r",
-        "petroRad_g",
-        "petroRad_r",
-        "r",
-        "ra",
-        "run",
-        "type",
-        "u"],
-        config.path)
+    # update_synthetic_table("photoobj",
+    #     "qcs_attributes_generated",
+    #     ["b",
+    #     "camcol",
+    #     "clean",
+    #     "cModelMag_g",
+    #     "dec",
+    #     "deVRad_g",
+    #     "deVRad_r",
+    #     "fiberMag_r",
+    #     "field",
+    #     "flags",
+    #     "fracDeV_r",
+    #     "g",
+    #     "l",
+    #     "mode",
+    #     "petroMag_r",
+    #     "petroMag_z",
+    #     "petroR50_g",
+    #     "petroR50_r",
+    #     "petroRad_g",
+    #     "petroRad_r",
+    #     "r",
+    #     "ra",
+    #     "run",
+    #     "type",
+    #     "u"],
+    #     config.path)
 
-    # add_data_to_synthetic_table("photoobjall",
+    # update_synthetic_table("photoobjall",
     #     "qcs_attributes_generated",
     #     ["camcol",
     #     "clean",
@@ -647,61 +673,61 @@ def main(config):
     #     "u"],
     #     config.path)
     
-    add_data_to_synthetic_table("phototag",
-        "qcs_attributes_generated",
-        ["clean",
-        "dec",
-        "mode",
-        "nChild",
-        "psfMag_r",
-        "ra",
-        "type"],
-        config.path)
+    # update_synthetic_table("phototag",
+    #     "qcs_attributes_generated",
+    #     ["clean",
+    #     "dec",
+    #     "mode",
+    #     "nChild",
+    #     "psfMag_r",
+    #     "ra",
+    #     "type"],
+    #     config.path)
 
-    add_data_to_synthetic_table("photoz",
-        "qcs_attributes_generated",
-        ["absMagR",
-        "photoErrorClass",
-        "nnCount",
-        "nnVol",
-        "z",
-        "zErr"],
-        config.path)
+    # update_synthetic_table("photoz",
+    #     "qcs_attributes_generated",
+    #     ["absMagR",
+    #     "photoErrorClass",
+    #     "nnCount",
+    #     "nnVol",
+    #     "z",
+    #     "zErr"],
+    #     config.path)
 
-    add_data_to_synthetic_table("specphoto",
-        "qcs_attributes_generated",
-        ["dec",
-        "mode",
-        "modelMag_r",
-        "petroMag_r",
-        "petroMag_z",
-        "ra",
-        "type",
-        "z",
-        "zWarning"],
-        config.path)
+    # update_synthetic_table("specphoto",
+    #     "qcs_attributes_generated",
+    #     ["dec",
+    #     "mode",
+    #     "modelMag_r",
+    #     "petroMag_r",
+    #     "petroMag_z",
+    #     "ra",
+    #     "type",
+    #     "z",
+    #     "zWarning"],
+    #     config.path)
 
-    add_data_to_synthetic_table("sppparams",
+    update_synthetic_table("sppparams",
         "qcs_attributes_generated",
         ["FEHADOP"],
         config.path)
 
-    add_data_to_synthetic_table("stellarmassfspsgranearlydust",
-        "qcs_attributes_generated",
-        ["logMass",
-        "z"],
-        config.path)
+    # update_synthetic_table("stellarmassfspsgranearlydust",
+    #     "qcs_attributes_generated",
+    #     ["logMass",
+    #     "z"],
+    #     config.path)
     
-    add_data_to_synthetic_table("zoospec",
-        "qcs_attributes_generated",
-        ["elliptical",
-        "p_cs",
-        "p_cs_debiased",
-        "p_el",
-        "p_el_debiased",
-        "spiral",
-        "uncertain"],
-        config.path)
+    # update_synthetic_table("zoospec",
+    #     "qcs_attributes_generated",
+    #     ["elliptical",
+    #     "p_cs",
+    #     "p_cs_debiased",
+    #     "p_el",
+    #     "p_el_debiased",
+    #     "spiral",
+    #     "uncertain"],
+    #     config.path)
 
 
 
