@@ -10,7 +10,9 @@
     "name" : "skyVersion",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "run",
     "type" : "integer",
@@ -25,7 +27,9 @@
     "name" : "camcol",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "field",
     "type" : "integer",
@@ -40,7 +44,9 @@
     "name" : "mode",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "nChild",
     "type" : "integer",
@@ -65,7 +71,9 @@
     "name" : "insideMask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "flags",
     "type" : "long",

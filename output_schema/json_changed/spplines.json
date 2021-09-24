@@ -80,7 +80,9 @@
     "name" : "h83mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "h812side",
     "type" : "double",
@@ -100,7 +102,9 @@
     "name" : "h812mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "h824side",
     "type" : "double",
@@ -120,7 +124,9 @@
     "name" : "h824mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "h848side",
     "type" : "double",
@@ -140,7 +146,9 @@
     "name" : "h848mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "kp12side",
     "type" : "double",
@@ -160,7 +168,9 @@
     "name" : "kp12mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "kp18side",
     "type" : "double",
@@ -180,7 +190,9 @@
     "name" : "kp18mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "kp6side",
     "type" : "double",
@@ -200,7 +212,9 @@
     "name" : "kp6mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "caiikside",
     "type" : "double",
@@ -220,7 +234,9 @@
     "name" : "caiikmask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "caiihkside",
     "type" : "double",
@@ -240,7 +256,9 @@
     "name" : "caiihkmask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "hepsside",
     "type" : "double",
@@ -260,7 +278,9 @@
     "name" : "hepsmask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "kp16side",
     "type" : "double",
@@ -280,7 +300,9 @@
     "name" : "kp16mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "srii1side",
     "type" : "double",
@@ -300,7 +322,9 @@
     "name" : "srii1mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "hei121side",
     "type" : "double",
@@ -320,7 +344,9 @@
     "name" : "hei121mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "hdelta12side",
     "type" : "double",
@@ -340,7 +366,9 @@
     "name" : "hdelta12mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "hdelta24side",
     "type" : "double",
@@ -360,7 +388,9 @@
     "name" : "hdelta24mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "hdelta48side",
     "type" : "double",
@@ -380,7 +410,9 @@
     "name" : "hdelta48mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "hdeltaside",
     "type" : "double",
@@ -400,7 +432,9 @@
     "name" : "hdeltamask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "cai4side",
     "type" : "double",
@@ -420,7 +454,9 @@
     "name" : "cai4mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "cai12side",
     "type" : "double",
@@ -440,7 +476,9 @@
     "name" : "cai12mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "cai24side",
     "type" : "double",
@@ -460,7 +498,9 @@
     "name" : "cai24mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "cai6side",
     "type" : "double",
@@ -480,7 +520,9 @@
     "name" : "cai6mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "gside",
     "type" : "double",
@@ -500,7 +542,9 @@
     "name" : "gmask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "hgamma12side",
     "type" : "double",
@@ -520,7 +564,9 @@
     "name" : "hgamma12mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "hgamma24side",
     "type" : "double",
@@ -540,7 +586,9 @@
     "name" : "hgamma24mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "hgamma48side",
     "type" : "double",
@@ -560,7 +608,9 @@
     "name" : "hgamma48mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "hgammaside",
     "type" : "double",
@@ -580,7 +630,9 @@
     "name" : "hgammamask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "hei122side",
     "type" : "double",
@@ -600,7 +652,9 @@
     "name" : "hei122mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "gblueside",
     "type" : "double",
@@ -620,7 +674,9 @@
     "name" : "gbluemask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "gwholeside",
     "type" : "double",
@@ -640,7 +696,9 @@
     "name" : "gwholemask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "baside",
     "type" : "double",
@@ -660,7 +718,9 @@
     "name" : "bamask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "c12c13side",
     "type" : "double",
@@ -680,7 +740,9 @@
     "name" : "c12c13mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "cc12side",
     "type" : "double",
@@ -700,7 +762,9 @@
     "name" : "cc12mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "metal1side",
     "type" : "double",
@@ -720,7 +784,9 @@
     "name" : "metal1mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "hbeta12side",
     "type" : "double",
@@ -740,7 +806,9 @@
     "name" : "hbeta12mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "hbeta24side",
     "type" : "double",
@@ -760,7 +828,9 @@
     "name" : "hbeta24mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "hbeta48side",
     "type" : "double",
@@ -780,7 +850,9 @@
     "name" : "hbeta48mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "hbetaside",
     "type" : "double",
@@ -800,7 +872,9 @@
     "name" : "hbetamask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "c2side",
     "type" : "double",
@@ -820,7 +894,9 @@
     "name" : "c2mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "c2mgiside",
     "type" : "double",
@@ -840,7 +916,9 @@
     "name" : "c2mgimask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "mghmgic2side",
     "type" : "double",
@@ -860,7 +938,9 @@
     "name" : "mghmgic2mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "mghmgiside",
     "type" : "double",
@@ -880,7 +960,9 @@
     "name" : "mghmgimask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "mghside",
     "type" : "double",
@@ -900,7 +982,9 @@
     "name" : "mghmask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "criside",
     "type" : "double",
@@ -920,7 +1004,9 @@
     "name" : "crimask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "mgifeiiside",
     "type" : "double",
@@ -940,7 +1026,9 @@
     "name" : "mgifeiimask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "mgi2side",
     "type" : "double",
@@ -960,7 +1048,9 @@
     "name" : "mgi2mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "mgi121side",
     "type" : "double",
@@ -980,7 +1070,9 @@
     "name" : "mgi121mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "mgi24side",
     "type" : "double",
@@ -1000,7 +1092,9 @@
     "name" : "mgi24mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "mgi122side",
     "type" : "double",
@@ -1020,7 +1114,9 @@
     "name" : "mgi122mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "nai20side",
     "type" : "double",
@@ -1040,7 +1136,9 @@
     "name" : "nai20mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "na12side",
     "type" : "double",
@@ -1060,7 +1158,9 @@
     "name" : "na12mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "na24side",
     "type" : "double",
@@ -1080,7 +1180,9 @@
     "name" : "na24mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "halpha12side",
     "type" : "double",
@@ -1100,7 +1202,9 @@
     "name" : "halpha12mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "halpha24side",
     "type" : "double",
@@ -1120,7 +1224,9 @@
     "name" : "halpha24mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "halpha48side",
     "type" : "double",
@@ -1140,7 +1246,9 @@
     "name" : "halpha48mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "halpha70side",
     "type" : "double",
@@ -1160,7 +1268,9 @@
     "name" : "halpha70mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "cahside",
     "type" : "double",
@@ -1180,7 +1290,9 @@
     "name" : "cahmask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "tioside",
     "type" : "double",
@@ -1200,7 +1312,9 @@
     "name" : "tiomask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "cnside",
     "type" : "double",
@@ -1220,7 +1334,9 @@
     "name" : "cnmask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "oitripside",
     "type" : "double",
@@ -1240,7 +1356,9 @@
     "name" : "oitripmask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "ki34side",
     "type" : "double",
@@ -1260,7 +1378,9 @@
     "name" : "ki34mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "ki95side",
     "type" : "double",
@@ -1280,7 +1400,9 @@
     "name" : "ki95mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "nai15side",
     "type" : "double",
@@ -1300,7 +1422,9 @@
     "name" : "nai15mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "nairedside",
     "type" : "double",
@@ -1320,7 +1444,9 @@
     "name" : "nairedmask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "caii26side",
     "type" : "double",
@@ -1340,7 +1466,9 @@
     "name" : "caii26mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "paschen13side",
     "type" : "double",
@@ -1360,7 +1488,9 @@
     "name" : "paschen13mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "caii29side",
     "type" : "double",
@@ -1380,7 +1510,9 @@
     "name" : "caii29mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "caii401side",
     "type" : "double",
@@ -1400,7 +1532,9 @@
     "name" : "caii401mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "caii161side",
     "type" : "double",
@@ -1420,7 +1554,9 @@
     "name" : "caii161mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "paschen421side",
     "type" : "double",
@@ -1440,7 +1576,9 @@
     "name" : "paschen421mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "caii162side",
     "type" : "double",
@@ -1460,7 +1598,9 @@
     "name" : "caii162mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "caii402side",
     "type" : "double",
@@ -1480,7 +1620,9 @@
     "name" : "caii402mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "paschen422side",
     "type" : "double",
@@ -1500,7 +1642,9 @@
     "name" : "paschen422mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "tio5side",
     "type" : "double",
@@ -1520,7 +1664,9 @@
     "name" : "tio5mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "tio8side",
     "type" : "double",
@@ -1540,7 +1686,9 @@
     "name" : "tio8mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "cah1side",
     "type" : "double",
@@ -1560,7 +1708,9 @@
     "name" : "cah1mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "cah2side",
     "type" : "double",
@@ -1580,7 +1730,9 @@
     "name" : "cah2mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "cah3side",
     "type" : "double",
@@ -1600,7 +1752,9 @@
     "name" : "cah3mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "uvcnside",
     "type" : "double",
@@ -1620,7 +1774,9 @@
     "name" : "uvcnmask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "blcnside",
     "type" : "double",
@@ -1640,7 +1796,9 @@
     "name" : "blcnmask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "fei1side",
     "type" : "double",
@@ -1660,7 +1818,9 @@
     "name" : "fei1mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "fei2side",
     "type" : "double",
@@ -1680,7 +1840,9 @@
     "name" : "fei2mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "fei3side",
     "type" : "double",
@@ -1700,7 +1862,9 @@
     "name" : "fei3mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "srii2side",
     "type" : "double",
@@ -1720,7 +1884,9 @@
     "name" : "srii2mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "fei4side",
     "type" : "double",
@@ -1740,7 +1906,9 @@
     "name" : "fei4mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "fei5side",
     "type" : "double",
@@ -1760,6 +1928,8 @@
     "name" : "fei5mask",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   } ]
 }

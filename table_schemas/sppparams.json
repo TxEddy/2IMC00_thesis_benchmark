@@ -176,7 +176,9 @@
     "name" : "teffadopn",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "teffadopunc",
     "type" : "double",
@@ -226,42 +228,58 @@
     "name" : "teffha24ind",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "teffhd24ind",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "teffngs1ind",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "teffannsrind",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "teffannrrind",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "teffwbgind",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "teffk24ind",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "teffki13ind",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "teffha24unc",
     "type" : "double",
@@ -311,7 +329,9 @@
     "name" : "loggadopn",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "loggadopunc",
     "type" : "double",
@@ -361,42 +381,58 @@
     "name" : "loggngs2ind",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "loggngs1ind",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "loggannsrind",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "loggannrrind",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "loggcai1ind",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "loggwbgind",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "loggk24ind",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "loggki13ind",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "loggngs2unc",
     "type" : "double",
@@ -446,7 +482,9 @@
     "name" : "fehadopn",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "fehadopunc",
     "type" : "double",
@@ -506,52 +544,72 @@
     "name" : "fehngs2ind",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "fehngs1ind",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "fehannsrind",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "fehannrrind",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "fehcaiik1ind",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "fehcaiik2ind",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "fehcaiik3ind",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "fehwbgind",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "fehk24ind",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "fehki13ind",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "fehngs2unc",
     "type" : "double",
@@ -611,7 +669,9 @@
     "name" : "qa",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "cccahk",
     "type" : "double",
@@ -631,7 +691,9 @@
     "name" : "teffspecn",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "teffspecunc",
     "type" : "double",
@@ -646,7 +708,9 @@
     "name" : "loggspecn",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "loggspecunc",
     "type" : "double",
@@ -661,7 +725,9 @@
     "name" : "fehspecn",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "fehspecunc",
     "type" : "double",
@@ -716,7 +782,9 @@
     "name" : "teffirfmind",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "teffirfmunc",
     "type" : "double",
@@ -731,7 +799,9 @@
     "name" : "loggngs1irfmind",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "loggngs1irfmunc",
     "type" : "integer",
@@ -746,7 +816,9 @@
     "name" : "fehngs1irfmind",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "fehngs1irfmunc",
     "type" : "double",
@@ -761,7 +833,9 @@
     "name" : "loggcai1irfmind",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "loggcai1irfmunc",
     "type" : "double",
@@ -776,7 +850,9 @@
     "name" : "fehcaiik1irfmind",
     "type" : "integer",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "specific type": "tinyint" 
+    }
   }, {
     "name" : "fehcaiik1irfmunc",
     "type" : "double",

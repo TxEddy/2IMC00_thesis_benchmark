@@ -17,6 +17,6 @@ v_disp real,
 v_disp_err real,
 sn_median real,
 e_bv_sfd real,
-release varchar(32),
+`release` varchar(32),
 reliable smallint
 );

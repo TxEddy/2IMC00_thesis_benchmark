@@ -94,7 +94,7 @@ load data infile '/tmp/generated_tables/mangapipe3d.csv' into table mangapipe3d 
 1. Create new folder in tmp
 2. Copy the tables files to folder create above to the container using: docker cp PATH_CSV_FILES/. CONTAINER_NAME:/tmp/FOLDER_NAME_STEP1
 
-Use 'docker exec -u 0 CONTAINER_NAME' to execute bash commands such as removing files.
+Use 'docker exec -u 0 CONTAINER_NAME COMMAND_TO_EXECUTE' to execute bash commands such as removing files.
 */
 bulk insert photoobjall from '/tmp/original_tables/photoobjall.csv' with (firstrow=2, fieldterminator=',', rowterminator='\n', tablock)
 bulk insert photoobj from '/tmp/original_tables/photoobj.csv' with (firstrow=2, fieldterminator=',', rowterminator='\n', tablock)

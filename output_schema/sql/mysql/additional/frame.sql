@@ -27,5 +27,5 @@ cx float,
 cy float,
 cz float,
 htmid bigint,
-img varbinary
+img varbinary(256)
 );

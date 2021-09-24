@@ -193,5 +193,5 @@ elodierchi2 real,
 elodiedof real,
 htmid bigint,
 loadversion integer,
-img varbinary
+img varbinary(256)
 );
