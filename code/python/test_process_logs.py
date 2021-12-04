@@ -166,6 +166,8 @@ def correlation_matrix(qcs_tables_dir, generate_number):
     qry_df = pd.read_csv(paths_csv[0])
     # print(qry_df.head(5))
     # print(qry_df.dtypes)
+    column_names = qry_df.columns
+
 
     # Create an correlation matrix based on the attributes using the Pearson method.
     corr_matrix = qry_df.corr(method='pearson')
@@ -179,10 +181,21 @@ def correlation_matrix(qcs_tables_dir, generate_number):
     # Generate data using the correlation matrix and multivariate normal distribution sampling.
     # generated_corr = mvn.rvs(mean=qry_df.mean().array, cov=corr_matrix, size=15000)
     generated_corr = mvn.rvs(mean=qry_df.mean().array, cov=corr_matrix, size=generate_number)
+    # generated_corr = mvn.rvs(mean=qry_df.median().array, cov=corr_matrix, size=generate_number)
     # print(generated_corr)
 
     # Adding the column names to the generated data and export the generated data as csv.
     generated_df = pd.DataFrame(data = generated_corr, columns = qry_df.columns)
+
+    # Multiplying each column with the variance of the original data.
+    # for name in column_names:
+    #     generated_df[name] = generated_df[name] * qry_df.var()[name]
+    #     # print(name)
+    
+    # for i in column_names:
+    #     # df_corr_columns[i] = df_corr_columns[i].astype(df_table.dtypes[i])
+    #     generated_df[i] = generated_df[i].astype(qry_df.dtypes[i])
+
     generated_df.to_csv(qcs_tables_dir.as_posix() + "/qcs_attributes_generated.csv", index=False)
 
 
@@ -213,8 +226,8 @@ def generate_data(attribute_name, df_table, table_schema, amount_generate):
             #     # random.shuffle(data_list)
             #     print("fk", len(data_list))
 
-            if ("string" in i["type"].lower()):
-                str_length = math.ceil(df_table[i["name"]].fillna(method='ffill').astype(str).apply(len).mean())
+            # if ("string" in i["type"].lower()):
+            #     str_length = math.ceil(df_table[i["name"]].fillna(method='ffill').astype(str).apply(len).mean())
             
             if ("specific type" in i["metadata"]):
                 specific_int = i["metadata"]["specific type"]
@@ -231,6 +244,7 @@ def generate_data(attribute_name, df_table, table_schema, amount_generate):
                     break
                     
                 elif (i["type"].lower() == "integer" or i["type"].lower() == "long"):
+                # elif (i["type"].lower() == "integer" or i["type"].lower() == "long" or i["type"].lower() == "double" or i["type"].lower() == "float"):
                     if (specific_int == "tinyint"):
                         data_list.append(fake.pyint(max_value=127))
                     
@@ -241,11 +255,7 @@ def generate_data(attribute_name, df_table, table_schema, amount_generate):
                     data_list.append(fake.pyfloat())
                 
                 elif (i["type"].lower() == "string" or i["type"].lower() == "varchar"):
-                    # data_list.append(fake.name())
-                    # data_list.append(fake.pystr(max_chars=math.ceil(df_table[i["name"]].fillna(method='ffill').astype(str).apply(len).mean())))
-                    data_list.append(fake.pystr(max_chars=str_length))
-                    # print(f"length of {i['name']}:", table_df[i["name"]].apply(len).mean().round(0))
-                    # print(i["name"], table_df[i["name"]].fillna(method='ffill').astype(str).apply(len).mean().round(0))
+                    data_list.append(fake.pystr(min_chars=1, max_chars=i["metadata"]["varchar"]))
     
     return data_list
 
@@ -373,33 +383,58 @@ def main(config):
     ####################################################
 
     # print("Output:", config.path.root)
-    # correlation_matrix(correlation_dir, 100000)
+    correlation_matrix(correlation_dir, 100000)
 
     ####################################
     # Generating Synthetic table data. #
     ####################################
-    # Or write new method to loop through all csv files or write the loop just here.
 
-    # generate_table_data("photoobjall", 100000, output_tables, schemas, generated_dir)
-    # generate_table_data("photoobj", 100000, output_tables, schemas, generated_dir)
-    # generate_table_data("specphotoall", 87600, output_tables, schemas, generated_dir)
-    # generate_table_data("specphoto", 43600, output_tables, schemas, generated_dir)
-    # generate_table_data("spplines", 83600, output_tables, schemas, generated_dir)
+    generate_table_data("photoobjall", 100000, output_tables, schemas, generated_dir)
+    generate_table_data("photoobj", 100000, output_tables, schemas, generated_dir)
+    generate_table_data("specphotoall", 100000, output_tables, schemas, generated_dir)
+    generate_table_data("specphoto", 100000, output_tables, schemas, generated_dir)
+    generate_table_data("spplines", 100000, output_tables, schemas, generated_dir)
     generate_table_data("sppparams", 50000, output_tables, schemas, generated_dir)
-    # generate_table_data("wise_xmatch", 100000, output_tables, schemas, generated_dir)
-    # generate_table_data("phototag", 100000, output_tables, schemas, generated_dir)
-    # generate_table_data("galaxytag", 87499, output_tables, schemas, generated_dir)
-    # generate_table_data("zoospec", 93010, output_tables, schemas, generated_dir)
-    # generate_table_data("photoz", 100000, output_tables, schemas, generated_dir)
-    # generate_table_data("apogeestar", 23, output_tables, schemas, generated_dir)
-    # generate_table_data("galaxy", 100000, output_tables, schemas, generated_dir)
-    # generate_table_data("galspecextra", 73905, output_tables, schemas, generated_dir)
-    # generate_table_data("galspecindx", 96101, output_tables, schemas, generated_dir)
-    # generate_table_data("galspecline", 96101, output_tables, schemas, generated_dir)
-    # generate_table_data("stellarmassfspsgranearlydust", 96842, output_tables, schemas, generated_dir)
-    # generate_table_data("mangagalaxyzoo", 4220, output_tables, schemas, generated_dir)
-    # generate_table_data("mangadrpall", 4220, output_tables, schemas, generated_dir)
-    # generate_table_data("mangapipe3d", 4534, output_tables, schemas, generated_dir)
+    generate_table_data("wise_xmatch", 100000, output_tables, schemas, generated_dir)
+    generate_table_data("phototag", 100000, output_tables, schemas, generated_dir)
+    generate_table_data("galaxytag", 87499, output_tables, schemas, generated_dir)
+    generate_table_data("zoospec", 98410, output_tables, schemas, generated_dir)
+    generate_table_data("photoz", 100000, output_tables, schemas, generated_dir)
+    generate_table_data("apogeestar", 23, output_tables, schemas, generated_dir)
+    generate_table_data("galaxy", 100000, output_tables, schemas, generated_dir)
+    generate_table_data("galspecextra", 73905, output_tables, schemas, generated_dir)
+    generate_table_data("galspecindx", 96101, output_tables, schemas, generated_dir)
+    generate_table_data("galspecline", 96101, output_tables, schemas, generated_dir)
+    generate_table_data("stellarmassfspsgranearlydust", 96842, output_tables, schemas, generated_dir)
+    generate_table_data("mangagalaxyzoo", 4220, output_tables, schemas, generated_dir)
+    generate_table_data("mangadrpall", 4220, output_tables, schemas, generated_dir)
+    generate_table_data("mangapipe3d", 4534, output_tables, schemas, generated_dir)
+
+
+    ########################################################################################
+    # Generating Synthetic table data, !!!!!!!!!!!!!!!!!!!(SCALED 2x)!!!!!!!!!!!!!!!!!!!!! #
+    ########################################################################################
+
+    # generate_table_data("photoobjall", 200000, output_tables, schemas, generated_dir)
+    # generate_table_data("photoobj", 200000, output_tables, schemas, generated_dir)
+    # generate_table_data("specphotoall", 175200, output_tables, schemas, generated_dir)
+    # generate_table_data("specphoto", 87200, output_tables, schemas, generated_dir)
+    # generate_table_data("spplines", 167200, output_tables, schemas, generated_dir)
+    # generate_table_data("sppparams", 100000, output_tables, schemas, generated_dir)
+    # generate_table_data("wise_xmatch", 200000, output_tables, schemas, generated_dir)
+    # generate_table_data("phototag", 200000, output_tables, schemas, generated_dir)
+    # generate_table_data("galaxytag", 174998, output_tables, schemas, generated_dir)
+    # generate_table_data("zoospec", 186020, output_tables, schemas, generated_dir)
+    # generate_table_data("photoz", 200000, output_tables, schemas, generated_dir)
+    # generate_table_data("apogeestar", 46, output_tables, schemas, generated_dir)
+    # generate_table_data("galaxy", 200000, output_tables, schemas, generated_dir)
+    # generate_table_data("galspecextra", 147810, output_tables, schemas, generated_dir)
+    # generate_table_data("galspecindx", 192202, output_tables, schemas, generated_dir)
+    # generate_table_data("galspecline", 192202, output_tables, schemas, generated_dir)
+    # generate_table_data("stellarmassfspsgranearlydust", 193684, output_tables, schemas, generated_dir)
+    # generate_table_data("mangagalaxyzoo", 8440, output_tables, schemas, generated_dir)
+    # generate_table_data("mangadrpall", 8440, output_tables, schemas, generated_dir)
+    # generate_table_data("mangapipe3d", 9068, output_tables, schemas, generated_dir)
     
 
     #######################################################################
@@ -529,24 +564,6 @@ def main(config):
     #     "z",
     #     "zWarning"],
     #     output_tables)
-    
-    # add_data_to_table("specphotoall",
-    #     ["class",
-    #     "dec",
-    #     "mode",
-    #     "modelMag_g",
-    #     "modelMag_i",
-    #     "modelMag_r",
-    #     "modelMag_u",
-    #     "modelMag_z",
-    #     "petroMag_u",
-    #     "petroMag_r",
-    #     "ra",
-    #     "sourceType",
-    #     "type",
-    #     "z",
-    #     "zWarning"],
-    #     output_tables)
 
     # add_data_to_table("sppparams",
     #     ["FEHADOP",
@@ -574,168 +591,160 @@ def main(config):
     # using the correlation matrix                                     #
     ####################################################################
 
-    # update_synthetic_table("galaxy",
-    #     "qcs_attributes_generated",
-    #     ["clean",
-    #     "dec",
-    #     "g",
-    #     "petroMag_r",
-    #     "petroMag_u",
-    #     "petroR90_g",
-    #     "petroR90_r",
-    #     "petroRad_u",
-    #     "r",
-    #     "ra"],
-    #     config.path)
+    update_synthetic_table("galaxy",
+        "qcs_attributes_generated",
+        ["clean",
+        "dec",
+        "g",
+        "petroMag_r",
+        "petroMag_u",
+        "petroR90_g",
+        "petroR90_r",
+        "petroRad_u",
+        "r",
+        "ra"],
+        config.path)
 
-    # update_synthetic_table("galaxytag",
-    #     "qcs_attributes_generated",
-    #     ["dec",
-    #     "ra",
-    #     "type"],
-    #     config.path)
+    update_synthetic_table("galaxytag",
+        "qcs_attributes_generated",
+        ["dec",
+        "ra",
+        "type"],
+        config.path)
 
-    # update_synthetic_table("galspecextra",
-    #     "qcs_attributes_generated",
-    #     ["bptclass",
-    #     "sfr_fib_p50",
-    #     "sfr_tot_p50",
-    #     "sfr_tot_p84",
-    #     "specsfr_tot_p50"],
-    #     config.path)
+    update_synthetic_table("galspecextra",
+        "qcs_attributes_generated",
+        ["bptclass",
+        "sfr_fib_p50",
+        "sfr_tot_p50",
+        "sfr_tot_p84",
+        "specsfr_tot_p50"],
+        config.path)
 
-    # update_synthetic_table("galspecindx",
-    #     "qcs_attributes_generated",
-    #     ["d4000_n"],
-    #     config.path)
+    update_synthetic_table("galspecindx",
+        "qcs_attributes_generated",
+        ["d4000_n"],
+        config.path)
 
-    # update_synthetic_table("galspecline",
-    #     "qcs_attributes_generated",
-    #     ["h_alpha_eqw",
-    #     "h_alpha_flux",
-    #     "h_alpha_flux_err",
-    #     "h_beta_eqw",
-    #     "h_beta_flux",
-    #     "h_beta_flux_err",
-    #     "nii_6584_flux",
-    #     "oi_6300_flux_err",
-    #     "oiii_5007_eqw",
-    #     "oiii_5007_flux",
-    #     "sii_6717_flux",
-    #     "sii_6731_flux_err"],
-    #     config.path)
+    update_synthetic_table("galspecline",
+        "qcs_attributes_generated",
+        ["h_alpha_eqw",
+        "h_alpha_flux",
+        "h_alpha_flux_err",
+        "h_beta_eqw",
+        "h_beta_flux",
+        "h_beta_flux_err",
+        "nii_6584_flux",
+        "oi_6300_flux_err",
+        "oiii_5007_eqw",
+        "oiii_5007_flux",
+        "sii_6717_flux",
+        "sii_6731_flux_err"],
+        config.path)
 
-    # update_synthetic_table("photoobj",
-    #     "qcs_attributes_generated",
-    #     ["b",
-    #     "camcol",
-    #     "clean",
-    #     "cModelMag_g",
-    #     "dec",
-    #     "deVRad_g",
-    #     "deVRad_r",
-    #     "fiberMag_r",
-    #     "field",
-    #     "flags",
-    #     "fracDeV_r",
-    #     "g",
-    #     "l",
-    #     "mode",
-    #     "petroMag_r",
-    #     "petroMag_z",
-    #     "petroR50_g",
-    #     "petroR50_r",
-    #     "petroRad_g",
-    #     "petroRad_r",
-    #     "r",
-    #     "ra",
-    #     "run",
-    #     "type",
-    #     "u"],
-    #     config.path)
+    update_synthetic_table("photoobj",
+        "qcs_attributes_generated",
+        ["b",
+        "camcol",
+        "clean",
+        "cModelMag_g",
+        "dec",
+        "deVRad_g",
+        "deVRad_r",
+        "fiberMag_r",
+        "field",
+        "flags",
+        "fracDeV_r",
+        "g",
+        "l",
+        "mode",
+        "petroMag_r",
+        "petroMag_z",
+        "petroR50_g",
+        "petroR50_r",
+        "petroRad_g",
+        "petroRad_r",
+        "r",
+        "ra",
+        "run",
+        "type",
+        "u"],
+        config.path)
 
-    # update_synthetic_table("photoobjall",
-    #     "qcs_attributes_generated",
-    #     ["camcol",
-    #     "clean",
-    #     "dec",
-    #     "dered_r",
-    #     "deVRad_r",
-    #     "deVRadErr_r",
-    #     "expRad_r",
-    #     "field",
-    #     "fracDeV_r",
-    #     "mode",
-    #     "petroMag_r",
-    #     "ra",
-    #     "run",
-    #     "type",
-    #     "u"],
-    #     config.path)
+    update_synthetic_table("photoobjall",
+        "qcs_attributes_generated",
+        ["camcol",
+        "clean",
+        "dec",
+        "dered_r",
+        "deVRad_r",
+        "deVRadErr_r",
+        "expRad_r",
+        "field",
+        "fracDeV_r",
+        "mode",
+        "petroMag_r",
+        "ra",
+        "run",
+        "type",
+        "u"],
+        config.path)
     
-    # update_synthetic_table("phototag",
-    #     "qcs_attributes_generated",
-    #     ["clean",
-    #     "dec",
-    #     "mode",
-    #     "nChild",
-    #     "psfMag_r",
-    #     "ra",
-    #     "type"],
-    #     config.path)
+    update_synthetic_table("phototag",
+        "qcs_attributes_generated",
+        ["clean",
+        "dec",
+        "mode",
+        "nChild",
+        "psfMag_r",
+        "ra",
+        "type"],
+        config.path)
 
-    # update_synthetic_table("photoz",
-    #     "qcs_attributes_generated",
-    #     ["absMagR",
-    #     "photoErrorClass",
-    #     "nnCount",
-    #     "nnVol",
-    #     "z",
-    #     "zErr"],
-    #     config.path)
+    update_synthetic_table("photoz",
+        "qcs_attributes_generated",
+        ["absMagR",
+        "photoErrorClass",
+        "nnCount",
+        "nnVol",
+        "z",
+        "zErr"],
+        config.path)
 
-    # update_synthetic_table("specphoto",
-    #     "qcs_attributes_generated",
-    #     ["dec",
-    #     "mode",
-    #     "modelMag_r",
-    #     "petroMag_r",
-    #     "petroMag_z",
-    #     "ra",
-    #     "type",
-    #     "z",
-    #     "zWarning"],
-    #     config.path)
+    update_synthetic_table("specphoto",
+        "qcs_attributes_generated",
+        ["dec",
+        "mode",
+        "modelMag_r",
+        "petroMag_r",
+        "petroMag_z",
+        "ra",
+        "type",
+        "z",
+        "zWarning"],
+        config.path)
 
     update_synthetic_table("sppparams",
         "qcs_attributes_generated",
         ["FEHADOP"],
         config.path)
 
-    # update_synthetic_table("stellarmassfspsgranearlydust",
-    #     "qcs_attributes_generated",
-    #     ["logMass",
-    #     "z"],
-    #     config.path)
+    update_synthetic_table("stellarmassfspsgranearlydust",
+        "qcs_attributes_generated",
+        ["logMass",
+        "z"],
+        config.path)
     
-    # update_synthetic_table("zoospec",
-    #     "qcs_attributes_generated",
-    #     ["elliptical",
-    #     "p_cs",
-    #     "p_cs_debiased",
-    #     "p_el",
-    #     "p_el_debiased",
-    #     "spiral",
-    #     "uncertain"],
-    #     config.path)
-
-
-
-    
-
-    
-
-
+    update_synthetic_table("zoospec",
+        "qcs_attributes_generated",
+        ["elliptical",
+        "p_cs",
+        "p_cs_debiased",
+        "p_el",
+        "p_el_debiased",
+        "spiral",
+        "uncertain"],
+        config.path)
 
 
 if __name__=='__main__':

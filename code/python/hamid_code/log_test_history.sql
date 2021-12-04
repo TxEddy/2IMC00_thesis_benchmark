@@ -200,6 +200,7 @@ WHERE yy = 2020
     or lower(statement) like '%avg(%'
     or lower(statement) like '%sum(%'
     or lower(statement) like '%group by%'
+    or lower(statement) like 'select%'
     )
     and lower(statement) like '%join%'
     and (lower(statement) like '%photoobj%'
@@ -225,8 +226,12 @@ WHERE yy = 2020
     )
     and lower(statement) not like '%fget%'
 
+
 -- String version:
 SELECT * FROM SqlLog WHERE yy = 2020 and (access like 'Skyserver.Search%') and (rows > 0 and error != 1) and (lower(statement) like '%count(%' or lower(statement) like '%avg(%' or lower(statement) like '%sum(%' or lower(statement) like '%group by%') and lower(statement) like '%join%' and (lower(statement) like '%photoobj%' or lower(statement) like '%galaxy%' or lower(statement) like '%specphoto%' or lower(statement) like '%stellarmassfspsgranearlydust%' or lower(statement) like '%photoobjall%' or lower(statement) like '%mangapipe3d%' or lower(statement) like '%mangadrpall%' or lower(statement) like '%specphotoall%' or lower(statement) like '%spplines%' or lower(statement) like '%galaxytag%' or lower(statement) like '%photoz%' or lower(statement) like '%sppparams%' or lower(statement) like '%galspecline%' or lower(statement) like '%galspecindx%' or lower(statement) like '%zoospec%' or lower(statement) like '%apogeestar%' or lower(statement) like '%phototag%' or lower(statement) like '%galspecextra%' or lower(statement) like '%wise_xmatch%' or lower(statement) like '%mangagalaxyzoo%') and lower(statement) not like '%fget%'
+
+-- String version including all select:
+SELECT * FROM SqlLog WHERE yy = 2020 and (access like 'Skyserver.Search%') and (rows > 0 and error != 1) and (lower(statement) like '%count(%' or lower(statement) like '%avg(%' or lower(statement) like '%sum(%' or lower(statement) like '%group by%' or lower(statement) like 'select%') and lower(statement) like '%join%' and (lower(statement) like '%photoobj%' or lower(statement) like '%galaxy%' or lower(statement) like '%specphoto%' or lower(statement) like '%stellarmassfspsgranearlydust%' or lower(statement) like '%photoobjall%' or lower(statement) like '%mangapipe3d%' or lower(statement) like '%mangadrpall%' or lower(statement) like '%specphotoall%' or lower(statement) like '%spplines%' or lower(statement) like '%galaxytag%' or lower(statement) like '%photoz%' or lower(statement) like '%sppparams%' or lower(statement) like '%galspecline%' or lower(statement) like '%galspecindx%' or lower(statement) like '%zoospec%' or lower(statement) like '%apogeestar%' or lower(statement) like '%phototag%' or lower(statement) like '%galspecextra%' or lower(statement) like '%wise_xmatch%' or lower(statement) like '%mangagalaxyzoo%') and lower(statement) not like '%fget%'
 
 
 

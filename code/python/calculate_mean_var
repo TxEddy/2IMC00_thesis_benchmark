@@ -1,0 +1,360 @@
+from os import path
+from config import get_config
+import pandas as pd
+import numpy as np
+import time, statistics
+from datetime import datetime, timedelta
+
+
+def calculate_mean_var(csv_file, output_dir):
+    df = pd.read_csv(csv_file)
+    mean_list = []
+    mean_formatted_list = []
+    var_list = []
+    
+    for column in df:
+        lst = []
+        
+        for duration in df[column]:
+            splitted_time = duration.split(":")
+            seconds = (int(splitted_time[0]) * 60) + int(splitted_time[1])
+            lst.append(seconds)
+        
+        # print(lst)
+        df.drop(column, axis=1, inplace=True)
+        df[column] = lst
+
+        # df[column] = lst
+
+    for new_column in df:
+        mean_list.append(df[new_column].mean())
+        var_list.append(df[new_column].var())
+    
+    for i in mean_list:
+        print(i)
+        # print(datetime.strftime(datetime.utcfromtimestamp(val), "%M:%S.%f")[:-4])
+        mean_formatted_list.append(datetime.strftime(datetime.utcfromtimestamp(i), "%M:%S.%f")[:-4])
+        print(datetime.strftime(datetime.utcfromtimestamp(i), "%M:%S.%f")[:-4])
+
+    calculated_times = {'MySQL Performance':[mean_list[0], var_list[0], mean_formatted_list[0]],
+                        'Microsoft SQL Server Performance':[mean_list[1], var_list[1], mean_formatted_list[1]],
+                        'PostgreSQL Performance':[mean_list[2], var_list[2], mean_formatted_list[2]],}
+
+    
+    df_new = pd.DataFrame(calculated_times, index=['average in seconds', 'variance', 'average (mm:ss)'])
+
+    name_file = csv_file.split("/")[-1].split(".")[0]
+
+    df_new.to_csv((output_dir / "calculated" / f"{name_file}_times.csv").as_posix(), header=True, index=True)
+
+
+def aggr_calculate_mean_var(csv_file, output_dir):
+    df = pd.read_csv(csv_file)
+    mean_list = []
+    var_list = []
+
+    for new_column in df:
+        mean_list.append(df[new_column].mean())
+        var_list.append(df[new_column].var())
+
+    calculated_times = {'MySQL Performance':[mean_list[0]],}
+    
+    df_new = pd.DataFrame(calculated_times, index=['average'])
+
+    name_file = csv_file.split("/")[-1].split(".")[0]
+
+    df_new.to_csv((output_dir / "calculated" / f"{name_file}_times.csv").as_posix(), header=True, index=False)
+
+
+def make_df_overview(dir, output_dir):
+    output_name = dir.as_posix().split("/")[-1]
+
+    # dir_original = dir / "original"
+    # original_csvs = dir_original.glob('*.csv') # Also get csv files in underlying folders.
+    # paths_original_csv = [path.as_posix() for path in original_csvs]
+
+    dir_synthetic = dir / "synthetic"
+    synthetic_csvs = dir_synthetic.glob('*.csv') # Also get csv files in underlying folders.
+    paths_synthetic_csv = [path.as_posix() for path in synthetic_csvs]
+
+    paths_synthetic_csv.sort()
+
+    list_og_dict = []
+    list_syn_dict = []
+
+    # for i in paths_original_csv:
+    #     print(i)
+    #     list_og_dict.append(pd.read_csv(i).to_dict())
+
+    for i in paths_synthetic_csv:
+        print(i)
+        list_syn_dict.append(pd.read_csv(i).to_dict())
+    
+    # df_original = pd.DataFrame(list_og_dict[1])
+    df_synthetic = pd.DataFrame(list_syn_dict[1])
+    # 'Microsoft SQL Server Performance (seconds)'
+    # 'PostgreSQL Performance (seconds)'
+
+    # df_original['Microsoft SQL Server Performance (seconds)'] = list_og_dict[0]['Microsoft SQL Server Performance (seconds)'].values()
+    # df_original['PostgreSQL Performance (seconds)'] = list_og_dict[2]['PostgreSQL Performance (seconds)'].values()
+
+    df_synthetic['Microsoft SQL Server Performance (seconds)'] = list_syn_dict[0]['Microsoft SQL Server Performance (seconds)'].values()
+    df_synthetic['PostgreSQL Performance (seconds)'] = list_syn_dict[2]['PostgreSQL Performance (seconds)'].values()
+
+    # df_original.to_csv((output_dir / f"total_original_{output_name}.csv").as_posix(), header=True, index=False)
+    df_synthetic.to_csv((output_dir / f"total_synthetic_{output_name}.csv").as_posix(), header=True, index=False)
+
+
+def new_calculate_mean_var(csv_file, output_dir):
+    df = pd.read_csv(csv_file)
+    mean_list = []
+    mean_formatted_list = []
+
+    var_list = []
+    var_formatted_list = []
+
+    for new_column in df:
+        print(new_column)
+        mean_list.append(df[new_column].mean())
+        var_list.append(df[new_column].var())
+    
+    for i in mean_list:
+        print(i)
+        # print(datetime.strftime(datetime.utcfromtimestamp(val), "%M:%S.%f")[:-4])
+        mean_formatted_list.append(datetime.strftime(datetime.utcfromtimestamp(i), "%M:%S.%f")[:-4])
+        print(datetime.strftime(datetime.utcfromtimestamp(i), "%M:%S.%f")[:-4])
+    
+    calculated_times = {'MySQL Performance':[mean_list[0], mean_formatted_list[0], var_list[0]],
+                        'Microsoft SQL Server Performance':[mean_list[1], mean_formatted_list[1], var_list[1]],
+                        'PostgreSQL Performance':[mean_list[2], mean_formatted_list[2], var_list[2]],}
+    
+    df_new = pd.DataFrame(calculated_times, index=['average in seconds', 'average (mm:ss)', 'variance'])
+
+    # Structure for mean times.
+    # calculated_times = {'MySQL Performance':[mean_list[0], mean_formatted_list[0]],
+    #                     'Microsoft SQL Server Performance':[mean_list[1], mean_formatted_list[1]],
+    #                     'PostgreSQL Performance':[mean_list[2], mean_formatted_list[2]],}
+    
+    # Structure for var times.
+    # calculated_times = {'MySQL Performance':[var_list[0]],
+    #                     'Microsoft SQL Server Performance':[var_list[1]],
+    #                     'PostgreSQL Performance':[var_list[2]],}
+
+    # df_new = pd.DataFrame(calculated_times, index=['average in seconds', 'average (mm:ss)'])
+    # df_new = pd.DataFrame(calculated_times, index=['variance'])
+
+    name_file = csv_file.split("/")[-1].split(".")[0]
+
+    df_new.to_csv((output_dir / "calculated" / f"{name_file}_times.csv").as_posix(), header=True, index=True)
+
+
+def filter_execution_times(input_dir):
+    original = input_dir / "original"
+    original_csvs = original.glob('*.csv') # Also get csv files in underlying folders.
+    paths_original = [path.as_posix() for path in original_csvs]
+    # paths_csv.sort()
+
+    synthetic = input_dir / "synthetic"
+    synthetic_csvs = synthetic.glob('*.csv') # Also get csv files in underlying folders.
+    paths_synthetic = [path.as_posix() for path in synthetic_csvs]
+
+    original_times = []
+    synthetic_times = []
+
+    # Calculate the total execution times to delete the two slowest times and append to list to find median later on.
+    for i in paths_original:
+        print(i.split("/")[-1])
+        df = pd.read_csv(i)
+        print(df['Execution Times'].sum())
+        original_times.append(df['Execution Times'].sum())
+    
+    # Find median.
+    original_times.sort()
+    print(f"Median original: {statistics.median(original_times)}\n")
+    
+    for i in paths_synthetic:
+        print(i.split("/")[-1])
+        df = pd.read_csv(i)
+        print(df['Execution Times'].sum())
+        synthetic_times.append(df['Execution Times'].sum())
+    
+    # Find median.
+    synthetic_times.sort()
+    print(f"Median synthetic: {statistics.median(synthetic_times)}")
+
+
+
+def difference_execution_times(input_dir, output_dir, dbname):
+    all_csvs = input_dir.glob('*.csv') # Also get csv files in underlying folders.
+    paths_csv = [path.as_posix() for path in all_csvs]
+    paths_csv.sort()
+
+    df_original = pd.read_csv(paths_csv[0])
+    df_synthetic = pd.read_csv(paths_csv[1])
+
+    original_times_list = df_original['Execution Times'].values.tolist()
+    synthetic_times_list = df_synthetic['Execution Times'].values.tolist()
+    difference_list = []
+    qry_number = []
+
+    for i in range(len(original_times_list)):
+        # print(f"{original_times_list[i]} - {synthetic_times_list[i]}")
+        # print(abs(original_times_list[i] - synthetic_times_list[i]))
+        # difference_list.append(abs(original_times_list[i] - synthetic_times_list[i]))
+        # qry_number.append(i + 1)
+
+        # if ((abs(original_times_list[i] - synthetic_times_list[i])) >= 0.5):
+        if (original_times_list[i] / synthetic_times_list[i] >= 1.15 and original_times_list[i] / synthetic_times_list[i] < 2.0):
+            # difference_list.append(abs(original_times_list[i] - synthetic_times_list[i]))
+            difference_list.append(original_times_list[i] / synthetic_times_list[i])
+            qry_number.append(i + 1)
+
+    
+    columns = {'Query': qry_number,
+                'Difference': difference_list}
+    
+    df_new = pd.DataFrame(columns)
+    df_new.to_csv((output_dir / f"2-{dbname}_difference_execution_times.csv").as_posix(), header=True, index=False)
+
+
+
+
+
+def main(config):
+    results_benchmarks = config.path.root / "output_benchmarks"
+    results_aggr_qry = config.path.root / "output_benchmarks" / "total_aggregate"
+    results_not_empty = config.path.root / "output_benchmarks" / "subqry2"
+
+    files_csv = results_benchmarks.glob('*.csv') # Also get csv files in underlying folders.
+    paths_csv = [path.as_posix() for path in files_csv]
+
+    aggr_csvs = results_aggr_qry.glob('*.csv') # Also get csv files in underlying folders.
+    paths_aggr_csv = [path.as_posix() for path in aggr_csvs]
+
+    # for i in paths_csv:
+    #     # print(i)
+    #     calculate_mean_var(i, results_benchmarks)
+    
+    # calculate_mean_var(paths_csv[2], results_benchmarks)
+
+    # for i in paths_aggr_csv:
+    #     print(i)
+    #     aggr_calculate_mean_var(i, results_benchmarks)
+
+    # make_df_overview(results_not_empty, results_benchmarks)
+    # new_calculate_mean_var((results_benchmarks / "total_original_subqry2.csv").as_posix(), results_benchmarks)
+    # new_calculate_mean_var((results_benchmarks / "total_synthetic_subqry2.csv").as_posix(), results_benchmarks)
+
+    # results_times_single_qry = config.path.root / "output_benchmark_single_qry"
+    # mysql_single_dir = results_times_single_qry / "mysql2"
+    # mssql_single_dir = results_times_single_qry / "mssql2"
+    # psql_single_dir = results_times_single_qry / "psql2"
+
+    # filter_execution_times(mysql_single_dir)
+    # filter_execution_times(mssql_single_dir)
+    # filter_execution_times(psql_single_dir)
+
+    # difference_execution_times(mysql_single_dir, results_times_single_qry, "mysql")
+    # difference_execution_times(mssql_single_dir, results_times_single_qry, "mssql")
+    # difference_execution_times(psql_single_dir, results_times_single_qry, "psql")
+
+    # #############################
+    # # Calculate total for run 1 #
+    # #############################
+    # # Setting folder directory.
+    # results_test1 = config.path.root / "output_benchmarks" / "run1"
+
+    # make_df_overview(results_test1, results_benchmarks)
+    # new_calculate_mean_var((results_benchmarks / "total_synthetic_run1.csv").as_posix(), results_benchmarks)
+
+    # #############################
+    # # Calculate total for run 2 #
+    # #############################
+    # # Setting folder directory.
+    # results_test2 = config.path.root / "output_benchmarks" / "run2"
+
+    # make_df_overview(results_test2, results_benchmarks)
+    # new_calculate_mean_var((results_benchmarks / "total_synthetic_run2.csv").as_posix(), results_benchmarks)
+
+    # #############################
+    # # Calculate total for run 3 #
+    # #############################
+    # # Setting folder directory.
+    # results_test3 = config.path.root / "output_benchmarks" / "run3"
+
+    # make_df_overview(results_test3, results_benchmarks)
+    # new_calculate_mean_var((results_benchmarks / "total_synthetic_run3.csv").as_posix(), results_benchmarks)
+
+    # #############################
+    # # Calculate total for run 4 #
+    # #############################
+    # # Setting folder directory.
+    # results_test4 = config.path.root / "output_benchmarks" / "run4"
+
+    # make_df_overview(results_test4, results_benchmarks)
+    # new_calculate_mean_var((results_benchmarks / "total_synthetic_run4.csv").as_posix(), results_benchmarks)
+
+    # #############################
+    # # Calculate total for run 5 #
+    # #############################
+    # # Setting folder directory.
+    # results_test5 = config.path.root / "output_benchmarks" / "run5"
+
+    # make_df_overview(results_test5, results_benchmarks)
+    # new_calculate_mean_var((results_benchmarks / "total_synthetic_run5.csv").as_posix(), results_benchmarks)
+
+    # #############################
+    # # Calculate total for run 6 #
+    # #############################
+    # # Setting folder directory.
+    # results_test6 = config.path.root / "output_benchmarks" / "run6"
+
+    # make_df_overview(results_test6, results_benchmarks)
+    # new_calculate_mean_var((results_benchmarks / "total_synthetic_run6.csv").as_posix(), results_benchmarks)
+
+    # #############################
+    # # Calculate total for run 7 #
+    # #############################
+    # # Setting folder directory.
+    # results_test7 = config.path.root / "output_benchmarks" / "run7"
+
+    # make_df_overview(results_test7, results_benchmarks)
+    # new_calculate_mean_var((results_benchmarks / "total_synthetic_run7.csv").as_posix(), results_benchmarks)
+
+    # #############################
+    # # Calculate total for run 8 #
+    # #############################
+    # # Setting folder directory.
+    # results_test8 = config.path.root / "output_benchmarks" / "run8"
+
+    # make_df_overview(results_test8, results_benchmarks)
+    # new_calculate_mean_var((results_benchmarks / "total_synthetic_run8.csv").as_posix(), results_benchmarks)
+
+    # #############################
+    # # Calculate total for run 9 #
+    # #############################
+    # # Setting folder directory.
+    # results_test9 = config.path.root / "output_benchmarks" / "run9"
+
+    # make_df_overview(results_test9, results_benchmarks)
+    # new_calculate_mean_var((results_benchmarks / "total_synthetic_run9.csv").as_posix(), results_benchmarks)
+
+    # ##############################
+    # # Calculate total for run 10 #
+    # ##############################
+    # # Setting folder directory.
+    # results_test10 = config.path.root / "output_benchmarks" / "run10"
+
+    # make_df_overview(results_test10, results_benchmarks)
+    # new_calculate_mean_var((results_benchmarks / "total_synthetic_run10.csv").as_posix(), results_benchmarks)
+
+    # new_calculate_mean_var((results_benchmarks / "total_synthetic_runs.csv").as_posix(), results_benchmarks)
+
+    
+
+
+
+
+if __name__=='__main__':
+    config = get_config("txe")
+    main(config=config)
