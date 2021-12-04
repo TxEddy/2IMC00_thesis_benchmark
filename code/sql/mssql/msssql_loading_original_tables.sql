@@ -1,0 +1,21 @@
+-- .run /Users/eddy/Documents/study_github/2IMC00_thesis_benchmark/code/sql/mssql/msssql_loading_original_tables.sql
+bulk insert photoobjall from '/tmp/original_tables/photoobjall.csv' with (firstrow=2, fieldterminator=',', rowterminator='\n', tablock);
+bulk insert photoobj from '/tmp/original_tables/photoobj.csv' with (firstrow=2, fieldterminator=',', rowterminator='\n', tablock);
+bulk insert specphotoall from '/tmp/original_tables/specphotoall.csv' with (firstrow=2, fieldterminator=',', rowterminator='\n', tablock);
+bulk insert specphoto from '/tmp/original_tables/specphoto.csv' with (firstrow=2, fieldterminator=',', rowterminator='\n', tablock);
+bulk insert spplines from '/tmp/original_tables/spplines.csv' with (firstrow=2, fieldterminator=',', rowterminator='\n', tablock);
+bulk insert sppparams from '/tmp/original_tables/sppparams.csv' with (firstrow=2, fieldterminator=',', rowterminator='\n', tablock);
+bulk insert wise_xmatch from '/tmp/original_tables/wise_xmatch.csv' with (firstrow=2, fieldterminator=',', rowterminator='\n', tablock);
+bulk insert phototag from '/tmp/original_tables/phototag.csv' with (firstrow=2, fieldterminator=',', rowterminator='\n', tablock);
+bulk insert galaxytag from '/tmp/original_tables/galaxytag.csv' with (firstrow=2, fieldterminator=',', rowterminator='\n', tablock);
+bulk insert zoospec from '/tmp/original_tables/zoospec.csv' with (firstrow=2, fieldterminator=',', rowterminator='\n', tablock);
+bulk insert photoz from '/tmp/original_tables/photoz.csv' with (firstrow=2, fieldterminator=',', rowterminator='\n', tablock);
+bulk insert apogeestar from '/tmp/original_tables/apogeestar.csv' with (firstrow=2, fieldterminator=',', rowterminator='\n', tablock);
+bulk insert galaxy from '/tmp/original_tables/galaxy.csv' with (firstrow=2, fieldterminator=',', rowterminator='\n', tablock);
+bulk insert galspecextra from '/tmp/original_tables/galspecextra.csv' with (firstrow=2, fieldterminator=',', rowterminator='\n', tablock);
+bulk insert galspecindx from '/tmp/original_tables/galspecindx.csv' with (firstrow=2, fieldterminator=',', rowterminator='\n', tablock);
+bulk insert galspecline from '/tmp/original_tables/galspecline.csv' with (firstrow=2, fieldterminator=',', rowterminator='\n', tablock);
+bulk insert stellarmassfspsgranearlydust from '/tmp/original_tables/stellarmassfspsgranearlydust.csv' with (firstrow=2, fieldterminator=',', rowterminator='\n', tablock);
+bulk insert mangagalaxyzoo from '/tmp/original_tables/mangagalaxyzoo.csv' with (firstrow=2, fieldterminator=',', rowterminator='\n', tablock);
+bulk insert mangadrpall from '/tmp/original_tables/mangadrpall.csv' with (firstrow=2, fieldterminator=',', rowterminator='\n', tablock);
+bulk insert mangapipe3d from '/tmp/original_tables/mangapipe3d.csv' with (firstrow=2, fieldterminator=',', rowterminator='\n', tablock);

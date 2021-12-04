@@ -1,0 +1,21 @@
+-- \i /Users/eddy/Documents/study_github/2IMC00_thesis_benchmark/code/sql/postgresql/psql_export_tables.sql
+\copy public.photoobjall to '~/tables_joinable_double/photoobjall.csv' csv header delimiter ',';
+\copy public.photoobj to '~/tables_joinable_double/photoobj.csv' csv header delimiter ',';
+\copy public.specphotoall to '~/tables_joinable_double/specphotoall.csv' csv header delimiter ',';
+\copy public.specphoto to '~/tables_joinable_double/specphoto.csv' csv header delimiter ',';
+\copy public.spplines to '~/tables_joinable_double/spplines.csv' csv header delimiter ',';
+\copy public.sppparams to '~/tables_joinable_double/sppparams.csv' csv header delimiter ',';
+\copy public.wise_xmatch to '~/tables_joinable_double/wise_xmatch.csv' csv header delimiter ',';
+\copy public.phototag to '~/tables_joinable_double/phototag.csv' csv header delimiter ',';
+\copy public.galaxytag to '~/tables_joinable_double/galaxytag.csv' csv header delimiter ',';
+\copy public.zoospec to '~/tables_joinable_double/zoospec.csv' csv header delimiter ',';
+\copy public.photoz to '~/tables_joinable_double/photoz.csv' csv header delimiter ',';
+\copy public.apogeestar to '~/tables_joinable_double/apogeestar.csv' csv header delimiter ',';
+\copy public.galaxy to '~/tables_joinable_double/galaxy.csv' csv header delimiter ',';
+\copy public.galspecextra to '~/tables_joinable_double/galspecextra.csv' csv header delimiter ',';
+\copy public.galspecindx to '~/tables_joinable_double/galspecindx.csv' csv header delimiter ',';
+\copy public.galspecline to '~/tables_joinable_double/galspecline.csv' csv header delimiter ',';
+\copy public.stellarmassfspsgranearlydust to '~/tables_joinable_double/stellarmassfspsgranearlydust.csv' csv header delimiter ',';
+\copy public.mangagalaxyzoo to '~/tables_joinable_double/mangagalaxyzoo.csv' csv header delimiter ',';
+\copy public.mangadrpall to '~/tables_joinable_double/mangadrpall.csv' csv header delimiter ',';
+\copy public.mangapipe3d to '~/tables_joinable_double/mangapipe3d.csv' csv header delimiter ',';
