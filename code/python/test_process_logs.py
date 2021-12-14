@@ -180,8 +180,8 @@ def correlation_matrix(qcs_tables_dir, generate_number):
 
     # Generate data using the correlation matrix and multivariate normal distribution sampling.
     # generated_corr = mvn.rvs(mean=qry_df.mean().array, cov=corr_matrix, size=15000)
-    generated_corr = mvn.rvs(mean=qry_df.mean().array, cov=corr_matrix, size=generate_number)
-    # generated_corr = mvn.rvs(mean=qry_df.median().array, cov=corr_matrix, size=generate_number)
+    # generated_corr = mvn.rvs(mean=qry_df.mean().array, cov=corr_matrix, size=generate_number)
+    generated_corr = mvn.rvs(mean=qry_df.median().array, cov=corr_matrix, size=generate_number)
     # print(generated_corr)
 
     # Adding the column names to the generated data and export the generated data as csv.

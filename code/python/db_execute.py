@@ -334,12 +334,12 @@ def main(config):
     #                  THE NORMAL BENCHMARK EXECUTION                     #
     #######################################################################
 
-    # mysql_original_list = []
-    # mssql_original_list = []
-    # postgresql_original_list = []
+    mysql_original_list = []
+    mssql_original_list = []
+    postgresql_original_list = []
 
     # # Executing MySQL original tables and data.
-    # # for i in range(50):
+    # # for i in range(1):
     # for i in range(15):
     #     mysql_original_list.append(db_performance(qrys_original_mysql, db_original_tables, mysql, execution_original))
     
@@ -348,62 +348,88 @@ def main(config):
     # print(f"finished with MySQL at {datetime.now().strftime('%d-%m@%H.%M.%S')}")
     
     # time.sleep(300)
-    # # time.sleep(60)
+    # time.sleep(60)
 
-    # # Executing MS SQL Server original tables and data.
-    # # for i in range(50):
-    # for i in range(15):
-    #     mssql_original_list.append(db_performance(qrys_original_mssql, db_original_tables, mssql, execution_original))
+    # Executing MS SQL Server original tables and data.
+    # for i in range(1):
+    for i in range(15):
+        mssql_original_list.append(db_performance(qrys_original_mssql, db_original_tables, mssql, execution_original))
     
-    # write_results_csv({"Microsoft SQL Server Performance (seconds)": mssql_original_list}, 'original_mssql', output)
+    write_results_csv({"Microsoft SQL Server Performance (seconds)": mssql_original_list}, 'original_mssql3', output)
 
-    # print(f"finished with MS SQL Server at {datetime.now().strftime('%d-%m@%H.%M.%S')}")
+    print(f"finished with MS SQL Server at {datetime.now().strftime('%d-%m@%H.%M.%S')}")
     
 
-    # time.sleep(300)
-    # # time.sleep(60)
+    time.sleep(300)
+    time.sleep(60)
 
-    # # Executing PostgreSQL original tables and data.
-    # # for i in range(50):
-    # for i in range(15):
-    #     postgresql_original_list.append(db_performance(qrys_original_psql, db_original_tables, psql, execution_original))
+    # Executing PostgreSQL original tables and data.
+    # for i in range(1):
+    for i in range(15):
+         postgresql_original_list.append(db_performance(qrys_original_psql, db_original_tables, psql, execution_original))
     
-    # write_results_csv({"PostgreSQL Performance (seconds)": postgresql_original_list}, 'original_psql', output)
+    write_results_csv({"PostgreSQL Performance (seconds)": postgresql_original_list}, 'original_psql3', output)
 
-    # print(f"finished with PostgreSQL at {datetime.now().strftime('%d-%m@%H.%M.%S')}")
+    print(f"finished with PostgreSQL at {datetime.now().strftime('%d-%m@%H.%M.%S')}")
     
-    # # 15 min sleep
-    # time.sleep(900)
+    # 15 min sleep
+    time.sleep(900)
     # # time.sleep(300)
 
-    ####################################################################
-    #              Synthetic test - Changed Data set                   #
-    ####################################################################
+
+    # Executing MS SQL Server original tables and data.
+    # for i in range(1):
+    for i in range(15):
+        mssql_original_list.append(db_performance(qrys_original_mssql, db_original_tables, mssql, execution_original))
+    
+    write_results_csv({"Microsoft SQL Server Performance (seconds)": mssql_original_list}, 'original_mssql4', output)
+
+    print(f"finished with MS SQL Server at {datetime.now().strftime('%d-%m@%H.%M.%S')}")
+    
+
+    time.sleep(300)
+    time.sleep(60)
+
+    # Executing PostgreSQL original tables and data.
+    # for i in range(1):
+    for i in range(15):
+         postgresql_original_list.append(db_performance(qrys_original_psql, db_original_tables, psql, execution_original))
+    
+    write_results_csv({"PostgreSQL Performance (seconds)": postgresql_original_list}, 'original_psql4', output)
+
+    print(f"finished with PostgreSQL at {datetime.now().strftime('%d-%m@%H.%M.%S')}")
+    
+    # 15 min sleep
+    time.sleep(900)
+
+    # ####################################################################
+    # #              Synthetic test - Changed Data set                   #
+    # ####################################################################
     mssql_synthetic_list = []
     postgresql_synthetic_list = []
 
     # Executing MS SQL Server synthetic tables and data.
     for i in range(15):
-        mssql_synthetic_list.append(db_performance(qrys_generated, test_synthetic11, mssql, execution_synthetic))
+        mssql_synthetic_list.append(db_performance(qrys_generated, test_synthetic1, mssql, execution_synthetic))
     
-    write_results_csv({"Microsoft SQL Server Performance (seconds)": mssql_synthetic_list}, 'synthetic_mssql_run11', output)
+    write_results_csv({"Microsoft SQL Server Performance (seconds)": mssql_synthetic_list}, 'synthetic_mssql_run14', output)
 
-    print(f"finished with MS SQL Server run 11 at {datetime.now().strftime('%d-%m@%H.%M.%S')}")
+    print(f"finished with MS SQL Server run 12 at {datetime.now().strftime('%d-%m@%H.%M.%S')}")
     
 
     time.sleep(300)
 
     # Executing PostgreSQL synthetic tables and data.
     for i in range(15):
-        postgresql_synthetic_list.append(db_performance(qrys_generated, test_synthetic11, psql, execution_synthetic))
+        postgresql_synthetic_list.append(db_performance(qrys_generated, test_synthetic1, psql, execution_synthetic))
 
-    write_results_csv({"PostgreSQL Performance (seconds)": postgresql_synthetic_list}, 'synthetic_psql_run11', output)
+    write_results_csv({"PostgreSQL Performance (seconds)": postgresql_synthetic_list}, 'synthetic_psql_run14', output)
     
-    print(f"finished with PostgreSQL run 11 at {datetime.now().strftime('%d-%m@%H.%M.%S')}")
+    print(f"finished with PostgreSQL run 12 at {datetime.now().strftime('%d-%m@%H.%M.%S')}")
 
-    ####################################################################
-    #              Synthetic test - Changed Data set run2              #
-    ####################################################################
+    # ####################################################################
+    # #              Synthetic test - Changed Data set run2              #
+    # ####################################################################
     time.sleep(900)
 
     mssql_synthetic_list = []
@@ -411,65 +437,65 @@ def main(config):
 
     # Executing MS SQL Server synthetic tables and data.
     for i in range(15):
-        mssql_synthetic_list.append(db_performance(qrys_generated, test_synthetic11, mssql, execution_synthetic))
+        mssql_synthetic_list.append(db_performance(qrys_generated, test_synthetic2, mssql, execution_synthetic))
     
-    write_results_csv({"Microsoft SQL Server Performance (seconds)": mssql_synthetic_list}, 'synthetic_mssql_run11-2', output)
+    write_results_csv({"Microsoft SQL Server Performance (seconds)": mssql_synthetic_list}, 'synthetic_mssql_run15', output)
 
-    print(f"finished with MS SQL Server run 11 (2) at {datetime.now().strftime('%d-%m@%H.%M.%S')}")
+    print(f"finished with MS SQL Server run 13 at {datetime.now().strftime('%d-%m@%H.%M.%S')}")
     
 
     time.sleep(300)
 
     # Executing PostgreSQL synthetic tables and data.
     for i in range(15):
-        postgresql_synthetic_list.append(db_performance(qrys_generated, test_synthetic11, psql, execution_synthetic))
+        postgresql_synthetic_list.append(db_performance(qrys_generated, test_synthetic2, psql, execution_synthetic))
 
-    write_results_csv({"PostgreSQL Performance (seconds)": postgresql_synthetic_list}, 'synthetic_psql_run11-2', output)
+    write_results_csv({"PostgreSQL Performance (seconds)": postgresql_synthetic_list}, 'synthetic_psql_run15', output)
     
-    print(f"finished with PostgreSQL run 11 (2) at {datetime.now().strftime('%d-%m@%H.%M.%S')}")
+    print(f"finished with PostgreSQL run 13 at {datetime.now().strftime('%d-%m@%H.%M.%S')}")
     
 
     print(f"finished at {datetime.now().strftime('%d-%m@%H.%M.%S')}")
 
-    ##############################
-    #      Synthetic Queries     #
-    ##############################
+    # ##############################
+    # #      Synthetic Queries     #
+    # ##############################
 
     # mysql_synthetic_list = []
     # mssql_synthetic_list = []
     # postgresql_synthetic_list = []
 
-    # # Executing MySQL synthetic tables and data.
-    # # for i in range(50):
+    # Executing MySQL synthetic tables and data.
+    # for i in range(1):
     # for i in range(15):
-    #     mysql_synthetic_list.append(db_performance(qrys_generated, test_synthetic1, mysql, execution_synthetic))
+        # mysql_synthetic_list.append(db_performance(qrys_generated, test_synthetic1, mysql, execution_synthetic))
     
-    # write_results_csv({"MySQL Performance (seconds)": mysql_synthetic_list}, 'synthetic_mysql_median', output)
+    # # write_results_csv({"MySQL Performance (seconds)": mysql_synthetic_list}, 'synthetic_mysql_median', output)
 
-    # print(f"finished with MySQL at {datetime.now().strftime('%d-%m@%H.%M.%S')}")
+    # # print(f"finished with MySQL at {datetime.now().strftime('%d-%m@%H.%M.%S')}")
     
-    # time.sleep(300)
+    # # time.sleep(300)
     # # time.sleep(60)
 
     # # Executing MS SQL Server synthetic tables and data.
-    # # for i in range(50):
-    # for i in range(15):
-    #     mssql_synthetic_list.append(db_performance(qrys_generated, test_synthetic1, mssql, execution_synthetic))
+    # for i in range(1):
+    # # for i in range(15):
+        # mssql_synthetic_list.append(db_performance(qrys_generated, test_synthetic1, mssql, execution_synthetic))
     
-    # write_results_csv({"Microsoft SQL Server Performance (seconds)": mssql_synthetic_list}, 'synthetic_mssql_median', output)
+    # # write_results_csv({"Microsoft SQL Server Performance (seconds)": mssql_synthetic_list}, 'synthetic_mssql_median', output)
 
     # print(f"finished with MS SQL Server at {datetime.now().strftime('%d-%m@%H.%M.%S')}")
     
 
-    # time.sleep(300)
+    # # time.sleep(300)
     # # time.sleep(60)
 
     # # Executing PostgreSQL synthetic tables and data.
-    # # for i in range(50):
-    # for i in range(15):
-    #     postgresql_synthetic_list.append(db_performance(qrys_generated,  test_synthetic1, psql, execution_synthetic))
+    # for i in range(1):
+    # # for i in range(15):
+        # postgresql_synthetic_list.append(db_performance(qrys_generated,  test_synthetic1, psql, execution_synthetic))
 
-    # write_results_csv({"PostgreSQL Performance (seconds)": postgresql_synthetic_list}, 'synthetic_psql_median', output)
+    # # write_results_csv({"PostgreSQL Performance (seconds)": postgresql_synthetic_list}, 'synthetic_psql_median', output)
     
     # print(f"finished with PostgreSQL at {datetime.now().strftime('%d-%m@%H.%M.%S')}")
 

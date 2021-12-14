@@ -158,33 +158,33 @@ def main(config):
     #######################################
     # Exporting primary keys PhotoObjAll. #
     #######################################
-    # table_photoobjall = output_tables / "photoobjall.csv"
-    # export_pk_photoobjall(table_photoobjall, config.path.root)
+    table_photoobjall = output_tables / "photoobjall.csv"
+    export_pk_photoobjall(table_photoobjall, config.path.root)
 
 
     ########################################################################
     # Replace missing primary/foreign keys with keys of PhotoObjAll table. #
     ########################################################################
-    # photooobjall_fk_pk = output_tables / "photoobjall_export_pk_fk.csv"
+    photooobjall_fk_pk = output_tables / "photoobjall_export_pk_fk.csv"
 
-    # table_order_list = ['specphotoall',
-    #                     'specphoto',
-    #                     'phototag',
-    #                     'spplines',
-    #                     'sppparams',
-    #                     'wise_xmatch',
-    #                     'zoospec',
-    #                     'photoz',
-    #                     'galaxytag',
-    #                     'galaxy',
-    #                     'galspecextra',
-    #                     'galspecindx',
-    #                     'galspecline',
-    #                     'stellarmassfspsgranearlydust']
+    table_order_list = ['specphotoall',
+                        'specphoto',
+                        'phototag',
+                        'spplines',
+                        'sppparams',
+                        'wise_xmatch',
+                        'zoospec',
+                        'photoz',
+                        'galaxytag',
+                        'galaxy',
+                        'galspecextra',
+                        'galspecindx',
+                        'galspecline',
+                        'stellarmassfspsgranearlydust']
     
-    # for i in table_order_list:
-    #     # print(f"{(output_tables / i).as_posix()}.csv")
-    #     replacing_fks(f"{(output_tables / i).as_posix()}.csv", photooobjall_fk_pk)
+    for i in table_order_list:
+        # print(f"{(output_tables / i).as_posix()}.csv")
+        replacing_fks(f"{(output_tables / i).as_posix()}.csv", photooobjall_fk_pk)
     
     
     # Replacing pk and fk of galaxytag using phototag, when fk of photootags have been replaced.
