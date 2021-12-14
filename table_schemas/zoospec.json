@@ -30,12 +30,14 @@
     "name" : "rastring",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 11 }
   }, {
     "name" : "decstring",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 11 }
   }, {
     "name" : "nvote",
     "type" : "integer",

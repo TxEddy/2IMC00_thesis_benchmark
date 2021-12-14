@@ -10,7 +10,8 @@
     "name" : "IAUNAME",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 32 }
   }, {
     "name" : "IFUDESIGNSIZE",
     "type" : "integer",
@@ -30,7 +31,8 @@
     "name" : "MANGAID",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 16 }
   }, {
     "name" : "MANGA_TILEID",
     "type" : "integer",
@@ -50,7 +52,8 @@
     "name" : "survey",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 128 }
   }, {
     "name" : "t01_smooth_or_features_a01_smooth_count",
     "type" : "double",

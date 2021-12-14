@@ -40,12 +40,14 @@
     "name" : "class",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 32 }
   }, {
     "name" : "subClass",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 32 }
   }, {
     "name" : "zWarning",
     "type" : "integer",
@@ -120,12 +122,14 @@
     "name" : "survey",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 32 }
   }, {
     "name" : "programname",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 32 }
   }, {
     "name" : "legacy_target1",
     "type" : "integer",
@@ -190,7 +194,8 @@
     "name" : "sourceType",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 32 }
   }, {
     "name" : "targetObjID",
     "type" : "long",

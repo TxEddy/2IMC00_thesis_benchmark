@@ -50,17 +50,20 @@
     "name" : "run2d",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 32 }
   }, {
     "name" : "run1d",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 32 }
   }, {
     "name" : "runsspp",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 32 }
   }, {
     "name" : "h83side",
     "type" : "double",

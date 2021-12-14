@@ -46,27 +46,32 @@
     "name" : "firstrelease",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 32 }
   }, {
     "name" : "survey",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 32 }
   }, {
     "name" : "programname",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 32 }
   }, {
     "name" : "chunk",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 32 }
   }, {
     "name" : "platerun",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 32 }
   }, {
     "name" : "mjd",
     "type" : "integer",
@@ -86,22 +91,26 @@
     "name" : "run2d",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 32 }
   }, {
     "name" : "run1d",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 32 }
   }, {
     "name" : "runsspp",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 32 }
   }, {
     "name" : "targetstring",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 32 }
   }, {
     "name" : "primtarget",
     "type" : "integer",
@@ -156,17 +165,20 @@
     "name" : "spectypehammer",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 32 }
   }, {
     "name" : "spectypesubclass",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 32 }
   }, {
     "name" : "flag",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 32 }
   }, {
     "name" : "teffadop",
     "type" : "integer",
@@ -757,7 +769,8 @@
     "name" : "inspect",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 32 }
   }, {
     "name" : "elodiervfinal",
     "type" : "double",
