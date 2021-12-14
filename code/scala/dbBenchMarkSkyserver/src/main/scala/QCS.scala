@@ -57,8 +57,8 @@ object QCS {
 
     // Extract the queries from the query log as a List of Strings.
 //    val queries: List[String] = getQueryLog(queryList(0))
-//    val queries: List[String] = getQueryLog(queryList(4)) // New log 2020
-    val queries: List[String] = getQueryLog(queryList(3)) // Generated Queries 3(z_log_generated), 5(a_generated_qry_test)
+    val queries: List[String] = getQueryLog(queryList(4)) // New log 2020
+//    val queries: List[String] = getQueryLog(queryList(3)) // Generated Queries 3(z_log_generated), 5(a_generated_qry_test)
 
     // Import the tables and create or replace the views.
     createTempTableView(tablesList)
@@ -307,7 +307,9 @@ object QCS {
    * @param whereList List with attributes stated in a WHERE statement.
    */
   def getWhereAttrib(whereList: Seq[Expression]) {
-    val UnresolvedAttrib: Regex = "(\\w+\\#\\d+)(\\s|\\sas\\s\\w+\\)\\s)(\\=|\\<\\>|\\>\\=|\\<\\=|\\<|\\>|\\%|LIKE)\\s(cast\\()?(.?\\d+\\.?\\d+|\\w+)".r
+//    val UnresolvedAttrib: Regex = "(\\w+\\#\\d+)(\\s|\\sas\\s\\w+\\)\\s)(\\=|\\<\\>|\\>\\=|\\<\\=|\\<|\\>|\\%|LIKE)\\s(cast\\()?(.?\\d+\\.?\\d+|\\w+)".r
+    val UnresolvedAttrib: Regex = "(\\w+\\#\\d+)(\\s|\\sas\\s\\w+\\)\\s)(\\=|\\<\\>|\\>\\=|\\<\\=|\\<|\\>|\\%|LIKE)\\s(cast\\(*)?(\\-\\d+\\.\\d+|\\-\\d+|\\d+\\.\\d+|\\d+\\w\\-\\d+|\\d+|\\w+)".r
+
 
 //    println(whereList)
 
@@ -319,10 +321,12 @@ object QCS {
           m =>
             // Includes the specific where clause sign. (=, <, >, >=, <=, <>, %, LIKE, IN)
 //            attributeSet += m.group(1).toLowerCase() +";where_" +  m.group(3).toLowerCase()
+//            println(m)
 
-//            println(m.group(5) + " => " + m.group(5).matches("\\-?\\d+\\.?\\d*"))
+//            println(m.group(5) + " => " + m.group(5).matches("\\-?\\d+\\w?\\.?\\-?\\d*"))
 
-            if (!m.group(5).matches("\\-?\\d+\\.?\\d*")) {
+//            if (!m.group(5).matches("\\-?\\d+\\.?\\d*")) {
+            if (!m.group(5).matches("\\-?\\d+\\w?\\.?\\-?\\d*")) {
               attributeExtendedSet += m.group(1).toLowerCase() +";where_" +  m.group(3).toLowerCase() + "_'" + m.group(5).toLowerCase() + "'"
               attributeSet += m.group(1).toLowerCase() +";where_" +  m.group(3).toLowerCase()
             } else {
@@ -732,7 +736,8 @@ object QCS {
     val selectRegxr: Regex = "(\\w+.?\\w+)\\;(select|avg|sum|count\\(\\*\\)|count)".r
     val fromRegxr: Regex = "(\\w+)\\;(from)".r
     val joiningRegxr: Regex = "(\\w+\\.\\w+\\s\\=\\s\\w+\\.\\w+)\\;(join)".r
-    val whereRegxr: Regex = "(\\w+\\.\\w+)\\;where\\_(\\=|\\<\\>|\\>\\=|\\<\\=|\\<|\\>|\\w+)\\_(\\-?\\d\\.?\\d+|\\'?\\w+\\'?)".r
+//    val whereRegxr: Regex = "(\\w+\\.\\w+)\\;where\\_(\\=|\\<\\>|\\>\\=|\\<\\=|\\<|\\>|\\w+)\\_(\\-?\\d\\.?\\d+|\\'?\\w+\\'?)".r
+    val whereRegxr: Regex = "(\\w+\\.\\w+)\\;where\\_(\\=|\\<\\>|\\>\\=|\\<\\=|\\<|\\>|\\w+)\\_(\\-?\\d\\.?\\w?\\-?\\d+|\\'?\\w+\\'?)".r
     val groupByRegxr: Regex = "(\\w+\\.\\w+)\\;groupBy".r
 
     // Declaring the different parts of the Query and initializing them as empty Strings.
@@ -876,7 +881,7 @@ object QCS {
 
               if (m.group(2) == "select") {
 //                println("Pickle Rick: " + " * ")
-                selectPart += "*   "
+                selectPart += "count(*)   "
                 groupByPart = ""
               }
 
@@ -885,6 +890,7 @@ object QCS {
           // Create the 'WHERE' statement based on the Regex whereRegxr.
           whereRegxr.findAllIn(qryBase(i)).matchData foreach {
             m =>
+//              println(m)
 //                wherePart += m.group(1) + " " + m.group(2) + " and "
 
               // Only add the where table if the tables is mentioned in the From or Join statement.
