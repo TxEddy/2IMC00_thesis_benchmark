@@ -11,27 +11,32 @@
     "name" : "target_id",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 64 }
   }, {
     "name" : "alt_id",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 64 }
   }, {
     "name" : "file",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 128 }
   }, {
     "name" : "apogee_id",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 32 }
   }, {
     "name" : "telescope",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 32 }
   }, {
     "name" : "location_id",
     "type" : "integer",
@@ -41,7 +46,8 @@
     "name" : "field",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 100 }
   }, {
     "name" : "ra",
     "type" : "float",
@@ -116,7 +122,8 @@
     "name" : "survey",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 100 }
   }, {
     "name" : "extratarg",
     "type" : "integer",
@@ -241,7 +248,8 @@
     "name" : "apstar_version",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 32 }
   }, {
     "name" : "gaia_source_id",
     "type" : "integer",

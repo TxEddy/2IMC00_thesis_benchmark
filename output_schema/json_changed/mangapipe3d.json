@@ -466,7 +466,8 @@
     "name" : "plateifu",
     "type" : "string",
     "nullable" : true,
-    "metadata" : { }
+    "metadata" : {
+      "varchar": 32 }
   }, {
     "name" : "plate",
     "type" : "integer",
