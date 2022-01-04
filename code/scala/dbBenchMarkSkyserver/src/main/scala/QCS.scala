@@ -13,8 +13,6 @@ import org.apache.spark.sql.types.{StringType, StructField, MetadataBuilder}
 import scala.collection.immutable.ListSet
 import scala.collection.mutable.ListBuffer
 import scala.util.matching.Regex
-import scala.util.Random
-import scala.util.control.Breaks.break
 
 object QCS {
   // Set Logger ... .
@@ -672,9 +670,9 @@ object QCS {
     var qcsMap: Map[List[String], Int] = Map()
     var tmpList: List[String] = List()
 
-//    qcsList.foreach {
-//      i => println(i.sorted)
-//    }
+    qcsList.foreach {
+      i => println(i.sorted)
+    }
 
     qcsMap += (qcsList(0).sorted -> 1)
 
