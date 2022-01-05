@@ -5,9 +5,9 @@ Microsoft SQL Server on macOS could only be installed using Docker and the Micro
 * Connect to the container using the `docker` cli.
 <pre>docker exec -it <i>CONTAINER_NAME</i> /bin/sh</pre>
 * Create a new folder.
-* Copy the tables files to the new folder created above to the container using the command: 
+* Copy the tables files to the new folder created above to the container using the command:
+    * The _/._ command will copy all files inside that folder.
 <pre>docker cp <i>PATH_TO_TABLE_FILES</i>/. CONTAINER_NAME:<i>/PATH_TO/FOLDER_NAME_STEP1</i></pre>
-	* The _/._ command will copy all files inside that folder.
 
 #### Extra info
 Sending command to the container could be done using the command:
