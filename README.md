@@ -15,7 +15,7 @@ Use the Python scripts located in the folder called [python](code/python)
 * Add your own credentials or use the existing one.
 
 ## Query Column Sets Implementation
-Use the Scala script called `QCS.scala` located in the folder called [scala](code/scala/dbBenchMarkSkyserver/src/main/scala/).
+Use the Scala script called `QCS.scala` located in the folder called [scala](code/scala/dbBenchmarkSkyserver/src/main/scala/).
 * Project could be opened in IntelliJ.
 
 ## Creating the tables and loading data in Microsoft SQL Server, MySQL and PostgreSQL
