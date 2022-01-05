@@ -25,7 +25,7 @@ In the folder called [sql](code/sql) the different SQL statements can be found f
 * Used the CLI `mssql-cli`
   * When using mssql use the flag `-T 6000000` when connecting with the database in order to prevent an timeout error. Apparently a default SQL operation should not take longer than `60000 ms`.
 * The `CREATE` statements for the different tables are located in the [tables](code/sql/mssql/tables) folder.
-* The loading statements for the table data are located in the [mssql](code/sql/mssql) folder and could be used via the commmands: <pre>mssql> -i <i>PATH_TO/[mssql_loading_original_tables.sql](code/sql/mssql_loading_original_tables.sql)</i></pre> <pre>mssql> -i <i>PATH_TO/[mssql_loading_generated_tables.sql](code/sql/mssql_loading_generated_tables.sql)</i></pre>
+* The loading statements for the table data are located in the [mssql](code/sql/mssql) folder and could be used via the commmands: <pre>mssql> -i <i>PATH_TO/[mssql_loading_original_tables.sql](code/sql/mssql/mssql_loading_original_tables.sql)</i></pre> <pre>mssql> -i <i>PATH_TO/[mssql_loading_generated_tables.sql](code/sql/mssql/mssql_loading_generated_tables.sql)</i></pre>
 
 * When using Docker (i.e. for Mac) first copy the original and synthetic table data to the container.
   * See [README_MSSQL.md](code/sql/mssql/README_MSSQL.md) in the `mssql` folder for more information regarding copying original and synthetic table data to the MS SQL Server container.
