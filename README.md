@@ -8,7 +8,7 @@ Master Thesis project in which a new database benchmark is created, this benchma
 Use the Python scripts located in the folder called [python](code/python)
 * The Python script [download_logs_tables.py](code/python/download_logs_tables.py) could be used to download table data and query logs.
 * The Python script [synthetic_tables.py](code/python/synthetic_tables.py) could be used to generate a correlation matrix and use this matrix to generate synthetic correlated data. This script could also be used to generate the synthetic tables, and replace specific columns with those of the generated columns using the correlation matrix.
-* The Python script `...` could be used to execute the original and synthetic data and queries on the three different databases.
+* The Python script [database_tasks.py](code/python/database_tasks.py) contains the functions to execute a benchmark. These functions are used in the Python script [db_execute.py](code/python/db_execute.py) to execute the original and synthetic data and queries on the three different databases.
 
 ### Config file
 * In order that the [config.py](code/python/config.py) file works proper open this repo in VSCode.
