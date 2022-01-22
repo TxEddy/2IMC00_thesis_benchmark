@@ -143,18 +143,13 @@ def replacing_fks(table_csv, pk_csv):
     # Saving the changed table.
     df_table.to_csv(table_csv, header=True, index=False)
 
-    
 
 
 
 
 def main(config):
-    output_logs = config.path.root / config.path.logs
     output_tables = config.path.root / config.path.tables
-    schemas = config.path.root / config.path.schema
-    correlation_dir = config.path.root / config.path.correlations
-    generated_dir = config.path.root / config.path.tables_generated
-
+    
     #######################################
     # Exporting primary keys PhotoObjAll. #
     #######################################
@@ -185,35 +180,6 @@ def main(config):
     for i in table_order_list:
         # print(f"{(output_tables / i).as_posix()}.csv")
         replacing_fks(f"{(output_tables / i).as_posix()}.csv", photooobjall_fk_pk)
-    
-    
-    # Replacing pk and fk of galaxytag using phototag, when fk of photootags have been replaced.
-    # Only galaxytag.
-    
-    #####################################################################
-    # Replace missing primary/foreign keys with keys of PhotoTag table. #
-    #####################################################################
-    # table_phototag = output_tables / "phototag.csv"
-    # export_pk_photoobjall(table_phototag, output_tables)
-
-
-    ##################################################################################
-    # Replace missing primary/foreign keys of galaxyTag with keys of PhotoTag table. #
-    ##################################################################################
-    # phototag_fk_pk = output_tables / "phototag_export_pk_fk.csv"
-    # replacing_fks(f"{(output_tables / 'galaxytag').as_posix()}.csv", phototag_fk_pk)
-    
-
-
-    # print(f"{(output_tables / table_order_list[0]).as_posix()}.csv")
-    # print(table_order_list[5])
-    # replacing_fks(f"{(output_tables / table_order_list[3]).as_posix()}.csv", photooobjall_fk_pk)
-    # replacing_fks(f"{(output_tables / table_order_list[5]).as_posix()}.csv", photooobjall_fk_pk)
-    # replacing_fks(f"{(output_tables / table_order_list[7]).as_posix()}.csv", photooobjall_fk_pk)
-    # replacing_fks(f"{(output_tables / table_order_list[-1]).as_posix()}.csv", photooobjall_fk_pk)
-    
-    # replacing_fks(paths_tables_csv[9], photooobjall_fk_pk)
-    # replacing_fks(paths_tables_csv[17], photooobjall_fk_pk)
 
 
 

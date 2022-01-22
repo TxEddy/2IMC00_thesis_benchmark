@@ -1,106 +1,15 @@
 from config import get_config
-from pyspark.sql import SparkSession, SQLContext
-from pyspark.sql.types import StructType
 from pathlib import Path
-from itertools import islice
-import re, csv, json, math, random
+import csv, json, random
 import pandas as pd
 from scipy.stats import multivariate_normal as mvn
 from faker import Faker
-from pydbgen import pydbgen
-
-# Global dictionary variable for counting tables.
-freq_table = {}
-
-def frequency_table(file_, dir):
-    spark = SparkSession.builder.getOrCreate()
-    # pattern_table = r".+FROM\ (\w+).+"
-    # pattern_table = r".+(FROM|from)\ (\w+).+"
-    pattern_table = r".+(FROM|from)\ +\.?\.?(\w+).+"
-    # pattern_dismiss = r"f.+|specobjall|SpecObjAll|specobj|SpecObj|dbo"
-    pattern_dismiss = r"f.+|specobj|specobjall|SpecObj|SpecObjAll|dbo"
-
-    # Get all csv files in the given directory.
-    # files_csv = dir.glob('**/*.csv') # Also get csv files in underlying folders.
-    files_csv = dir.glob('*.csv')
-    paths_csv = [path.as_posix() for path in files_csv]
-    
-    df = spark.read.options(header=True, delimiter=",").csv(file_)
-    list_queries = df.select("statement").collect()
-
-    # Create empty Dictionary.
-    # freq_table = {}
-
-    # Using the global freq_table Dictionary.
-    global freq_table
-
-    for qry in list_queries:
-        if qry.statement is not None and re.search(pattern_table, qry.statement):
-            match = re.match(pattern_table, qry.statement)
-            # print("Full match:", match)
-            # print("Regex match is:", match.group(2))
-
-            if bool(re.match(pattern_dismiss, match.group(2))):
-                continue
-
-            # Check if the table name, in lowercase, is already in the dictionary, otherwise create new key. Is made lowercase, since queries sometimes have the tablenames as CamelCase.
-            if (match.group(2).lower() in freq_table):
-                freq_table[match.group(2).lower()] += 1
-            else:
-                freq_table[match.group(2).lower()] = 1
-
-    # Sort the dictionary on values in ascending order.
-    freq_table = dict(sorted(freq_table.items(), key=lambda item:(item[1], item[0]), reverse=True))
-    
-    # Output name of the whole dictionary.
-    out_dict = "freq_table_names.csv"
-    # print(out_dict)
-
-    # Output name of top 20 of freq_dict and selecting top 20 of the Dictionary freq_dict.
-    out_dict_selection = "freq_table_top20.csv"
-    freq_top = dict(islice(freq_table.items(), 20))
-    
-    # Write global Dictionary freq_table to a csv file.
-    with open(out_dict, 'w') as csv_complete, open(out_dict_selection, 'w') as csv_selection:
-        writer_complete = csv.writer(csv_complete)
-        writer_selection = csv.writer(csv_selection)
-
-        for key, value in freq_table.items():
-            writer_complete.writerow([key, value])
-        
-        for key, value in freq_top.items():
-            writer_selection.writerow([key, value])
-
-
-def export_only_queries(qry_log, dir):
-    original_log = (dir / qry_log).as_posix() + ".csv"
-    output_file = (dir / "only_queries.csv").as_posix()
-
-    print(original_log)
-    print(output_file)
-
-    with open(original_log) as log, open(output_file, 'w') as new_csv:
-        csv_reader = csv.DictReader(log)
-        csv_writer = csv.writer(new_csv)
-
-        for row in csv_reader:
-            # print(row["statement"])
-            csv_writer.writerow([row["statement"]])
-
-
 
 
 def add_data_to_table(table, column_names, dir_tables):
-    # print("Directory:", dir_tables)
-    # print("Table name:", table)
-    # print("Column name:", table + "_" + column_name)
-
     table_csv = (dir_tables / table).as_posix() + ".csv"
     corr_qcs_table = (dir_tables / "correlatedAttributesQcs.csv").as_posix()
-    # column = table + "_" + column_name
-    # print(corr_qcs_table, type(corr_qcs_table))
-    # print(table_csv, type(table_csv))
-
+    
     # Create empty List and Dictionary which will be filled to rename the column names of df_corr_columns such that the columns
     # of both df's have the same name and the values of df_corr_columns can be added to df_table.
     columns = []
@@ -110,16 +19,10 @@ def add_data_to_table(table, column_names, dir_tables):
         columns.append(name)
         rename_dict[name] = i
     
-    # print(columns)
-    # print(rename_dict)
-
     # Importing complete table and afterwards select the specific columns.
     df_table = pd.read_csv(table_csv)
     df_original_columns = df_table.filter(column_names, axis=1)
-    # print(df_table)
-    # print(df_original_columns)
     
-
     # Only when importing the specific columns.
     # df_original_columns = pd.read_csv(table_csv, usecols=column_names)
     # print(df_original_columns)
@@ -132,9 +35,7 @@ def add_data_to_table(table, column_names, dir_tables):
     # Dropping duplicate row, however make sure only to keep the last observation since that will be the correlated data row
     # and resetting the index.
     # While resetting the index, use the drop parameter such that the old index will not be added as a column.
-    # df_new = pd.concat([df_original_columns, df_corr_columns], axis=0).drop_duplicates(keep='last').reset_index(drop=True)
     df_new = pd.concat([df_original_columns, df_corr_columns], axis=0).drop_duplicates(keep='first').reset_index(drop=True)
-    # df_new = df_corr_columns.append(df_original_columns).drop_duplicates(keep='last').reset_index(drop=True)
     df_new = df_new[:len(df_table.index)]
     # print(df_new)
     
@@ -146,7 +47,6 @@ def add_data_to_table(table, column_names, dir_tables):
     print("Are the df's the same:", df_original_columns.equals(df_new))
 
     # Save the df containing correlated data.
-    # df_table.save((dir_tables / table).as_posix() + "_new.csv", header=True, index=False)
     df_table.to_csv((dir_tables / table).as_posix() + "_new.csv", float_format="%g", header=True, index=False)
 
 
@@ -154,8 +54,9 @@ def correlation_matrix(qcs_tables_dir, generate_number):
     # Directory containing data output with all attributes stated in the QCS.
     dir_qcs_attributes = qcs_tables_dir / "qcsAttributesOutput"
 
-    # Get all csv files in the given directory, this is the same directory as the output directory in Spark to export the df containing data of all attributes states in the QCS. Since Spark exports the df with a random name, globally get the csv files in the given directory.
-    # files_csv = qcs_tables_dir.glob('**/*.csv') # Also get csv files in underlying folders.
+    # Get all csv files in the given directory, this is the same directory as the output directory in Spark
+    # to export the df containing data of all attributes states in the QCS. Since Spark exports the df 
+    # with a random name, globally get the csv files in the given directory.
     files_csv = dir_qcs_attributes.glob('**/*.csv') # Also get csv files in underlying folders.
     paths_csv = [path.as_posix() for path in files_csv]
 
@@ -179,18 +80,12 @@ def correlation_matrix(qcs_tables_dir, generate_number):
     corr_matrix.to_csv(qcs_tables_dir.as_posix() + "/qcs_attributes_matrix.csv")
 
     # Generate data using the correlation matrix and multivariate normal distribution sampling.
-    # generated_corr = mvn.rvs(mean=qry_df.mean().array, cov=corr_matrix, size=15000)
     # generated_corr = mvn.rvs(mean=qry_df.mean().array, cov=corr_matrix, size=generate_number)
     generated_corr = mvn.rvs(mean=qry_df.median().array, cov=corr_matrix, size=generate_number)
     # print(generated_corr)
 
     # Adding the column names to the generated data and export the generated data as csv.
     generated_df = pd.DataFrame(data = generated_corr, columns = qry_df.columns)
-
-    # Multiplying each column with the variance of the original data.
-    # for name in column_names:
-    #     generated_df[name] = generated_df[name] * qry_df.var()[name]
-    #     # print(name)
     
     # for i in column_names:
     #     # df_corr_columns[i] = df_corr_columns[i].astype(df_table.dtypes[i])
@@ -201,33 +96,13 @@ def correlation_matrix(qcs_tables_dir, generate_number):
 
 def generate_data(attribute_name, df_table, table_schema, amount_generate):
     fake = Faker()
-    # print(attribute_name)
-
-    # pd.set_option("max_columns", None)
-    # table_df = pd.read_csv(table_file)
-    # print(table_df)
-    # print(table_df["class"].apply(len).mean().round(0))
 
     data_list = list()
-    str_length = 0
     specific_int = ""
 
     for i in table_schema:
         if (attribute_name in i.values()):
             print("Name:", i["name"])
-            # print("Datatype:", i["type"])
-            # if ("primary key" in i["metadata"]):
-            #     print("pk or fk:", i["metadata"])
-
-
-            # Check if i["metadata"] has foreign key, then use sample method here add to data_list()
-            # if ("foreign key" in i["metadata"]):
-            #     data_list = list(range(1, amount_generate + 1))
-            #     # random.shuffle(data_list)
-            #     print("fk", len(data_list))
-
-            # if ("string" in i["type"].lower()):
-            #     str_length = math.ceil(df_table[i["name"]].fillna(method='ffill').astype(str).apply(len).mean())
             
             if ("specific type" in i["metadata"]):
                 specific_int = i["metadata"]["specific type"]
@@ -237,14 +112,12 @@ def generate_data(attribute_name, df_table, table_schema, amount_generate):
                     data_list.append(j)
                 
                 elif ("foreign key" in i["metadata"]):
-                    # data_list.append(fake.unique.pyint(1, amount_generate))
                     data_list = list(range(1, amount_generate + 1))
                     random.shuffle(data_list)
                     # adding a break, since a complete list is generated here therefore unnecessary to do this multiple times.
                     break
                     
                 elif (i["type"].lower() == "integer" or i["type"].lower() == "long"):
-                # elif (i["type"].lower() == "integer" or i["type"].lower() == "long" or i["type"].lower() == "double" or i["type"].lower() == "float"):
                     if (specific_int == "tinyint"):
                         data_list.append(fake.pyint(max_value=127))
                     
@@ -260,9 +133,7 @@ def generate_data(attribute_name, df_table, table_schema, amount_generate):
     return data_list
 
 
-
 def generate_table_data(table_name, generate_number, dir_tables, dir_schema, dir_output):
-    # print(dir_schema)
 
     file_table = (dir_tables / table_name).as_posix() + ".csv"
     file_schema = (dir_schema / table_name).as_posix() + ".json"
@@ -289,17 +160,12 @@ def generate_table_data(table_name, generate_number, dir_tables, dir_schema, dir
         schema_list[i]["name"] = schema_list[i]["name"].lower()
         schema_list[i]["metadata"] = dict((key.lower(), value) for key, value in schema_list[i]["metadata"].items())
     
-    # table_dict[attribute_list[0]] = generate_data(attribute_list[0], file_table, schema_list, generate_number)
-
-    # print(table_dict)
-
     # Adding column name as Key and generated data into a list as Value to the dictionary table_dict.
     for i in attribute_list:
         table_dict[i] = generate_data(i, table_df, schema_list, generate_number)
     
     # print(table_dict)
 
-    # pd.set_option("max_columns", None)
     # Create a df based on the dictionary table_dict and save this df as a csv file.
     df_test = pd.DataFrame(table_dict)
     # print(df_test)
@@ -319,15 +185,9 @@ def update_synthetic_table(table, correlation_table_name, column_names, dir_conf
         name = table + "_" + i.lower()
         columns.append(name)
         rename_dict[name] = i.lower()
-    
-    # print(columns)
-    # print(rename_dict)
 
     # Importing complete table.
     df_table = pd.read_csv(table_csv)
-    # print(df_table)
-    # print(df_table[list(rename_dict.values())])
-    # print(df_table.dtypes[list(rename_dict.values())])
     
     # Import the specific columns from the table containing the correlated attributes and renaming the column names.
     df_corr_columns = pd.read_csv(corr_table, usecols=columns).rename(columns=rename_dict)
@@ -348,46 +208,28 @@ def update_synthetic_table(table, correlation_table_name, column_names, dir_conf
 
     # Save the df containing correlated data.
     df_table.to_csv(table_csv, float_format="%g", header=True, index=False)
-    
-    
+
 
 
 
 def main(config):
-    output_logs = config.path.root / config.path.logs
+    # Create output directories.
+    # create_dirs(config)
+
+    # Set output directories.
     output_tables = config.path.root / config.path.tables
     schemas = config.path.root / config.path.schema
     correlation_dir = config.path.root / config.path.correlations
     generated_dir = config.path.root / config.path.tables_generated
 
-    # csv_log_oct = output_logs / "log_oct.csv"
-    # frequency_table(csv_log_oct.as_posix(), output_logs)
-
-    # csv_log_nov = output_logs / "log_nov.csv"
-    # frequency_table(csv_log_nov.as_posix(), output_logs)
-
-    # csv_log_dec = output_logs / "log_dec.csv"
-    # frequency_table(csv_log_dec.as_posix(), output_logs)
-
-    # csv_log_202 = output_logs / "log_2020.csv"
-    # frequency_table(csv_log_202.as_posix(), output_logs)
-
-    # export_only_queries("log_2020_filterCleaned", output_logs)
-
-    # tables_qcs = output_tables / "qcs_test"
-    # log_oct = output_logs / "log_oct.csv"
-    # qcs_spark(tables_qcs, log_oct.as_posix())
-
-    ####################################################
-    # Creating and calculating the correlation matrix. #
-    ####################################################
-
-    # print("Output:", config.path.root)
+    ######################################################
+    #  Creating and calculating the correlation matrix.  #
+    ######################################################
     correlation_matrix(correlation_dir, 100000)
 
-    ####################################
-    # Generating Synthetic table data. #
-    ####################################
+    ######################################
+    #  Generating Synthetic table data.  #
+    ######################################
 
     generate_table_data("photoobjall", 100000, output_tables, schemas, generated_dir)
     generate_table_data("photoobj", 100000, output_tables, schemas, generated_dir)
@@ -409,38 +251,12 @@ def main(config):
     generate_table_data("mangagalaxyzoo", 4220, output_tables, schemas, generated_dir)
     generate_table_data("mangadrpall", 4220, output_tables, schemas, generated_dir)
     generate_table_data("mangapipe3d", 4534, output_tables, schemas, generated_dir)
-
-
-    ########################################################################################
-    # Generating Synthetic table data, !!!!!!!!!!!!!!!!!!!(SCALED 2x)!!!!!!!!!!!!!!!!!!!!! #
-    ########################################################################################
-
-    # generate_table_data("photoobjall", 200000, output_tables, schemas, generated_dir)
-    # generate_table_data("photoobj", 200000, output_tables, schemas, generated_dir)
-    # generate_table_data("specphotoall", 175200, output_tables, schemas, generated_dir)
-    # generate_table_data("specphoto", 87200, output_tables, schemas, generated_dir)
-    # generate_table_data("spplines", 167200, output_tables, schemas, generated_dir)
-    # generate_table_data("sppparams", 100000, output_tables, schemas, generated_dir)
-    # generate_table_data("wise_xmatch", 200000, output_tables, schemas, generated_dir)
-    # generate_table_data("phototag", 200000, output_tables, schemas, generated_dir)
-    # generate_table_data("galaxytag", 174998, output_tables, schemas, generated_dir)
-    # generate_table_data("zoospec", 186020, output_tables, schemas, generated_dir)
-    # generate_table_data("photoz", 200000, output_tables, schemas, generated_dir)
-    # generate_table_data("apogeestar", 46, output_tables, schemas, generated_dir)
-    # generate_table_data("galaxy", 200000, output_tables, schemas, generated_dir)
-    # generate_table_data("galspecextra", 147810, output_tables, schemas, generated_dir)
-    # generate_table_data("galspecindx", 192202, output_tables, schemas, generated_dir)
-    # generate_table_data("galspecline", 192202, output_tables, schemas, generated_dir)
-    # generate_table_data("stellarmassfspsgranearlydust", 193684, output_tables, schemas, generated_dir)
-    # generate_table_data("mangagalaxyzoo", 8440, output_tables, schemas, generated_dir)
-    # generate_table_data("mangadrpall", 8440, output_tables, schemas, generated_dir)
-    # generate_table_data("mangapipe3d", 9068, output_tables, schemas, generated_dir)
     
 
-    #######################################################################
-    # Slicing the correlation table and adding these rows to the original #
-    # single tables and removing duplicates rows of the table.            #
-    #######################################################################
+    #########################################################################
+    #  Slicing the correlation table and adding these rows to the original  #
+    #  single tables and removing duplicates rows of the table.             #
+    #########################################################################
 
     # add_data_to_table("galaxy",
     #     ["clean",
@@ -586,10 +402,10 @@ def main(config):
     #     output_tables)
 
 
-    ####################################################################
-    # Replacing columns of the generated tables with columns generated #
-    # using the correlation matrix                                     #
-    ####################################################################
+    ######################################################################
+    #  Replacing columns of the generated tables with columns generated  #
+    #  using the correlation matrix.                                     #
+    ######################################################################
 
     update_synthetic_table("galaxy",
         "qcs_attributes_generated",

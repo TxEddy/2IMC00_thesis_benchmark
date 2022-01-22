@@ -12,6 +12,7 @@ class Paths:
     tables_generated: Path = None
     schema: Path = None
     correlations: Path = None
+    benchmarks: Path = None
 
 
 @dataclass
@@ -25,17 +26,12 @@ class Database:
     host: str = None
 
 
-
-
 @dataclass
 class Config:
     path: Paths = None
     mssql: Database = None
     mysql: Database = None
     postgres: Database = None
-
-
-
 
 
 def get_config(config):
@@ -51,7 +47,8 @@ def get_config(config):
                 tables=Path("output_tables"),
                 tables_generated=Path("output_tables_generated"),
                 schema=Path("table_schemas"),
-                correlations=Path("correlation")
+                correlations=Path("correlation"),
+                benchmarks=Path("output_benchmarks")
             ),
             mssql=Database(
                 name="Microsoft SQL Server",
@@ -80,3 +77,16 @@ def get_config(config):
         print(
             f"{err}: configuration '{config}' not found. Choose from: {configs.keys()}"
         )
+
+
+def create_dirs(config_credentials):
+    path_structure = config_credentials.path
+
+    path_structure.logs.mkdir(exist_ok=True)
+    path_structure.tables.mkdir(exist_ok=True)
+    path_structure.tables_generated.mkdir(exist_ok=True)
+    path_structure.schema.mkdir(exist_ok=True)
+    path_structure.correlations.mkdir(exist_ok=True)
+    path_structure.benchmarks.mkdir(exist_ok=True)
+
+
