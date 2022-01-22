@@ -213,6 +213,10 @@ def update_synthetic_table(table, correlation_table_name, column_names, dir_conf
 
 
 def main(config):
+    # Create output directories.
+    # create_dirs(config)
+
+    # Set output directories.
     output_tables = config.path.root / config.path.tables
     schemas = config.path.root / config.path.schema
     correlation_dir = config.path.root / config.path.correlations

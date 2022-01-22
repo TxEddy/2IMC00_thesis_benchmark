@@ -11,8 +11,8 @@ Use the Python scripts located in the folder called [python](code/python)
 * The Python script [database_tasks.py](code/python/database_tasks.py) contains the functions to execute a benchmark. These functions are used in the Python script [db_execute.py](code/python/db_execute.py) to execute the original and synthetic data and queries on the three different databases.
 
 ### Config file
-* In order that the [config.py](code/python/config.py) file works proper open this repo in VSCode.
-* Add your own credentials or use the existing one.
+* In order that the [config.py](code/python/config.py) file works proper open this repo in VSCode or your own choice of code editor/IDE.
+	* The function `create_dir(config_credentials)` has to be called first to create the directory structure used in the different scripts.
 
 ## Query Column Sets Implementation
 Use the Scala script called `QCS.scala` located in the folder called [scala](code/scala/dbBenchmarkSkyserver/src/main/scala/).

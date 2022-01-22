@@ -77,3 +77,16 @@ def get_config(config):
         print(
             f"{err}: configuration '{config}' not found. Choose from: {configs.keys()}"
         )
+
+
+def create_dirs(config_credentials):
+    path_structure = config_credentials.path
+
+    path_structure.logs.mkdir(exist_ok=True)
+    path_structure.tables.mkdir(exist_ok=True)
+    path_structure.tables_generated.mkdir(exist_ok=True)
+    path_structure.schema.mkdir(exist_ok=True)
+    path_structure.correlations.mkdir(exist_ok=True)
+    path_structure.benchmarks.mkdir(exist_ok=True)
+
+

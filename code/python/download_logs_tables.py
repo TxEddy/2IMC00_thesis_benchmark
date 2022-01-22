@@ -2,7 +2,7 @@ import wget, csv, re
 from pathlib import Path
 from pyspark.sql import SparkSession
 from itertools import islice
-from config import get_config
+from config import get_config, create_dirs
 import pandas as pd
 
 # Global dictionary variable for counting tables.
@@ -152,6 +152,9 @@ def export_only_queries(qry_log, dir):
 
 def main(config):
     # Create output directories.
+    # create_dirs(config)
+
+    # Set output directories.
     dir_logs = config.path.root / config.path.logs
     dir_tables = config.path.root / config.path.tables
 

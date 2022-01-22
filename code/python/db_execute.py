@@ -67,7 +67,7 @@ def execute_synthetic_benchmarks(synthetic_qrys, synthetic_db_name, db_credentia
 
 
 def main(config):
-    # Setting directory paths.
+    # Set output directories.
     dir_logs = config.path.root / config.path.logs
     output = config.path.root / config.path.benchmarks
 
